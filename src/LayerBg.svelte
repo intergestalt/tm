@@ -10,6 +10,7 @@
 
   onMount(async () => {
     setTimeout(()=>{player.play();}, 2000)
+    player.setVolume(0);
   })
 
   // live streams: https://vimeo.com/search/page:1?live=now

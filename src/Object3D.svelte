@@ -12,100 +12,110 @@
 
   import wrapRegl from 'regl'
   import resl from 'resl'
+  import normals from 'angle-normals'
   import mat4 from 'gl-mat4'
+  import bunny from 'bunny'
   const regl = wrapRegl()
   console.log(mat4)
   
-
-  var cubePosition = [
-    [-0.5, +0.5, +0.5], [+0.5, +0.5, +0.5], [+0.5, -0.5, +0.5], [-0.5, -0.5, +0.5], // positive z face.
-    [+0.5, +0.5, +0.5], [+0.5, +0.5, -0.5], [+0.5, -0.5, -0.5], [+0.5, -0.5, +0.5], // positive x face
-    [+0.5, +0.5, -0.5], [-0.5, +0.5, -0.5], [-0.5, -0.5, -0.5], [+0.5, -0.5, -0.5], // negative z face
-    [-0.5, +0.5, -0.5], [-0.5, +0.5, +0.5], [-0.5, -0.5, +0.5], [-0.5, -0.5, -0.5], // negative x face.
-    [-0.5, +0.5, -0.5], [+0.5, +0.5, -0.5], [+0.5, +0.5, +0.5], [-0.5, +0.5, +0.5], // top face
-    [-0.5, -0.5, -0.5], [+0.5, -0.5, -0.5], [+0.5, -0.5, +0.5], [-0.5, -0.5, +0.5] // bottom face
-  ]
-
-  var cubeUv = [
-    [0.0, 0.0], [1.0, 0.0], [1.0, 1.0], [0.0, 1.0], // positive z face.
-    [0.0, 0.0], [1.0, 0.0], [1.0, 1.0], [0.0, 1.0], // positive x face.
-    [0.0, 0.0], [1.0, 0.0], [1.0, 1.0], [0.0, 1.0], // negative z face.
-    [0.0, 0.0], [1.0, 0.0], [1.0, 1.0], [0.0, 1.0], // negative x face.
-    [0.0, 0.0], [1.0, 0.0], [1.0, 1.0], [0.0, 1.0], // top face
-    [0.0, 0.0], [1.0, 0.0], [1.0, 1.0], [0.0, 1.0] // bottom face
-  ]
-
-  const cubeElements = [
-    [2, 1, 0], [2, 0, 3], // positive z face.
-    [6, 5, 4], [6, 4, 7], // positive x face.
-    [10, 9, 8], [10, 8, 11], // negative z face.
-    [14, 13, 12], [14, 12, 15], // negative x face.
-    [18, 17, 16], [18, 16, 19], // top face.
-    [20, 21, 22], [23, 20, 22] // bottom face
-  ]
-
-  const drawCube = regl({
-    frag: `
-    precision mediump float;
-    varying vec2 vUv;
-    uniform sampler2D tex;
-    void main () {
-      gl_FragColor = texture2D(tex,vUv);
-    }`,
+  const drawBunny = regl({
     vert: `
     precision mediump float;
-    attribute vec3 position;
-    attribute vec2 uv;
-    varying vec2 vUv;
-    uniform mat4 projection, view;
+    attribute vec3 position, normal;
+    uniform mat4 view, projection;
+    varying vec3 fragNormal, fragPosition;
     void main() {
-      vUv = uv;
+      fragNormal = normal;
+      fragPosition = position;
       gl_Position = projection * view * vec4(position, 1);
     }`,
+
+    frag: `
+    precision mediump float;
+    struct Light {
+      vec3 color;
+      vec3 position;
+    };
+    uniform Light lights[4];
+    varying vec3 fragNormal, fragPosition;
+    void main() {
+      vec3 normal = normalize(fragNormal);
+      vec3 light = vec3(0, 0, 0);
+      for (int i = 0; i < 4; ++i) {
+        vec3 lightDir = normalize(lights[i].position - fragPosition);
+        float diffuse = max(0.0, dot(lightDir, normal));
+        light += diffuse * lights[i].color;
+      }
+      gl_FragColor = vec4(light, 1);
+    }`,
+
     attributes: {
-      position: cubePosition,
-      uv: cubeUv
+      position: bunny.positions,
+      normal: normals(bunny.cells, bunny.positions)
     },
-    elements: cubeElements,
+
+    elements: bunny.cells,
+
     uniforms: {
-      view: ({ tick }) => {
+      view: ({tick}) => {
         const t = 0.01 * tick
         return mat4.lookAt([],
-          [5 * Math.cos(t), 2.5 * Math.sin(t), 5 * Math.sin(t)],
-          [2, 0.0, 0],
+          [30 * Math.cos(t), 2.5, 30 * Math.sin(t)],
+          [5, 2.5, 0],
           [0, 1, 0])
       },
-      projection: ({ viewportWidth, viewportHeight }) =>
+      projection: ({viewportWidth, viewportHeight}) =>
         mat4.perspective([],
           Math.PI / 4,
           viewportWidth / viewportHeight,
           0.01,
-          10),
-      tex: regl.prop('texture')
+          1000),
+      'lights[0].color': [1, 0, 0],
+      'lights[1].color': [0, 1, 0],
+      'lights[2].color': [0, 0, 1],
+      'lights[3].color': [1, 1, 0],
+      'lights[0].position': ({tick}) => {
+        const t = 0.1 * tick
+        return [
+          10 * Math.cos(0.09 * (t)),
+          10 * Math.sin(0.09 * (2 * t)),
+          10 * Math.cos(0.09 * (3 * t))
+        ]
+      },
+      'lights[1].position': ({tick}) => {
+        const t = 0.1 * tick
+        return [
+          10 * Math.cos(0.05 * (5 * t + 1)),
+          10 * Math.sin(0.05 * (4 * t)),
+          10 * Math.cos(0.05 * (0.1 * t))
+        ]
+      },
+      'lights[2].position': ({tick}) => {
+        const t = 0.1 * tick
+        return [
+          10 * Math.cos(0.05 * (9 * t)),
+          10 * Math.sin(0.05 * (0.25 * t)),
+          10 * Math.cos(0.05 * (4 * t))
+        ]
+      },
+      'lights[3].position': ({tick}) => {
+        const t = 0.1 * tick
+        return [
+          10 * Math.cos(0.1 * (0.3 * t)),
+          10 * Math.sin(0.1 * (2.1 * t)),
+          10 * Math.cos(0.1 * (1.3 * t))
+        ]
+      }
     }
   })
 
-  resl({
-    manifest: {
-      texture: {
-        type: 'image',
-        src: 'https://regl-project.github.io/regl/www/gallery/assets/peppers.png',
-        parser: (data) => regl.texture({
-          data: data,
-          mag: 'linear',
-          min: 'linear'
-        })
-      }
-    },
-    onDone: ({ texture }) => {
-      regl.frame(() => {
-        regl.clear({
-          color: [0, 0, 0, 0],
-          depth: 1
-        })
-        drawCube({ texture })
-      })
-    }
+  regl.frame(() => {
+    regl.clear({
+      depth: 1,
+      color: [0, 0, 0, 0]
+    })
+
+    drawBunny()
   })
 
 </script>

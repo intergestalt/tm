@@ -8,7 +8,7 @@
   onMount(async () => {
     const hole_elem = hole;
     // set the clip-path rule
-    hole_elem.style.clipPath = makeCircleHoleClipPathRule( 50 );
+    //hole_elem.style.clipPath = makeCircleHoleClipPathRule( 50 );
   })
 
 </script>
@@ -35,6 +35,7 @@
     box-shadow: 1px 1px 10px black;
     /*filter: blur(2px);*/
     position: relative;
+    /*backdrop-filter: blur(4px);*/
   }
 
   .hole::after {
