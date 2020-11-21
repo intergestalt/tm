@@ -40,7 +40,7 @@
 </div>
 -->
 <div class="videocontainer">
-<video bind:this={videoplayer} autoplay class="video-js vjs-default-skin" controls>
+<video muted bind:this={videoplayer} autoplay class="video-js vjs-default-skin" controls>
     <source src="https://rec.stream.intergestalt.cloud/hls/test.m3u8" type="application/x-mpegURL" />
 </video>
 </div>
