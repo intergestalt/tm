@@ -13,7 +13,6 @@
     //setTimeout(()=>{player.play();}, 2000)
     //player.setVolume(0);
     const vjs = videojs(videoplayer)
-    vjs.fluid(true)
     vjs.play();
   })
 
@@ -40,22 +39,35 @@
 </div>
 -->
 <div class="videocontainer">
-<video muted bind:this={videoplayer} autoplay class="video-js vjs-default-skin" controls>
+<video muted bind:this={videoplayer} autoplay class="video-js vjs-default-skin" 
+  data-setup={'{ "fluid": true}'}
+>
     <source src="https://rec.stream.intergestalt.cloud/hls/test.m3u8" type="application/x-mpegURL" />
 </video>
 </div>
 
 <style>
   /*img, :global(.videocontainer iframe)*/ .videocontainer {
-    object-fit: cover;
-    object-position: center;
     height: 100%;
     width: 100%;
+    top:0;
+    left:0;
     position: fixed;
     display: block;
     z-index: -1;
 
-    transform: scale(1.5);
+    /*transform: scale(1.5);*/
     /*filter: blur(8px);*/
+  }
+  :global(video) {
+    object-fit: cover;
+    object-position: center;
+    height: 100%;
+    width: 100%;
+  }
+
+  :global(.vjs-tech) { object-fit: cover; }
+  :global(.vjs-fluid) {
+    height: 100% !important;
   }
 </style>
