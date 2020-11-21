@@ -3,14 +3,18 @@
   import { onMount } from 'svelte';
 
   let player;
+  let videoplayer
   
   function logEvent(event) {
     console.log(event)
   }
 
   onMount(async () => {
-    setTimeout(()=>{player.play();}, 2000)
-    player.setVolume(0);
+    //setTimeout(()=>{player.play();}, 2000)
+    //player.setVolume(0);
+    const vjs = videojs(videoplayer)
+    vjs.fluid(true)
+    vjs.play();
   })
 
   // live streams: https://vimeo.com/search/page:1?live=now
@@ -22,7 +26,10 @@
 
 -->
 
+
+<!--
 <div class="videocontainer">
+
   <VimeoPlayer
     videoId="481227527"
     bind:player={player}
@@ -31,9 +38,15 @@
     on:pause={logEvent}
   />
 </div>
+-->
+<div class="videocontainer">
+<video bind:this={videoplayer} autoplay class="video-js vjs-default-skin" controls>
+    <source src="https://rec.stream.intergestalt.cloud/hls/test.m3u8" type="application/x-mpegURL" />
+</video>
+</div>
 
 <style>
-  /*img,*/ :global(.videocontainer iframe) {
+  /*img, :global(.videocontainer iframe)*/ .videocontainer {
     object-fit: cover;
     object-position: center;
     height: 100%;
