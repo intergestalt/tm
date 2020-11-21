@@ -33,7 +33,7 @@
 </div>
 
 <style>
-  img, :global(.videocontainer iframe) {
+  /*img,*/ :global(.videocontainer iframe) {
     object-fit: cover;
     object-position: center;
     height: 100%;
