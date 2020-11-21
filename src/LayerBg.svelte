@@ -39,7 +39,12 @@
 </div>
 -->
 <div class="videocontainer">
-<video muted bind:this={videoplayer} autoplay class="video-js vjs-default-skin" 
+<video 
+  muted 
+  bind:this={videoplayer} 
+  autoplay 
+  playsinline
+  class="video-js vjs-default-skin" 
   data-setup={'{ "fluid": true}'}
 >
     <source src="https://rec.stream.intergestalt.cloud/hls/test.m3u8" type="application/x-mpegURL" />
