@@ -14,7 +14,7 @@
 </script>
 
   <div class="hole" bind:this={hole}>
-    <p>There is an <span class="hole-text">HOLE</span> here</p>
+    <slot></slot>
   </div>
 
   <div class="circle">
@@ -48,12 +48,5 @@
     right: 20px;
     top: 20px;
   }
-  .hole > p {
-    align-self: center;
-    font-size: 18px;
-    font-weight: bold;
-  }
-  .hole-text {
-    font-size: 100px;
-  }
+
 </style>
