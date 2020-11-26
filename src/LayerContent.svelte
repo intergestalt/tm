@@ -1,18 +1,21 @@
 <script>
   import ContentBox from './ContentBox.svelte'
   import Polygon from './Polygon.svelte'
+
+  const text = "text text text text text text text text text text text text text text text text text"
+
 </script>
 
 <div>
-<ContentBox />
-<Polygon n=5 />
-<Polygon n=6 />
-<Polygon n=7 />
-<Polygon n=8 />
-<Polygon n=9 />
-<Polygon n=10 />
-<Polygon n=11 />
-<Polygon n=12 />
+<ContentBox>{text}</ContentBox>
+<Polygon n=5 >{text }</Polygon>
+<Polygon n=6 >{text }</Polygon>
+<Polygon n=7 >{text }</Polygon>
+<Polygon n=8 >{text }</Polygon>
+<Polygon n=9 >{text }</Polygon>
+<Polygon n=10 >{text }</Polygon>
+<Polygon n=11 >{text }</Polygon>
+<Polygon n=12 >{text }</Polygon>
 <br />
 <Polygon n=5 blur="2"/>
 <Polygon n=5 blur="4"/>
