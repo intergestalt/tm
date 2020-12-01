@@ -6,33 +6,67 @@
 
 </script>
 
-<div>
-<ContentBox>{text}</ContentBox>
-<Polygon n=5 >{text }</Polygon>
-<Polygon n=6 >{text }</Polygon>
-<Polygon n=7 >{text }</Polygon>
-<Polygon n=8 >{text }</Polygon>
-<Polygon n=9 >{text }</Polygon>
-<Polygon n=10 >{text }</Polygon>
-<Polygon n=11 >{text }</Polygon>
-<Polygon n=12 >{text }</Polygon>
-<br />
-<Polygon n=5 blur="2"/>
-<Polygon n=5 blur="4"/>
-<Polygon n=5 blur="6"/>
-<Polygon n=5 blur="8"/>
-<Polygon n=5 blur="10"/>
-<Polygon n=5 blur="12"/>
-<Polygon n=5 blur="14"/>
-<Polygon n=5 blur="16"/>
+<section>
+  <ContentBox>{text}</ContentBox>
+
+  <div class="polybox">
+    <span>span</span>
+    <span>span</span>
+    <span>span</span>
+  </div>
+
+  <div class="polybox">
+    <Polygon n=5 >{text }</Polygon>
+    <Polygon n=6 >{text }</Polygon>
+    <Polygon n=7 >{text }</Polygon>
+  </div>
+
+  <div class="polybox">
+    <Polygon insideShape={false} n=5 >{text }</Polygon>
+    <Polygon insideShape={false} n=6 >{text }</Polygon>
+    <Polygon insideShape={false} n=7 >{text }</Polygon>
+  </div>
+
+  <Polygon width="100px" n=5 >{text }</Polygon>
+  <Polygon width="100px" n=6 >{text }</Polygon>
+  <Polygon width="100px" n=7 >{text }</Polygon>
+  <Polygon width="100px" n=8 >{text }</Polygon>
+  <Polygon width="100px" n=9 >{text }</Polygon>
+  <Polygon width="100px" n=10 >{text }</Polygon>
+  <Polygon width="100px" n=11 >{text }</Polygon>
+  <Polygon width="100px" n=12 >{text }</Polygon>
+  <br />
+  <Polygon width="20%" n=5 blur="2"/>
+  <Polygon width="20%" n=5 blur="4"/>
+  <Polygon width="20%" n=5 blur="6"/>
+  <Polygon width="20%" n=5 blur="8"/>
+  <Polygon width="20%" n=5 blur="10"/>
+  <Polygon width="20%" n=5 blur="12"/>
+  <Polygon width="20%" n=5 blur="14"/>
+  <Polygon width="20%" n=5 blur="16"/>
+  <ContentBox />
+  <ContentBox />
+  <ContentBox />
 <ContentBox />
-<ContentBox />
-<ContentBox />
-<ContentBox />
-</div>
+</section>
 
 <style>
-div {
-  margin-top: 50vh;
-}
+  section {
+    margin-top: 50vh;
+    width: 70%;
+  }
+
+  .polybox {
+    display: grid;
+    grid-template-columns: 33.33vw 33.33vw 33.33vw;
+    grid-template-rows: 33.33vw;
+  }
+
+  .polybox > span {
+    background: green;
+    display:block;
+    height:100px;
+    border: dotted 5px red;
+  }
+
 </style>

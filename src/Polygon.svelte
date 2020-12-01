@@ -3,6 +3,7 @@
   export let n = 7
   export let blur = 0
   export let insideShape = true
+  export let width = "100%"
 
   let coords = []
   const base_angle = 2*Math.PI/n
@@ -40,32 +41,42 @@
   ].map( c => ({...c, x: c.x * 2}))
 
 </script>
-
-<div 
-    style="--polygon-blur: {blur}px" 
-    class={`wrapper ${$$props.class}`} 
-    class:blur 
-    class:shadow="{!blur}"
-  >
+<div class="superwrapper" style="width: {width}">
   <div 
-    class="poly" 
-    style="--polygon-clip-path: {coordsToCssPolygon(coords)};">
+      style="--polygon-blur: {blur}px;" 
+      class={`wrapper ${$$props.class}`} 
+      class:blur 
+      class:shadow="{!blur}"
+    >
+    <div 
+      class="poly" 
+      style="--polygon-clip-path: {coordsToCssPolygon(coords)};">
 
-    {#if insideShape}
-      <div class="shape-left" style="--polygon-shape-path: {coordsToCssPolygon(coordsLeft)}">
-      </div>
+      {#if insideShape}
+        <div class="shape-left" style="--polygon-shape-path: {coordsToCssPolygon(coordsLeft)}">
+        </div>
 
-      <div class="shape-right" style="--polygon-shape-path: {coordsToCssPolygon(coordsRight)}">
-      </div>
-    {/if}
+        <div class="shape-right" style="--polygon-shape-path: {coordsToCssPolygon(coordsRight)}">
+        </div>
+      {/if}
 
-    <slot></slot>
+      <slot></slot>
+    </div>
   </div>
 </div>
 
 <style>
+
+  .superwrapper {
+    display: inline-block;
+  }
+
   .wrapper {
     display: inline-block;
+    padding-bottom: 100%;
+    height: 0;
+    position: relative;
+    width: 100%;
   }
   .wrapper.blur {
     filter: blur(var(--polygon-blur));
@@ -74,16 +85,18 @@
     filter: drop-shadow(1px 1px 10px rgba(0, 0, 0, 1));
   }
   .poly {
+    position: absolute;
     overflow: hidden;
-    width: 100px;
-    height: 100px;
+    width: 100%;
+    height: 100%;
     background-color: red;
     clip-path: var(--polygon-clip-path);
     padding: 10px;
+    box-sizing: border-box;
   }
   .shape-left, .shape-right {
-    height: 100px;
-    width:50px;
+    height: 100%;
+    width:50%;
     top:0;
     background: rgba(0,255,0,0.3);
     shape-outside: var(--polygon-shape-path) margin-box;
