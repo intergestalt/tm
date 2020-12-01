@@ -2,6 +2,7 @@
 
   export let n = 7
   export let blur = 0
+  export let insideShape = true
 
   let coords = []
   const base_angle = 2*Math.PI/n
@@ -42,7 +43,7 @@
 
 <div 
     style="--polygon-blur: {blur}px" 
-    class="wrapper" 
+    class={`wrapper ${$$props.class}`} 
     class:blur 
     class:shadow="{!blur}"
   >
@@ -50,11 +51,13 @@
     class="poly" 
     style="--polygon-clip-path: {coordsToCssPolygon(coords)};">
 
-    <div class="shape-left" style="--polygon-shape-path: {coordsToCssPolygon(coordsLeft)}">
-    </div>
+    {#if insideShape}
+      <div class="shape-left" style="--polygon-shape-path: {coordsToCssPolygon(coordsLeft)}">
+      </div>
 
-    <div class="shape-right" style="--polygon-shape-path: {coordsToCssPolygon(coordsRight)}">
-    </div>
+      <div class="shape-right" style="--polygon-shape-path: {coordsToCssPolygon(coordsRight)}">
+      </div>
+    {/if}
 
     <slot></slot>
   </div>
