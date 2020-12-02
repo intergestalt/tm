@@ -1,4 +1,6 @@
 <script>
+  import { Router, Link, Route } from "svelte-routing";
+
   let isMenuActive = false
 
   const onMenu = () => { isMenuActive = !isMenuActive }
@@ -12,10 +14,21 @@
 
 <nav class={ isMenuActive ? "active" : ""}>
   <ol>
-    <li>action</li>
-    <li>action</li>
-    <li>action</li>
-    <li>action</li>
+    <li>
+      <Link to="theme">Theme</Link>
+    </li>
+    <li>
+      <Link to="programme">Programme</Link>
+    </li>
+    <li>
+      <Link to="artists">Artists</Link>
+    </li>
+    <li>
+      <Link to="/">Visit</Link>
+    </li>
+    <li>
+      <Link to="about">About</Link>
+    <li>
   </ol>
 </nav>
 
