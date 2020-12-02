@@ -2,6 +2,8 @@
   import { VimeoPlayer } from 'svelte-vimeo-player';
   import { onMount } from 'svelte';
 
+  export let zIndex;
+
   let player;
   let videoplayer
   
@@ -38,7 +40,7 @@
   />
 </div>
 -->
-<div class="videocontainer">
+<div class="videocontainer" style="--z-index: {zIndex};">
 <video 
   muted 
   bind:this={videoplayer} 
@@ -59,7 +61,7 @@
     left:0;
     position: fixed;
     display: block;
-    z-index: -1;
+    z-index: var(--z-index);
 
     /*transform: scale(1.5);*/
     /*filter: blur(8px);*/

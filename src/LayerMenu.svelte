@@ -1,5 +1,7 @@
 <script>
   import { Router, Link, Route } from "svelte-routing";
+  
+  export let zIndex
 
   let isMenuActive = false
 
@@ -12,22 +14,22 @@
   <div class="toggle-silence"></div>
 </div>
 
-<nav class={ isMenuActive ? "active" : ""}>
+<nav class={ isMenuActive ? "active" : ""} style="--z-index: {zIndex};">
   <ol>
     <li>
-      <Link to="theme">Theme</Link>
+      <Link to="theme" on:click={onMenu}>Theme</Link>
     </li>
     <li>
-      <Link to="programme">Programme</Link>
+      <Link to="programme on:click={onMenu}">Programme</Link>
     </li>
     <li>
-      <Link to="artists">Artists</Link>
+      <Link to="artists" on:click={onMenu}>Artists</Link>
     </li>
     <li>
-      <Link to="/">Visit</Link>
+      <Link to="/" on:click={onMenu}>Visit</Link>
     </li>
     <li>
-      <Link to="about">About</Link>
+      <Link to="about" on:click={onMenu}>About</Link>
     <li>
   </ol>
 </nav>
@@ -76,10 +78,18 @@
     width: 100%;
     height: 100%;
     pointer-events: none;
-    background-color: rgba(0,255,0,0.5);  
+    background-color: #F2F2F2;
+    opacity: 0.9;
     user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: var(--z-index);
   }
 
+  ol {
+
+  }
   nav:not(.active) {
     display: none;
   }

@@ -12,18 +12,18 @@
 
 <Router url="{url}">
 	<main>
-		<LayerBg />
+		<LayerBg zIndex="0"/>
 
 		<Route path="news/:id"></Route>
 		<Route path="about"></Route>
 
 		<Route path="/">
-			<LayerContent />
+			<LayerContent zIndex="1" />
 		</Route>
 
-		<Layer3D />
-		<LayerMenu />
-		<LayerLogo />
+		<Layer3D zIndex="2" />
+		<LayerMenu zIndex="3" />
+		<LayerLogo zIndex="4" />
 	</main>
 </Router>
 

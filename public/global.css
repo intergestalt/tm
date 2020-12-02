@@ -26,6 +26,10 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 
+ol, ul {
+	list-style-type: none;
+}
+
 /*** GLOBAL ***/
 
 html, body, main {

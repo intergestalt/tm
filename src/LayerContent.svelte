@@ -2,11 +2,13 @@
   import ContentBox from './ContentBox.svelte'
   import Polygon from './Polygon.svelte'
 
+  export let zIndex
+
   const text = "text text text text text text text text text text text text text text text text text"
 
 </script>
 
-<section>
+<section style="--z-index: {zIndex};">
   <ContentBox>{text}</ContentBox>
 
   <div class="polybox">
@@ -54,6 +56,7 @@
   section {
     margin-top: 50vh;
     width: 70%;
+    z-index: var(--z-index);
   }
 
   .polybox {
