@@ -1,75 +1,34 @@
 <script>
-  import ContentBox from './ContentBox.svelte'
-  import Polygon from './Polygon.svelte'
+  import { fly } from 'svelte/transition';
+  import { Router, Link, Route } from "svelte-navigator";
+  import TemplateAlmanac from './TemplateAlmanac.svelte'
+  import TemplateHome from './TemplateHome.svelte'
 
-  export let zIndex
+  export let zIndex;
 
-  const text = "text text text text text text text text text text text text text text text text text"
+  function vars__(vars) {
+    return Object.entries(vars)
+      .map(([key, value]) => "--" + key + ": " + value)
+  }
 
 </script>
 
-<section style="--z-index: {zIndex};">
-  <ContentBox>{text}</ContentBox>
+<main style={ vars__({zIndex}) }>
+  <Router path="news/:id" let:params></Router>
+  <Route path="about"></Route>
 
-  <div class="polybox">
-    <span>span</span>
-    <span>span</span>
-    <span>span</span>
-  </div>
+  <Route path="/" component={TemplateHome} />
+  <Route path="/almanac">
+    <div transition:fly="{{ y: 200, duration: 2000 }}">
+      <TemplateAlmanac />
+    </div>
+  </Route>
 
-  <div class="polybox">
-    <Polygon n=5 >{text }</Polygon>
-    <Polygon n=6 >{text }</Polygon>
-    <Polygon n=7 >{text }</Polygon>
-  </div>
-
-  <div class="polybox">
-    <Polygon insideShape={false} n=5 >{text }</Polygon>
-    <Polygon insideShape={false} n=6 >{text }</Polygon>
-    <Polygon insideShape={false} n=7 >{text }</Polygon>
-  </div>
-
-  <Polygon width="100px" n=5 >{text }</Polygon>
-  <Polygon width="100px" n=6 >{text }</Polygon>
-  <Polygon width="100px" n=7 >{text }</Polygon>
-  <Polygon width="100px" n=8 >{text }</Polygon>
-  <Polygon width="100px" n=9 >{text }</Polygon>
-  <Polygon width="100px" n=10 >{text }</Polygon>
-  <Polygon width="100px" n=11 >{text }</Polygon>
-  <Polygon width="100px" n=12 >{text }</Polygon>
-  <br />
-  <Polygon width="20%" n=5 blur="2"/>
-  <Polygon width="20%" n=5 blur="4"/>
-  <Polygon width="20%" n=5 blur="6"/>
-  <Polygon width="20%" n=5 blur="8"/>
-  <Polygon width="20%" n=5 blur="10"/>
-  <Polygon width="20%" n=5 blur="12"/>
-  <Polygon width="20%" n=5 blur="14"/>
-  <Polygon width="20%" n=5 blur="16"/>
-  <ContentBox />
-  <ContentBox />
-  <ContentBox />
-<ContentBox />
-</section>
+  
+</main>
 
 <style>
-  section {
-    margin-top: 50vh;
-    width: 70%;
-    z-index: var(--z-index);
+  main {
+    z-index: var(--zIndex);
   }
-
-  .polybox {
-    display: grid;
-    grid-template-columns: 33.33vw 33.33vw 33.33vw;
-    grid-template-rows: 33.33vw;
-  }
-
-  .polybox > span {
-    background: green;
-    display:block;
-    height:100px;
-    border: dotted 5px red;
-  }
-
 </style>
