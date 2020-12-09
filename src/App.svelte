@@ -7,6 +7,7 @@
 	import Layer3D from './Layer3D.svelte'
 	import LayerMenu from './LayerMenu.svelte'
 
+
 	export let url = "";
 </script>
 
@@ -18,5 +19,4 @@
 	<LayerLogo zIndex="4" />
 </Router>
 
-<style>
-</style>
+<style global src="./global.scss" />
