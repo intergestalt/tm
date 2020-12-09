@@ -1,6 +1,7 @@
 // large is default
 
-@import './variables.scss';
+$breakpoint-small-max: 699px;
+$breakpoint-large-min: 700px;
 
 @mixin media-large-only {
   @media screen and (min-width: $breakpoint-large-min) {

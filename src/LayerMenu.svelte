@@ -9,18 +9,18 @@
 
 </script>
 
-<div class="toggler">
+<div class:active={isMenuActive} class="toggler">
   <div class="toggle-menu" on:click={onMenu} ></div>
   <div class="toggle-silence"></div>
 </div>
 
-<nav class={ isMenuActive ? "active" : ""} style="--z-index: {zIndex};">
+<nav id="main_nav" class:active={isMenuActive} style="--z-index: {zIndex};">
   <ol>
     <li>
       <Link to="theme" on:click={onMenu}>Theme</Link>
     </li>
     <li>
-      <Link to="programme on:click={onMenu}">Programme</Link>
+      <Link to="programme" on:click={onMenu}>Programme</Link>
     </li>
     <li>
       <Link to="artists" on:click={onMenu}>Artists</Link>
@@ -34,7 +34,8 @@
   </ol>
 </nav>
 
-<style>
+<style lang="scss">
+  @import './scss/includes.scss';
 
   .toggler {
     position: fixed;
@@ -42,13 +43,16 @@
     top: 20px;
     z-index: 10;
     mix-blend-mode: difference;
+    &.active {
+      mix-blend-mode: normal;
+    }
   }
 
   [class^="toggle-"] {
     height: 50px;
     border-radius: 25px;
     display: inline-block;
-    background-color: #00FF94;
+    background-color: $color-mint;
     filter: blur(10px);
     user-select: none;
   }
@@ -78,8 +82,7 @@
     width: 100%;
     height: 100%;
     pointer-events: none;
-    background-color: #F2F2F2;
-    opacity: 0.9;
+    background-color: #F2F2F2f0;
     user-select: none;
     display: flex;
     align-items: center;
@@ -88,7 +91,7 @@
   }
 
   ol {
-
+    @include typo-grotesk-title-100;
   }
   nav:not(.active) {
     display: none;
@@ -96,5 +99,13 @@
 
   li {
     pointer-events: all;
+    &:hover {
+      color: $color-mint;
+    }
   }
+
+  :global(#main_nav a, a:hover, a:active) {
+    text-decoration: none;
+  }
+
 </style>
