@@ -19,4 +19,4 @@
 	<LayerLogo zIndex="4" />
 </Router>
 
-<style global src="./global.scss" />
+<style global src="./scss/global.scss" />

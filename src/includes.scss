@@ -1,8 +1,0 @@
-$max: 700px;
-
-@mixin white {
-  @media screen and (max-width: $max) {
-    color: white;
-    background: white; 
-  }
-}
