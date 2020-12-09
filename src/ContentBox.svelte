@@ -20,9 +20,11 @@
   <div class="circle">
   </div>
 
-<style>
+<style lang="scss">
+  @import './scss/includes.scss';
 
   .hole {
+    @include typo-serif-small-caps-28;
     width: 500px;
     height: 200px;
     /* clip-path is set by JS */  
