@@ -3,9 +3,12 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
-import sveltePreprocess from 'svelte-preprocess';
+import sveltePreprocess, { replace } from 'svelte-preprocess';
 
 const production = !process.env.ROLLUP_WATCH;
+if (!process.env.NODE_ENV) {
+	process.env.NODE_ENV = production ? "production" : "development"
+}
 
 function serve() {
 	let server;
@@ -38,12 +41,19 @@ export default {
 	},
 	plugins: [
 		svelte({
-			preprocess: sveltePreprocess({
-				sourceMap: !production,
-				postcss: {
-					plugins: [require('autoprefixer')()]
-				}
-			}),
+			preprocess: [
+				replace([
+					[
+						/process\.env\.(\w+)/g,
+						(x, prop) => JSON.stringify(process.env[prop]),
+					]]),
+					sveltePreprocess({
+					sourceMap: !production,
+					postcss: {
+						plugins: [require('autoprefixer')()]
+					}
+				}),
+			],
 			// enable run-time checks when not in production
 			dev: !production,
 			// we'll extract any component CSS out into
