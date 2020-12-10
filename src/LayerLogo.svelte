@@ -1,8 +1,9 @@
 <script>
   import Polygon from './Polygon.svelte'
-  import Logo from './Logo.svelte'
-
   import { useLocation, navigate } from "svelte-navigator";
+
+  import Logo from './Logo.svelte'
+  import { isMenuActive } from './stores.js';
 
   export let zIndex
 
@@ -10,7 +11,7 @@
   let  type = "normal"
 
   $: {
-    type = $location.pathname === "/almanac" ? "high" : "normal"
+    type = $isMenuActive ? "low" : $location.pathname === "/almanac" ? "high" : "normal"
   }
 
   function onClick() {
@@ -26,15 +27,24 @@
 <style>
   .logo_container {
     right:0;
-    top:200px;
     position: fixed;
     width: 200px;
     height: 200px;
     z-index: var(--z-index);
-    transition: top 1s;
+    transition: all 1s;
   }
+
+  .logo_container.normal {
+    top: 200px;
+  }
+
   .logo_container.high {
     top: 0px;
+  }
+
+  .logo_container.low {
+    top: calc( 100vh - 20px );
+    transform: translateY(-100%);
   }
 
   .logo_container :global(svg) {

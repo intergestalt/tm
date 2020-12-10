@@ -1,20 +1,19 @@
 <script>
   import { Router, Link, Route } from "svelte-navigator";
-  
+  import { isMenuActive } from './stores.js';
+
   export let zIndex
 
-  let isMenuActive = false
-
-  const onMenu = () => { isMenuActive = !isMenuActive }
+  const onMenu = () => { $isMenuActive = !$isMenuActive }
 
 </script>
 
-<div class:active={isMenuActive} class="toggler">
+<div class:active={$isMenuActive} class="toggler">
   <div class="toggle-menu" on:click={onMenu} ></div>
   <div class="toggle-silence"></div>
 </div>
 
-<nav id="main_nav" class:active={isMenuActive} style="--z-index: {zIndex};">
+<nav id="main_nav" class:active={$isMenuActive} style="--z-index: {zIndex};">
   <ol>
     <li>
       <Link to="theme" on:click={onMenu}>Theme</Link>
@@ -92,6 +91,11 @@
 
   ol {
     @include typo-grotesk-title-100;
+    :global(a) {
+      text-align: center;
+      display: inline-block;
+      width: 100%;
+    }
   }
   nav:not(.active) {
     display: none;
