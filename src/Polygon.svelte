@@ -4,6 +4,7 @@
   export let blur = 0
   export let insideShape = true
   export let width = "100%"
+  export let bgColor = "mint"
 
   let coords = []
   const base_angle = 2*Math.PI/n
@@ -49,8 +50,9 @@
       class:shadow="{!blur}"
     >
     <div 
-      class="poly" 
-      style="--polygon-clip-path: {coordsToCssPolygon(coords)};">
+      class="poly color-{bgColor}"
+      style="--polygon-clip-path: {coordsToCssPolygon(coords)}"
+      >
 
       {#if insideShape}
         <div class="shape-left" style="--polygon-shape-path: {coordsToCssPolygon(coordsLeft)}">
@@ -65,7 +67,8 @@
   </div>
 </div>
 
-<style>
+<style lang="scss">
+  @import './scss/includes.scss';
 
   .superwrapper {
     display: inline-block;
@@ -89,10 +92,12 @@
     overflow: hidden;
     width: 100%;
     height: 100%;
-    background-color: red;
     clip-path: var(--polygon-clip-path);
     padding: 10px;
     box-sizing: border-box;
+    &.color-mint {
+      background-color: $color-mint;
+    }
   }
   .shape-left, .shape-right {
     height: 100%;

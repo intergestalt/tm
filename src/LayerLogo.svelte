@@ -20,7 +20,7 @@
 
 </script>
   <div class="logo_container {type}" style="--z-index: {zIndex};">
-  <Polygon n={7} blur={6} insideShape={false} class="logo_poly"></Polygon>
+  <Polygon bgColor="mint" n={7} blur={6} insideShape={false} class="logo_poly"></Polygon>
   <Logo {onClick} />
 </div>
 

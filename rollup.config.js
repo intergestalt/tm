@@ -5,6 +5,7 @@ import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
 import copy from 'rollup-plugin-copy'
 import sveltePreprocess, { replace } from 'svelte-preprocess';
+//import { svelteStyleDirective } from 'svelte-style-directive'
 
 const production = !process.env.ROLLUP_WATCH;
 if (!process.env.NODE_ENV) {
@@ -54,6 +55,7 @@ export default {
 						plugins: [require('autoprefixer')()]
 					}
 				}),
+				//svelteStyleDirective({}),
 			],
 			// enable run-time checks when not in production
 			dev: !production,

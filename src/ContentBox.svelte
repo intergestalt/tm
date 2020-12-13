@@ -25,7 +25,7 @@
 
   .hole {
     @include typo-serif-small-caps-28;
-    width: 500px;
+    width: 200px;
     height: 200px;
     /* clip-path is set by JS */  
     border-radius: 30px;
