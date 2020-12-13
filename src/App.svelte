@@ -6,6 +6,7 @@
 	import LayerLogo from './LayerLogo.svelte'
 	import Layer3D from './Layer3D.svelte'
 	import LayerMenu from './LayerMenu.svelte'
+	import LayerLoader from './LayerLoader.svelte'
 
 
 	export let url = "";
@@ -17,6 +18,7 @@
 	<Layer3D zIndex="2" />
 	<LayerMenu zIndex="3" />
 	<LayerLogo zIndex="4" />
+	<LayerLoader zIndex="5" />
 </Router>
 
 <style global src="./scss/global.scss" />
