@@ -25,19 +25,22 @@
     return `polygon(${string})`
   }
 
+  const topMostPoint = coords.reduce((prev, current) => (prev.y < current.y) ? prev : current)
+  const bottomMostPoint = coords.reduce((prev, current) => (prev.y > current.y) ? prev : current)
+
   const coordsRight = [
     {x: 1  , y: 0},
-    {x: 0.5, y: 0},
+    topMostPoint,
     ...coords.filter( c => c.x >= .5).sort( (a,b) => a.y - b.y),
-    {x: 0.5, y: 1},
+    bottomMostPoint,
     {x: 1  , y: 1},
   ].map( c => ({...c, x: c.x * 2 - 1}))
 
   const coordsLeft = [
     {x: 0  , y: 0},
-    {x: 0.5, y: 0},
+    topMostPoint,
     ...coords.filter( c => c.x <= .5).sort( (a,b) => a.y - b.y),
-    {x: 0.5, y: 1},
+    bottomMostPoint,
     {x: 0  , y: 1},
   ].map( c => ({...c, x: c.x * 2}))
 
@@ -103,7 +106,7 @@
     height: 100%;
     width:50%;
     top:0;
-    background: rgba(0,255,0,0.3);
+    background: rgba(0,0,0,0.3);
     shape-outside: var(--polygon-shape-path) margin-box;
     clip-path: var(--polygon-shape-path);
   }
