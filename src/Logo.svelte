@@ -8,9 +8,10 @@
   const centerX = 135;
 
 
-  /*
+
   const svgRotateOffsetDeg = 0 // 135
 
+  /*
   const leftAnimConfig = {
     offsetX1: centerX - 189.6
   }*/
