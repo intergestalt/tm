@@ -146,10 +146,10 @@
       for (let object of activeObjects) {
         const pos = object.handle.position.clone().project(camera)
         let bounced = false
-        if (pos.y < -1) { bounced = true; object.vector = new Vector3( object.vector.x, -object.vector.y, 0) }
-        if (pos.y >  1) { bounced = true; object.vector = new Vector3( object.vector.x, -object.vector.y, 0) }
-        if (pos.x < -1) { bounced = true; object.vector = new Vector3(-object.vector.x,  object.vector.y, 0) }
-        if (pos.x >  1) { bounced = true; object.vector = new Vector3(-object.vector.x,  object.vector.y, 0) }
+        if (pos.y < -0.92) { bounced = true; object.vector = new Vector3( object.vector.x, -object.vector.y, 0) }
+        if (pos.y >  0.92) { bounced = true; object.vector = new Vector3( object.vector.x, -object.vector.y, 0) }
+        if (pos.x < -0.92) { bounced = true; object.vector = new Vector3(-object.vector.x,  object.vector.y, 0) }
+        if (pos.x >  0.92) { bounced = true; object.vector = new Vector3(-object.vector.x,  object.vector.y, 0) }
 
         // change rotation from bounce
         if (bounced) {

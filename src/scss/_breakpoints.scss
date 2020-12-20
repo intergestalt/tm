@@ -1,7 +1,11 @@
 // large is default
 
-$breakpoint-small-max: 699px;
-$breakpoint-large-min: 700px;
+$breakpoint-small-max: 799px;
+$breakpoint-large-min: 800px;
+
+$breakpoint-2col-min: 600px;
+$breakpoint-3col-min: 1100px;
+$breakpoint-4col-min: 1600px;
 
 @mixin media-large-only {
   @media screen and (min-width: $breakpoint-large-min) {
