@@ -66,6 +66,7 @@
   @include media-small {
     font-size: 21px;
     line-height: 24px;
+    font-variant: small-caps;
     font-feature-settings: 'tnum' on, 'onum' on;
   }
 }
