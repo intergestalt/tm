@@ -1,6 +1,8 @@
 <script>
   import ContentBox from '/components/Atoms/ContentBox.svelte'
   import Polygon from '/components/Atoms/Polygon.svelte'
+  import CardExhibition from '/components/Widgets/CardExhibition.svelte'
+  import CardVideo from '/components/Widgets/CardVideo.svelte'
 
   export let zIndex
 
@@ -9,7 +11,17 @@
 </script>
 
 <section style="--z-index: {zIndex};">
-  <ContentBox>{text}</ContentBox>
+  <ContentBox >{text}</ContentBox>
+  <CardExhibition 
+    title="For Refulas Exhibition" 
+    date="24.01.–13.03.2021" 
+    image="https://placeimg.com/640/480/arch/sepia"
+  />
+  <CardVideo
+    title="The Reclamation of Social Time" 
+    subtitle="Donna Haraway" 
+    image="https://placeimg.com/640/480/people"
+  />  
   <ContentBox />
   <ContentBox />
   <ContentBox />
