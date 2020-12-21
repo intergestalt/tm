@@ -83,6 +83,7 @@
     height: 0;
     position: relative;
     width: 100%;
+    transition: filter 1s;
   }
   .wrapper.blur {
     filter: blur(var(--polygon-blur));

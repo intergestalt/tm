@@ -3,7 +3,7 @@
 
   import Polygon from '/components/Atoms/Polygon.svelte'
   import Logo from '/components/Atoms/Logo.svelte'
-  import { isMenuActive } from '/stores.js';
+  import { isMenuActive, scrollY } from '/stores.js';
 
   export let zIndex
 
@@ -11,7 +11,9 @@
   let  type = "normal"
 
   $: {
-    type = $isMenuActive ? "low" : $location.pathname === "/almanac" ? "high" : "normal"
+    type = $isMenuActive ? "low" 
+      : $location.pathname === "/almanac" ? "high" 
+        : $scrollY > 10 ? "blurred" : "normal"
   }
 
   function onClick() {
@@ -20,7 +22,7 @@
 
 </script>
   <div class="logo_container {type}" style="--z-index: {zIndex};">
-  <Polygon bgColor="mint" n={7} blur={6} insideShape={false} class="logo_poly"></Polygon>
+  <Polygon bgColor="mint" n={7} blur={type === "blurred" ? 25 : 6} insideShape={false} class="logo_poly"></Polygon>
   <Logo {onClick} />
 </div>
 
@@ -36,6 +38,9 @@
 
   .logo_container.normal {
     top: 200px;
+  }
+  .logo_container.blurred {
+    top: 250px;
   }
 
   .logo_container.high {

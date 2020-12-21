@@ -1,16 +1,17 @@
 <script>
   import { Router, Link, Route } from "svelte-navigator";
-  import { isMenuActive } from '/stores.js';
+  import { isMenuActive, isMeditationOn } from '/stores.js';
 
   export let zIndex
 
   const onMenu = () => { $isMenuActive = !$isMenuActive }
+  const onSilence = () => { $isMeditationOn = !$isMeditationOn }
 
 </script>
 
 <div class:active={$isMenuActive} class="toggler">
   <div class="toggle-menu" on:click={onMenu} ></div>
-  <div class="toggle-silence"></div>
+  <div class="toggle-silence" on:click={onSilence}></div>
 </div>
 
 <nav id="main_nav" class:active={$isMenuActive} style="--z-index: {zIndex};">

@@ -1,5 +1,5 @@
 <script>
-  import { fly } from 'svelte/transition';
+  import { fade } from 'svelte/transition';
   import { Router, Link, Route } from "svelte-navigator";
   
   import TemplateAlmanac from '/components/Templates/TemplateAlmanac.svelte'
@@ -15,12 +15,12 @@
 </script>
 
 <main style={ vars__({zIndex}) }>
-  <Router path="news/:id" let:params></Router>
+  <Route path="news/:id" let:params></Route>
   <Route path="about"></Route>
 
   <Route path="/" component={TemplateHome} />
   <Route path="/almanac">
-    <div transition:fly="{{ y: 200, duration: 2000 }}">
+    <div transition:fade>
       <TemplateAlmanac />
     </div>
   </Route>

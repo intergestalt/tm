@@ -1,9 +1,23 @@
 <script>
+  import { onMount } from 'svelte'
+
+  import { isCookieAccepted } from '/stores.js';
+  import Cookies from 'js-cookie'
+
   export let zIndex = 0
+
+  onMount( () => {
+    $isCookieAccepted = Cookies.get('refusal')
+  })
+
+  function activate() {
+    Cookies.set('refusal', 'true')
+    $isCookieAccepted = true;
+  }
 </script>
 
 <div class="container">
-  <div class="tmask" style="--zIndex: 5">for refusal</div>
+  <div on:animationend={ activate } class="tmask" style="--zIndex: 5">for refusal</div>
 </div>
 
 <style lang="scss">
@@ -14,7 +28,6 @@
     right:0;
     top:0;
     z-index: var(--zIndex);
-    backdrop-filter: blur(10px);
   }
   .tmask {
       font-size: 18vw;
