@@ -1,9 +1,9 @@
 <script>
-  import Polygon from './Polygon.svelte'
   import { useLocation, navigate } from "svelte-navigator";
 
-  import Logo from './Logo.svelte'
-  import { isMenuActive } from './stores.js';
+  import Polygon from '/components/Atoms/Polygon.svelte'
+  import Logo from '/components/Atoms/Logo.svelte'
+  import { isMenuActive } from '/stores.js';
 
   export let zIndex
 

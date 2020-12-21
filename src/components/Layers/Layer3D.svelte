@@ -1,7 +1,7 @@
 <script>
   //import Object3D from './Object3D.svelte'
   //import Aframe from './Aframe.svelte'
-  import Three from './Three.svelte'
+  import Three from '/components/Atoms/Three.svelte'
 
   export let zIndex = 0
 

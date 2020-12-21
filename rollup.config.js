@@ -5,6 +5,7 @@ import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
 import copy from 'rollup-plugin-copy'
 import sveltePreprocess, { replace } from 'svelte-preprocess';
+import rootImport from 'rollup-plugin-root-import';
 //import { svelteStyleDirective } from 'svelte-style-directive'
 
 const production = !process.env.ROLLUP_WATCH;
@@ -42,6 +43,14 @@ export default {
 		file: 'public/build/bundle.js'
 	},
 	plugins: [
+		rootImport({
+			// Will first look in `client/src/*` and then `common/src/*`.
+			root: `${__dirname}/src`,
+			useInput: 'prepend',
+
+			// If we don't find the file verbatim, try adding these extensions
+			extensions: ['.js', '.svelte'],
+		}),
 		svelte({
 			preprocess: [
 				replace([

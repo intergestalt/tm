@@ -10,7 +10,7 @@
   } from 'three';
   import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 
-  import { styleVars } from './helper.js'
+  import { styleVars } from '/helper.js'
 
   export let zIndex = 0;
 

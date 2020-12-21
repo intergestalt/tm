@@ -1,8 +1,9 @@
 <script>
   import { fly } from 'svelte/transition';
   import { Router, Link, Route } from "svelte-navigator";
-  import TemplateAlmanac from './TemplateAlmanac.svelte'
-  import TemplateHome from './TemplateHome.svelte'
+  
+  import TemplateAlmanac from '/components/Templates/TemplateAlmanac.svelte'
+  import TemplateHome from '/components/Templates/TemplateHome.svelte'
 
   export let zIndex;
 

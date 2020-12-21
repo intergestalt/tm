@@ -1,6 +1,6 @@
 <script>
-  import ContentBox from './ContentBox.svelte'
-  import Polygon from './Polygon.svelte'
+  import ContentBox from '/components/Atoms/ContentBox.svelte'
+  import Polygon from '/components/Atoms/Polygon.svelte'
 
   export let zIndex
 

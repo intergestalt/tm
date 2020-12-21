@@ -1,6 +1,6 @@
 <script>
   import { Router, Link, Route } from "svelte-navigator";
-  import { isMenuActive } from './stores.js';
+  import { isMenuActive } from '/stores.js';
 
   export let zIndex
 
@@ -34,7 +34,7 @@
 </nav>
 
 <style lang="scss">
-  @import './scss/includes.scss';
+  @import '../../scss/includes.scss';
 
   .toggler {
     position: fixed;

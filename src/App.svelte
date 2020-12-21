@@ -1,12 +1,12 @@
 <script>
 	import { Router, Link, Route } from "svelte-navigator";
 
-	import LayerBg from './LayerBg.svelte'
-	import LayerContent from './LayerContent.svelte'
-	import LayerLogo from './LayerLogo.svelte'
-	import Layer3D from './Layer3D.svelte'
-	import LayerMenu from './LayerMenu.svelte'
-	import LayerLoader from './LayerLoader.svelte'
+	import LayerBg from '/components/Layers/LayerBg.svelte'
+	import LayerContent from '/components/Layers/LayerContent.svelte'
+	import LayerLogo from '/components/Layers/LayerLogo.svelte'
+	import Layer3D from '/components/Layers/Layer3D.svelte'
+	import LayerMenu from '/components/Layers/LayerMenu.svelte'
+	import LayerLoader from '/components/Layers/LayerLoader.svelte'
 
 	export let url = "";
 </script>

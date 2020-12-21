@@ -1,13 +1,13 @@
 <script>
   import { LoremIpsum } from "lorem-ipsum";
 
-  import ContentBox from './ContentBox.svelte'
-  import Polygon from './Polygon.svelte'
+  import ContentBox from '/components/Atoms/ContentBox.svelte'
+  import Polygon from '/components/Atoms/Polygon.svelte'
 
-  import WidgetTeaser7 from './WidgetTeaser7.svelte'
-  import WidgetTeaser10 from './WidgetTeaser10.svelte'
+  import WidgetTeaser7 from '/components/Widgets/WidgetTeaser7.svelte'
+  import WidgetTeaser10 from '/components/Widgets/WidgetTeaser10.svelte'
 
-  import Queer from './Queer.svelte'
+  import Queer from '/components/Widgets/Queer.svelte'
 
   const text = new LoremIpsum({
     sentencesPerParagraph: {
@@ -71,7 +71,7 @@
 </section>
 
 <style lang="scss">
-  @import './scss/includes.scss';
+  @import '../../scss/includes.scss';
   section {
     height: 100%;
     width: 100%;

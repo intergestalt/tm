@@ -1,7 +1,7 @@
 <script>
   import { onMount } from 'svelte'
 
-  import Polygon from './Polygon.svelte'
+  import Polygon from '/components/Atoms/Polygon.svelte'
 
   let result = ""
 
@@ -34,7 +34,7 @@
 </div>
 
 <style lang="scss">
-  @import './scss/includes.scss';
+  @import '../../scss/includes.scss';
 
   .result {
     white-space: pre-wrap;

@@ -1,5 +1,5 @@
 <script>
-  import Polygon from './Polygon.svelte'
+  import Polygon from '/components/Atoms/Polygon.svelte'
 
   export const header = "Interview"
   export const subtitle = "someone"
@@ -25,7 +25,7 @@
 </div>
 
 <style lang="scss">
-  @import './scss/includes.scss';
+  @import '../../scss/includes.scss';
 
   div {
     @include typo-grotesk-title-30;

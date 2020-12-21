@@ -21,7 +21,7 @@
   </div>
 
 <style lang="scss">
-  @import './scss/includes.scss';
+  @import '../../scss/includes.scss';
 
   .hole {
     @include typo-serif-small-caps-28;

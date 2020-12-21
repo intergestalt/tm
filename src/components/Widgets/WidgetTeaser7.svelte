@@ -1,5 +1,5 @@
 <script>
-  import Polygon from './Polygon.svelte'
+  import Polygon from '/components/Atoms/Polygon.svelte'
 </script>
 
 <div>
@@ -9,7 +9,7 @@
 </div>
 
 <style lang="scss">
-  @import './scss/includes.scss';
+  @import '../../scss/includes.scss';
 
   div {
     @include typo-serif-text-28;

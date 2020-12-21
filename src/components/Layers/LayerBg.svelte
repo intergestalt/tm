@@ -11,10 +11,12 @@
     console.log(event)
   }
 
+  let vjs = null
+
   onMount(async () => {
     //setTimeout(()=>{player.play();}, 2000)
     //player.setVolume(0);
-    const vjs = videojs(videoplayer)
+    vjs = videojs(videoplayer)
     vjs.play();
   })
 
@@ -44,6 +46,7 @@
 <video 
   muted 
   bind:this={videoplayer} 
+  on:loadeddata={ () => vjs.pause() }
   autoplay 
   playsinline
   class="video-js vjs-default-skin" 
