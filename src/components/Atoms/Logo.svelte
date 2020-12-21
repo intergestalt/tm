@@ -51,17 +51,17 @@
 
 <style>
   svg {
-    /*will-change: transform;*/
+    will-change: transform;
     width: 100%;
     height: 100%;
-    /*animation-name: clock;*/
+    animation-name: clock;
     animation-duration: 60s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
   }
 
   .left { 
-    /*will-change: transform;*/
+    will-change: transform;
     transform-origin: 50% 40%; 
     animation-name: rotate;
     animation-duration: 8s;
@@ -70,7 +70,7 @@
   }
 
   .right { 
-    /*will-change: transform;*/
+    will-change: transform;
     transform-origin: 50% 60%; 
     animation-name: rotate;
     animation-duration: 10s;
