@@ -1,11 +1,14 @@
 // large is default
 
 $breakpoint-small-max: 799px;
-$breakpoint-large-min: 800px;
+$breakpoint-large-min: 800px; // font size changes and some paddings and hole diameter and border radius
 
-$breakpoint-2col-min: 600px;
-$breakpoint-3col-min: 1100px;
-$breakpoint-4col-min: 1600px;
+$breakpoint-2col-min: 600px; // home: 2nd column
+$breakpoint-2col-larger-min: 1100px; // padding changes
+
+$breakpoint-3col-min: 1100px; // almanac: 3rd column
+
+$breakpoint-xl-min: 1600px; // center pages with max width, almanac: 4th column
 
 @mixin media-large-only {
   @media screen and (min-width: $breakpoint-large-min) {
@@ -15,6 +18,24 @@ $breakpoint-4col-min: 1600px;
 
 @mixin media-small {
   @media screen and (max-width: $breakpoint-small-max) {
+    @content
+  }
+}
+
+@mixin media-2col {
+  @media screen and (min-width: $breakpoint-2col-min) {
+    @content
+  }
+}
+
+@mixin media-3col {
+  @media screen and (min-width: $breakpoint-3col-min) {
+    @content
+  }
+}
+
+@mixin media-4col {
+  @media screen and (min-width: $breakpoint-xl-min) {
     @content
   }
 }

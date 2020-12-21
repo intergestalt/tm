@@ -136,7 +136,7 @@
         camera.updateProjectionMatrix();
         camera.updateMatrixWorld();
         for (let object of activeObjects) {
-          console.log(object)
+          //console.log(object)
           object.handle.position.x=0
           object.handle.position.y=0
         }
@@ -153,13 +153,13 @@
 
         // change rotation from bounce
         if (bounced) {
-          object.rotation.x += Math.random() * 0.001
-          object.rotation.y += Math.random() * 0.001
-          object.rotation.z += Math.random() * 0.001
+          object.rotation.x += Math.random() * 0.001 - 0.0005
+          object.rotation.y += Math.random() * 0.001 - 0.0005
+          object.rotation.z += Math.random() * 0.001 - 0.0005
         }
 
         // apply rotation and translation
-        object.handle.rotation.x += object.rotation.x
+        //object.handle.rotation.x += object.rotation.x
         object.handle.rotation.y += object.rotation.y
         object.handle.rotation.z += object.rotation.z
         object.handle.position.add(object.vector.clone().multiplyScalar(speed))
@@ -193,5 +193,6 @@
     position: fixed;
     top:0;
     z-index: var(--zIndex);
+    pointer-events: none;
   }
 </style>

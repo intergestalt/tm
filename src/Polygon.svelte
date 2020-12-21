@@ -96,7 +96,7 @@
     width: 100%;
     height: 100%;
     clip-path: var(--polygon-clip-path);
-    padding: 10px;
+    padding: 6%;
     box-sizing: border-box;
     &.color-mint {
       background-color: $color-mint;
@@ -106,7 +106,7 @@
     height: 100%;
     width:50%;
     top:0;
-    background: rgba(0,0,0,0.3);
+    background: rgba(0,0,0,0.03);
     shape-outside: var(--polygon-shape-path) margin-box;
     clip-path: var(--polygon-shape-path);
   }
