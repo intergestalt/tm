@@ -1,13 +1,34 @@
 <script>
-  import { styleVars } from '/helper'
+  import { onMount } from 'svelte'
+
+  import { styleVars, generateBorderRadiusString } from '/helper'
 
   export let bgImage = ""
+  export let group = "default" // a key to coordniate the combinations ob border radius and columns
+  export let bgColorKey = "white"
+  export let borderRadiusPreset 
+
+  let borderRadiusStringLarge, borderRadiusStringSmall
 
   $: console.log(bgImage)
 
+  onMount(function() {
+    const {largeString, smallString} = generateBorderRadiusString(group, borderRadiusPreset)
+    borderRadiusStringLarge = largeString
+    borderRadiusStringSmall = smallString
+  })
+
 </script>
 
-<div class="container" class:bgImage={bgImage} style={styleVars({imageUrl: `url("${bgImage}")`})}>
+<div 
+  class="container bg-color-{bgColorKey}" 
+  class:bgImage={bgImage} 
+  style={styleVars({
+    imageUrl: `url("${bgImage}")`,
+    borderRadiusStringLarge,
+    borderRadiusStringSmall
+  })}
+>
   <slot></slot>
 </div>
 
@@ -20,30 +41,40 @@
   .container {
     @include typo-serif-small-caps-28;
     width: 100%;
-    min-height: 90px;
-    /* clip-path is set by JS */  
-    border-radius: 30px;
-    background: radial-gradient(
-      circle at calc(100% - #{$hole-distance-large + $hole-radius-large}) #{$hole-distance-large + $hole-radius-large}, 
-      rgba(255,255,255,0) $hole-radius-large, 
-      rgba(255,255,252,0.91) $hole-radius-large
-      );
     display: flex;
     justify-content: center;
     margin: 20px;
     padding: 14px 30px;
+    min-height: #{ $hole-distance-large + $hole-diameter-large};
+    border-radius: var(--borderRadiusStringLarge);
     @include media-small {
       padding: 10px 20px;
-      background: radial-gradient(
-      circle at calc(100% - #{$hole-distance-small + $hole-radius-small}) #{$hole-distance-small + $hole-radius-small}, 
-      rgba(255,255,255,0) $hole-radius-small, 
-      rgba(255,255,252,0.91) $hole-radius-small
-      );
+      min-height: #{ $hole-distance-small + $hole-diameter-small};
+      border-radius: var(--borderRadiusStringSmall);
     }
     box-shadow: 1px 1px 10px black;
-    /*filter: blur(2px);*/
     position: relative;
     /*backdrop-filter: blur(4px);*/
+  }
+
+  // background in varying colors, including a transparent hole
+  @each $name, $color in $card-bg-colors {
+    .container.bg-color-#{$name} {
+      background: radial-gradient(
+        circle at calc(100% - #{$hole-distance-large + $hole-radius-large}) #{$hole-distance-large + $hole-radius-large}, 
+        transparent $hole-radius-large, 
+        $color $hole-radius-large
+      );
+
+      @include media-small {
+        background: radial-gradient(
+        circle at calc(100% - #{$hole-distance-small + $hole-radius-small}) #{$hole-distance-small + $hole-radius-small}, 
+        transparent $hole-radius-small, 
+        $color $hole-radius-small
+        );
+      }
+
+    }
   }
 
   .container.bgImage {

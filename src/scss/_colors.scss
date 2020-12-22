@@ -1,5 +1,14 @@
+@use "sass:color";
+
 $color-mint: #00FF94;
 $color-beige: #F8F1D4;
 $color-red: #FF3A52;
 $color-text: black;
 $color-white: #FFFFFF;
+
+
+$card-bg-colors: (
+  "white": color.change($color-white, $alpha: 0.9),
+  "mint":  color.change($color-mint,  $alpha: 0.9),
+  "beige": color.change($color-beige, $alpha: 0.9)
+  );

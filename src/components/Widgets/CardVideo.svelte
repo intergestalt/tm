@@ -40,6 +40,8 @@
 
   .middle {
     color: $color-mint;
+    padding-top: 37px;
+    padding-bottom: 37px;
   }
 
   .title {

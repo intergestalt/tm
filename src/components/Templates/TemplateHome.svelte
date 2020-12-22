@@ -3,6 +3,7 @@
   import Polygon from '/components/Atoms/Polygon.svelte'
   import CardExhibition from '/components/Widgets/CardExhibition.svelte'
   import CardVideo from '/components/Widgets/CardVideo.svelte'
+  import CardHeadline from '/components/Widgets/CardHeadline.svelte'
 
   export let zIndex
 
@@ -22,6 +23,9 @@
     subtitle="Donna Haraway" 
     image="https://placeimg.com/640/480/people"
   />  
+  <CardHeadline
+    title="Ongoing Programme"
+  />
   <ContentBox />
   <ContentBox />
   <ContentBox />
