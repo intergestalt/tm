@@ -3,32 +3,34 @@
 
   export let cards
 
+  // add order
   cards = cards.map( (c, i) => ({...c, order: i }) )
 
-  const cardsLeft  = cards.filter( c => c.column !== "right" )
-  const cardsRight = cards.filter( c => c.column === "right" )
+  // distribute to columns
+  const columnCards = [
+    { 
+      name: "left",
+      cards: cards.filter( c => c.column !== "right" )
+    },{
+      name: "right",
+      cards: cards.filter( c => c.column === "right" )
+    }
+  ]
 
 </script>
 
 <div class="container">
-  <div class="left">
-    {#each cardsLeft as card}
-      <div class="card" style="order: {card.order}" data-sortGroup={card.sortGroup} >
-        <svelte:component this={card.component} {...card.props}>
-          {card.content}
-        </svelte:component>
-      </div>
-    {/each}
-  </div>
-  <div class="right">
-    {#each cardsRight as card}
-      <div class="card" style="order: {card.order}" data-sortGroup={card.sortGroup} >
-        <svelte:component this={card.component} {...card.props}>
-          {card.content}
-        </svelte:component>
-      </div>
-    {/each}
-  </div>  
+  {#each columnCards as column}
+    <div class={column.name}>
+      {#each column.cards as card}
+        <div class="card" style="order: {card.order}" data-sortGroup={card.column} >
+          <svelte:component this={card.component} {...card.props}>
+            {card.content}
+          </svelte:component>
+        </div>
+      {/each}
+    </div>
+  {/each}
 </div>
 
 <style lang="scss">
@@ -85,16 +87,4 @@
     }
   }
 
-  .card {
-    @include media-2col {
-      
-      @include media-small {
-      }
-      &[data-sortGroup="left"] {
-      }
-      &[data-sortGroup="right"] {
-      }
-    }
-  }
-  
 </style>

@@ -15,9 +15,9 @@
 	let blur, show3D
 
 	$: {
-		blur = 	!$isMeditationOn && (
-						(!$isCookieAccepted || $location.pathname != "/")
-						|| ($location.pathname == "/" && $scrollY > 10) 
+		blur = !$isMeditationOn && (
+			(!$isCookieAccepted || $location.pathname != "/")
+			|| ($location.pathname == "/" && $scrollY > 10) 
 		)
 					
 
