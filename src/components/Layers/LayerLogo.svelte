@@ -33,7 +33,7 @@
     width: 200px;
     height: 200px;
     z-index: var(--z-index);
-    transition: all 1s;
+    transition: all ease-out 1s 0.3s;
   }
 
   .logo_container.normal {
