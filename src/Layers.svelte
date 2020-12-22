@@ -20,7 +20,7 @@
 
 		show3D = $location.pathname == "/" && $scrollY <= 10
 
-		console.log($isCookieAccepted, $scrollY, $location.pathname, $isMeditationOn)
+		// console.log($isCookieAccepted, $scrollY, $location.pathname, $isMeditationOn)
 	}
 
 </script>

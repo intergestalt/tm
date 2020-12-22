@@ -2,3 +2,19 @@ $hole-diameter-large: 30px;
 $hole-diameter-small: 22px;
 $hole-distance-large: 30px;
 $hole-distance-small: 20px;
+
+$maxwidth: 1600px; // max width of layout
+
+$grid-gap-small: 10px;
+$grid-gap-large: 20px;
+
+@mixin grid {
+  @include media-2col {
+    display: grid;
+    grid-template-columns: repeat( 12, 1fr );
+    column-gap: $grid-gap-large;
+    @include media-small {
+      column-gap: $grid-gap-small;
+    }
+  }
+}

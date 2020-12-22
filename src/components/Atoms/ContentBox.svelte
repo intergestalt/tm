@@ -28,7 +28,7 @@
     borderRadiusStringLarge,
     borderRadiusStringSmall
   })}
->
+><!--span style="position: absolute; color: white;">{borderRadiusStringLarge}</span-->
   <slot></slot>
 </div>
 
@@ -43,7 +43,8 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    margin: 20px;
+    box-sizing: border-box;
+
     padding: 14px 30px;
     min-height: #{ $hole-distance-large + $hole-diameter-large};
     border-radius: var(--borderRadiusStringLarge);
@@ -77,6 +78,7 @@
     }
   }
 
+  // optional background image (no hole in this case)
   .container.bgImage {
     background-image: var(--imageUrl);
     background-size: cover;
@@ -85,11 +87,13 @@
     }
   }
 
+  // the drop shadow inside the hole
   .container::after {
     content: "";
     border-radius: 50%;
     box-shadow: 0px 0px 10px inset black;
     position: absolute;
+
     right: $hole-distance-large;
     top: $hole-distance-large;    
     height: $hole-diameter-large;

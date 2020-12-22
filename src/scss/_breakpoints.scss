@@ -1,9 +1,10 @@
 // general breakpoints – large is default
 $breakpoint-small-max: 799px;
 $breakpoint-large-min: 800px; // font size changes and some paddings and hole diameter and border radius
-$breakpoint-xl-min: 1600px; // center pages with max width, almanac: 4th column
+$breakpoint-xl-min: $maxwidth; // center pages with max width, almanac: 4th column
 
 // column breakpoints – 1 column is default
+$breakpoint-1col-max: 599px;
 $breakpoint-2col-min: 600px; // home: 2nd column
 $breakpoint-2col-larger-min: 1100px; // padding changes
 $breakpoint-3col-min: 1100px; // almanac: 3rd column
@@ -17,6 +18,12 @@ $breakpoint-3col-min: 1100px; // almanac: 3rd column
 
 @mixin media-small {
   @media screen and (max-width: $breakpoint-small-max) {
+    @content
+  }
+}
+
+@mixin media-1col-only {
+  @media screen and (max-width: $breakpoint-1col-max) {
     @content
   }
 }

@@ -2,19 +2,15 @@
   import { fade } from 'svelte/transition';
   import { Router, Link, Route } from "svelte-navigator";
   
+  import { styleVars } from '/helper'
   import TemplateAlmanac from '/components/Templates/TemplateAlmanac.svelte'
   import TemplateHome from '/components/Templates/TemplateHome.svelte'
 
   export let zIndex;
 
-  function vars__(vars) {
-    return Object.entries(vars)
-      .map(([key, value]) => "--" + key + ": " + value)
-  }
-
 </script>
 
-<main style={ vars__({zIndex}) }>
+<main style={ styleVars({zIndex}) }>
   <Route path="news/:id" let:params></Route>
   <Route path="about"></Route>
 
