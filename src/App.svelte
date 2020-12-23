@@ -7,6 +7,8 @@
 
 	export let url = "";
 
+	console.log(`GraphQL Server URL: ${process.env.GRAPHQL_URL}`)
+
 	// 1. Create an Apollo client and pass it to all child components
 	//    (uses svelte's built-in context)
 	const client = new ApolloClient({
