@@ -5,8 +5,11 @@ import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
 import copy from 'rollup-plugin-copy'
 import sveltePreprocess, { replace } from 'svelte-preprocess';
+import dotenv from "dotenv"
 import rootImport from 'rollup-plugin-root-import';
 //import { svelteStyleDirective } from 'svelte-style-directive'
+
+dotenv.config() // inject the content of the .env file into 'process.env'
 
 const production = !process.env.ROLLUP_WATCH;
 if (!process.env.NODE_ENV) {

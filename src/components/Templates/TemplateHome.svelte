@@ -1,4 +1,8 @@
 <script>
+  import { query } from "svelte-apollo";
+
+  import HOME_PAGE from '/gql/HomePage'
+
   import ContentBox from '/components/Atoms/ContentBox.svelte'
   import Polygon from '/components/Atoms/Polygon.svelte'
   import CardExhibition from '/components/Widgets/CardExhibition.svelte'
@@ -8,6 +12,8 @@
   import CardsGroup from '/components/Groups/CardsGroup'
 
   export let zIndex
+
+  const page = query(HOME_PAGE);
 
   const cards = [
     {
@@ -61,6 +67,15 @@
 </script>
 
 <section style="--z-index: {zIndex};">
+
+  {#if $page.loading}
+    Loading...
+  {:else if $page.error}
+    Error: {$page.error.message}
+  {:else}
+    HomePage Query Result: {JSON.stringify(page)}
+  {/if}
+
   <CardsGroup {cards} />
 </section>
 
