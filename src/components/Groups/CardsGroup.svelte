@@ -1,5 +1,5 @@
 <script>
-  import ContentBox from '/components/Atoms/ContentBox.svelte'
+  import ContentBox from '/components/Atoms/Card.svelte'
 
   export let cards
 

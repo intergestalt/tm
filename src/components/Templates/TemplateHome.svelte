@@ -3,7 +3,7 @@
 
   import HOME_PAGE from '/gql/HomePage'
 
-  import ContentBox from '/components/Atoms/ContentBox.svelte'
+  import ContentBox from '/components/Atoms/Card.svelte'
   import Polygon from '/components/Atoms/Polygon.svelte'
   import CardExhibition from '/components/Widgets/CardExhibition.svelte'
   import CardVideo from '/components/Widgets/CardVideo.svelte'

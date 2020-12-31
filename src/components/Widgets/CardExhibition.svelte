@@ -1,6 +1,6 @@
 <script>
   import {styleVars} from '/helper'
-  import ContentBox from '/components/Atoms/ContentBox.svelte'
+  import ContentBox from '/components/Atoms/Card.svelte'
 
   export let title, date, image
 

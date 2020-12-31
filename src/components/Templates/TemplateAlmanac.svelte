@@ -1,7 +1,6 @@
 <script>
   import { LoremIpsum } from "lorem-ipsum";
-
-  import ContentBox from '/components/Atoms/ContentBox.svelte'
+  
   import Polygon from '/components/Atoms/Polygon.svelte'
 
   import WidgetTeaser7 from '/components/Widgets/WidgetTeaser7.svelte'

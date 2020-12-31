@@ -20,7 +20,6 @@
       <TemplateAlmanac />
     </div>
   </Route>
-
   
 </main>
 
