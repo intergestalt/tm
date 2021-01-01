@@ -35,7 +35,7 @@
 </nav>
 
 <style lang="scss">
-  @import '../../scss/includes.scss';
+
 
   .toggler {
     position: fixed;

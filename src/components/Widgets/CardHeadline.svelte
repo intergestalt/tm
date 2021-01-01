@@ -18,7 +18,7 @@
 </ContentBox>
 
 <style lang="scss">
-  @import '../../scss/includes.scss';
+
 
   .title {
     @include typo-serif-title-44;

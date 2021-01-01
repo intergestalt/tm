@@ -72,7 +72,7 @@
 </section>
 
 <style lang="scss">
-  @import '../../scss/includes.scss';
+
   section {
     height: 100%;
     width: 100%;

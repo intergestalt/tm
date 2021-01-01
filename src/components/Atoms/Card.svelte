@@ -33,7 +33,7 @@
 </div>
 
 <style lang="scss">
-  @import '../../scss/includes.scss';
+
 
   $hole-radius-large: 0.5 * $hole-diameter-large;
   $hole-radius-small: 0.5 * $hole-diameter-small;

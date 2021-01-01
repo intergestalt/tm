@@ -23,7 +23,7 @@
 </ContentBox>
 
 <style lang="scss">
-  @import '../../scss/includes.scss';
+
 
   .container {
     display: flex;

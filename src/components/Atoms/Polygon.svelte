@@ -71,7 +71,7 @@
 </div>
 
 <style lang="scss">
-  @import '../../scss/includes.scss';
+
 
   .superwrapper {
     display: inline-block;

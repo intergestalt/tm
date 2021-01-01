@@ -9,7 +9,7 @@
 </div>
 
 <style lang="scss">
-  @import '../../scss/includes.scss';
+
 
   div {
     @include typo-serif-text-28;

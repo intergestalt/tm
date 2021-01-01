@@ -21,7 +21,7 @@
 </div>
 
 <style lang="scss">
-  @import '../../scss/includes.scss';
+
   .container {
     position: fixed;
     left:0;

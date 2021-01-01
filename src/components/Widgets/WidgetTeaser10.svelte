@@ -25,7 +25,7 @@
 </div>
 
 <style lang="scss">
-  @import '../../scss/includes.scss';
+
 
   div {
     @include typo-grotesk-title-30;
