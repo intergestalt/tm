@@ -7,7 +7,8 @@ import copy from 'rollup-plugin-copy'
 import sveltePreprocess, { replace } from 'svelte-preprocess';
 import dotenv from "dotenv"
 import rootImport from 'rollup-plugin-root-import';
-//import { svelteStyleDirective } from 'svelte-style-directive'
+// import alias from '@rollup/plugin-alias';
+// import { svelteStyleDirective } from 'svelte-style-directive'
 
 dotenv.config() // inject the content of the .env file into 'process.env'
 
@@ -47,13 +48,18 @@ export default {
 	},
 	plugins: [
 		rootImport({
-			// Will first look in `client/src/*` and then `common/src/*`.
+			// Will first look in `src/*`
 			root: `${__dirname}/src`,
 			useInput: 'prepend',
 
 			// If we don't find the file verbatim, try adding these extensions
 			extensions: ['.js', '.svelte'],
 		}),
+		// alias({
+		// 	entries: [
+		// 		{ find: /^\/components\/([a-zA-Z]*)$/, replacement: '/components/$1.alias' },
+		// 	]
+		// }),
 		svelte({
 			preprocess: [
 				replace([
@@ -63,6 +69,12 @@ export default {
 					]]),
 					sveltePreprocess({
 					sourceMap: !production,
+					scss: {
+						// We can use a path relative to the root because
+						// svelte-preprocess automatically adds it to `includePaths`
+						// if none is defined.
+					  prependData: `@import 'src/scss/includes.scss';`
+					},
 					postcss: {
 						plugins: [require('autoprefixer')()]
 					}

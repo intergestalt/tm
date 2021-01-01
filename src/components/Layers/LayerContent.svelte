@@ -5,6 +5,7 @@
   import { styleVars } from '/helper'
   import TemplateAlmanac from '/components/Templates/TemplateAlmanac.svelte'
   import TemplateHome from '/components/Templates/TemplateHome.svelte'
+  import TemplateProgramme from '/components/Templates/TemplateProgramme.svelte'
 
   export let zIndex;
 
@@ -13,6 +14,8 @@
 <main style={ styleVars({zIndex}) }>
   <Route path="news/:id" let:params></Route>
   <Route path="about"></Route>
+
+  <Route path="/programme" component={TemplateProgramme} />
 
   <Route path="/" component={TemplateHome} />
   <Route path="/almanac">

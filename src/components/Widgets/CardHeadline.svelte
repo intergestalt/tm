@@ -13,7 +13,7 @@
 
 <ContentBox bgColorKey="mint" {borderRadiusPreset}>
   <h3 class="title">
-    {title}
+    <slot />
   </h3>
 </ContentBox>
 

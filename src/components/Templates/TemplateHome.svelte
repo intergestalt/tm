@@ -39,9 +39,7 @@
     {
       component: CardHeadline,
       column: "left",
-      props: {
-        title: "Ongoing Programme",
-      }
+      content: "Ongoing Programme",
     },     
     {
       component: CardExhibition,

@@ -18,3 +18,14 @@ $grid-gap-large: 20px;
     }
   }
 }
+
+@mixin grid-margin {
+  @include media-2col {
+    margin-left: $grid-gap-large;
+    margin-right: $grid-gap-large;
+    @include media-small {
+      margin-left: $grid-gap-small;
+      margin-right: $grid-gap-small;
+    }
+  }
+}
