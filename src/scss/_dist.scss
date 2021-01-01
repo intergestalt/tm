@@ -29,3 +29,14 @@ $grid-gap-large: 20px;
     }
   }
 }
+
+@mixin grid-padding {
+  @include media-2col {
+    padding-left: $grid-gap-large;
+    padding-right: $grid-gap-large;
+    @include media-small {
+      padding-left: $grid-gap-small;
+      padding-right: $grid-gap-small;
+    }
+  }
+}

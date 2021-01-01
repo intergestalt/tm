@@ -44,6 +44,10 @@
     Programme
   </PageHeader>
 
+  <CardHeadline>
+    A Year Long Festival
+  </CardHeadline>
+
   <nav class="dateselector">
 
     <ol class="years">
@@ -65,22 +69,15 @@
 
   </nav>
 
-  <CardHeadline>
-    A Year Long Festival
-  </CardHeadline>
-
 </section>
 
 <style lang="scss">
 
   section {
-    height: 100%;
-    width: 100%;
-    background-color: $color-beige;
+    @include grid-padding;
   }
 
   .dateselector {
-    @include grid-margin;
   }
 
   .years, .months {
