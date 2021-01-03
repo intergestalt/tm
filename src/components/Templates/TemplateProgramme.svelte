@@ -21,6 +21,8 @@
     { abbr: "Dec" },
   ]
 
+  const displayMonths = [ ...months, months[0] ]
+
   let yearPercentage = 0
   let bgPosX = "100%"
 
@@ -60,7 +62,7 @@
     </ol>
 
     <ol class="months">
-      { #each months as month }
+      { #each displayMonths as month }
         <li class="month">
           { month.abbr }
         </li>
@@ -78,26 +80,61 @@
   }
 
   .dateselector {
+    @include typo-grotesk-text-24
   }
 
   .years, .months {
-    @include grid;
-    grid-auto-flow: column;
+    margin-top: 10px;
+    @include media-small {
+      margin-top: 8px;
+    }
   }
+
+  .months {
+    width: 100%;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: repeat( 13, 1fr );
+    grid-auto-flow: column;
+    column-gap: 10px;
+    @include media-small {
+      column-gap: 8px;
+    }
+  }
+
   .year, .month {
     background-color: $color-white; 
-    border-radius: 0.5em;
+    border-radius: $pill-height-large / 2;
+    line-height: $pill-height-large;
+    @include media-small {
+      line-height: $pill-height-small;
+      border-radius: $pill-height-large / 2;
+    }
+
+    padding: 0 20px;
+    @include media-small {
+      padding: 0 15px;
+    }
   }
 
-  .year.this {
-    grid-column: 1 / span 9;
-    background: linear-gradient(90deg, $color-mint 50%, white 50%);
-    background-size: 200% 200%;
-    background-position-x: var(--bgPosX);
-  }
+  .years {
+    display: flex;
+    width: 100%;
 
-  .year.next {
-    grid-column: 10 / span 3;
+    .this {
+      flex: 1;
+      background: linear-gradient(90deg, $color-mint 50%, white 50%);
+      background-size: 200% 200%;
+      background-position-x: var(--bgPosX);
+    }
+
+    .next {
+      margin-left: 10px;
+      @include media-small {
+        margin-left: 8px;
+      }
+    }
+
   }
 
   .month {

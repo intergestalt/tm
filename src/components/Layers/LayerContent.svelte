@@ -26,8 +26,12 @@
   
 </main>
 
-<style>
+<style lang="scss">
   main {
+    padding-top: 83px; 
+    @include media-small {
+      padding-top: 64px; 
+    }
     z-index: var(--zIndex);
   }
 </style>

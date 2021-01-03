@@ -8,6 +8,9 @@ $maxwidth: 1600px; // max width of layout
 $grid-gap-small: 10px;
 $grid-gap-large: 20px;
 
+$pill-height-large: 40px;
+$pill-height-small: 34px;
+
 @mixin grid {
   @include media-2col {
     display: grid;
