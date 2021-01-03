@@ -2,25 +2,31 @@
   import {styleVars} from '/helper'
   import ContentBox from '/components/Atoms/Card.svelte'
 
-  export let title, date, image
+  export let title, subtitle, date, image, large, caps
 
   let imageUrl = `url("${image}")`
 </script>
 
-<ContentBox>
+<ContentBox nohole>
   <div class="container" style={styleVars({imageUrl})}>
     <h4 class="date">
       {date}
     </h4>
-    <h3 class="title">
-      {title}
-    </h3>
+    <div class="content">
+      <h3 class="title">
+        {title}
+      </h3>
+      {#if subtitle}
+        <h4>
+          {subtitle}
+        </h4>
+      {/if}
+    </div>
     <span class="date">&nbsp;</span>
   </div>
 </ContentBox>
 
 <style lang="scss">
-
 
   .container {
     display: flex;
@@ -32,17 +38,24 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+    min-height: 200px;
   }
   
+  .content {
+
+  }
+
   .date {
-    @include typo-grotesk-text-24;
+    @include typo-grotesk-title-captions-20;
     color: $color-red;
-    
   }
 
   .title {
-    @include typo-serif-title-44;
-    padding-top:37px;
-    padding-bottom:37px;
+    @include typo-serif-title-32;
   }
+
+  .large .title {
+    @include typo-serif-title-44;
+  }
+
 </style>

@@ -7,6 +7,7 @@
   export let group = "default" // a key to coordniate the combinations ob border radius and columns
   export let bgColorKey = "white"
   export let borderRadiusPreset 
+  export let nohole = false
 
   let borderRadiusStringLarge, borderRadiusStringSmall
 
@@ -23,6 +24,7 @@
 <div 
   class="container bg-color-{bgColorKey}" 
   class:bgImage={bgImage} 
+  class:nohole={nohole}
   style={styleVars({
     imageUrl: `url("${bgImage}")`,
     borderRadiusStringLarge,
@@ -61,6 +63,7 @@
   // background in varying colors, including a transparent hole
   @each $name, $color in $card-bg-colors {
     .container.bg-color-#{$name} {
+      
       background: radial-gradient(
         circle at calc(100% - #{$hole-distance-large + $hole-radius-large}) #{$hole-distance-large + $hole-radius-large}, 
         transparent $hole-radius-large, 
@@ -76,6 +79,11 @@
       }
 
     }
+
+    // overwrite in case of nohole
+    .container.nohole.bg-color-#{$name} {
+      background: $color;
+    }
   }
 
   // optional background image (no hole in this case)
@@ -88,7 +96,7 @@
   }
 
   // the drop shadow inside the hole
-  .container::after {
+  .container:not(.nohole)::after {
     content: "";
     border-radius: 50%;
     box-shadow: 0px 0px 10px inset black;

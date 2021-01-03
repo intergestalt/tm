@@ -30,7 +30,7 @@ export function styleVars(vars) {
 const borderRadiusStore = {} // store the last values
 export function generateBorderRadiusString(group = "default", preset = {large: undefined, small: undefined}) {
 
-  const deltaMinLarge = 20 // minimun difference
+  const deltaMinLarge = 20 // minimum difference
   const valuesLarge = [
     [20, 40, 20, 40],
     [20, 50, 20, 50],
@@ -52,7 +52,7 @@ export function generateBorderRadiusString(group = "default", preset = {large: u
     [70, 40, 70, 40]
   ]
 
-  const deltaMinSmall = 10 // minimun difference
+  const deltaMinSmall = 10 // minimum difference
   const valuesSmall = [
     [15, 30, 15, 30],
     [15, 35, 15, 35],

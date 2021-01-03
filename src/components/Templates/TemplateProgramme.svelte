@@ -1,8 +1,10 @@
 <script>
   import { onMount } from 'svelte'
 
-  import CardHeadline from "/components/Widgets/CardHeadline";
-  import PageHeader from '/components/Atoms/PageHeader';
+  import CardHeadline   from "/components/Widgets/CardHeadline";
+  import PageHeader     from '/components/Atoms/PageHeader';
+  import CardsGroup     from '/components/Groups/CardsGroupProgramme';
+  import CardExhibition from '/components/Widgets/CardExhibition.svelte'
 
   import { styleVars, pannable } from '/helper'
 
@@ -43,6 +45,79 @@
     obj.target.scrollLeft -= obj.detail.dx
   }
 
+  const events = [
+    {
+      date: "24.01.–13.03.2021",
+      title: "Exhibition",
+      subtitle: "refusing to make a title",
+      image: "",
+      type: "large",
+    },
+    {
+      date: "24.01.–13.03.2021",
+      title: "Film Installation",
+      subtitle: "remote. response. request.",
+      image: "",
+      type: "small",
+    },
+    {
+      date: "24.01.–13.03.2021",
+      title: "CTM Configuration",
+      subtitle: "another subtitle",
+      image: "",
+      type: "small",
+    },
+    {
+      date: "24.01.–13.03.2021",
+      title: "Famme Fitness",
+      subtitle: "another subtitle",
+      image: "",
+      type: "small",
+    },    
+    {
+      date: "24.01.–13.03.2021",
+      title: "Exhibition",
+      subtitle: "Summer School",
+      image: "",
+      type: "large",
+    },
+    {
+      date: "24.01.–13.03.2021",
+      title: "Outdoor Performance",
+      subtitle: "another subtitle",
+      image: "",
+      type: "small",
+    },
+    {
+      date: "24.01.–13.03.2021",
+      title: "Outdoor Cinema",
+      subtitle: "another subtitle auch mal ein bischen länger",
+      image: "https://placeimg.com/640/480/arch/sepia",
+      type: "small",
+    },    
+    {
+      date: "24.01.–13.03.2021",
+      title: "Food Market",
+      subtitle: "another subtitle",
+      image: "https://placeimg.com/640/480/arch/sepia",
+      type: "small",
+    },    
+    {
+    date: "24.01.–13.03.2021",
+    title: "2022 Event",
+    subtitle: "another subtitle",
+    image: "https://placeimg.com/640/480/arch/sepia",
+    type: "large",
+    }
+  ].map(card => ({
+    component: CardExhibition,
+    props: {
+      ...card,
+      large: card.type === "large"
+      },
+    type: card.type
+  }))      
+
 </script>
 
 <section>
@@ -67,9 +142,10 @@
     </ol>
 
     <div class="months-wrapper">
-      <ol class="months"      use:pannable
+      <ol class="months"     
+        use:pannable
         on:panmove={handlePanMove}
-      >
+        >
         { #each displayMonths as month }
           <li class="month">
             { month.abbr }
@@ -79,6 +155,8 @@
     </div>
 
   </nav>
+
+  <CardsGroup cards={ events } />
 
 </section>
 
@@ -101,7 +179,6 @@
   }
 
   .months-wrapper { // to hide the scroll bar
-    margin-bottom: -20px;
     overflow: hidden;
     @include grid-margin(-1);
 
@@ -120,7 +197,6 @@
     
     overflow: hidden;
     overflow-x: auto;
-    padding-bottom: 20px;
 
     column-gap: 10px;
     @include media-small {
@@ -129,7 +205,7 @@
   }
 
   .year, .month {
-    background-color: $color-white; 
+    background-color: $color-gray6; 
     border-radius: $pill-height-large / 2;
     line-height: $pill-height-large;
     @include media-small {
@@ -149,7 +225,7 @@
 
     .this {
       flex: 1;
-      background: linear-gradient(90deg, $color-mint 50%, white 50%);
+      background: linear-gradient(90deg, $color-mint 50%, $color-gray6 50%);
       background-size: 200% 200%;
       background-position-x: var(--bgPosX);
     }

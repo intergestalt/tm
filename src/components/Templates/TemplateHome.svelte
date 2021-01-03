@@ -9,7 +9,7 @@
   import CardVideo from '/components/Widgets/CardVideo.svelte'
   import CardHeadline from '/components/Widgets/CardHeadline.svelte'
 
-  import CardsGroup from '/components/Groups/CardsGroup'
+  import CardsGroup from '/components/Groups/CardsGroupHome'
 
   export let zIndex
 

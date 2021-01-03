@@ -5,10 +5,19 @@ $color-beige: #F8F1D4;
 $color-red: #FF3A52;
 $color-text: black;
 $color-white: #FFFFFF;
+$color-gray6: #F2F2F2;
 
 
+/*
 $card-bg-colors: (
   "white": color.change($color-white, $alpha: 0.9),
   "mint":  color.change($color-mint,  $alpha: 0.9),
   "beige": color.change($color-beige, $alpha: 0.9)
   );
+*/
+
+$card-bg-colors: (
+"white": $color-gray6,
+"mint":  $color-mint,
+"beige": $color-beige
+);
