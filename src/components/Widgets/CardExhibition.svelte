@@ -8,7 +8,7 @@
 </script>
 
 <ContentBox nohole>
-  <div class="container" style={styleVars({imageUrl})}>
+  <div class="container" class:large={large} style={styleVars({imageUrl})}>
     <h4 class="date">
       {date}
     </h4>
@@ -17,7 +17,7 @@
         {title}
       </h3>
       {#if subtitle}
-        <h4>
+        <h4 class="subtitle">
           {subtitle}
         </h4>
       {/if}
@@ -50,12 +50,17 @@
     color: $color-red;
   }
 
-  .title {
+  .title, .subtitle {
     @include typo-serif-title-32;
   }
 
-  .large .title {
+  .large .title,
+  .large .subtitle {
     @include typo-serif-title-44;
+  }
+
+  .subtitle {
+    font-style: italic;
   }
 
 </style>

@@ -41,7 +41,6 @@
   $hole-radius-small: 0.5 * $hole-diameter-small;
 
   .container {
-    @include typo-serif-small-caps-28;
     width: 100%;
     display: flex;
     justify-content: center;

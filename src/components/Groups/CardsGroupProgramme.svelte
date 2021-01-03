@@ -21,9 +21,11 @@
 <style lang="scss">
 
   .container {
-    display: grid;
-    grid-template-columns: repeat( 4, 1fr );
     width: 100%;
+    display: grid;
+    @include media-3col {
+      grid-template-columns: repeat( 4, 1fr );
+    }
 
     column-gap: $grid-gap-large;
     row-gap: $grid-gap-large;
@@ -37,7 +39,9 @@
     grid-auto-flow: row dense;
 
     &.large {
-      grid-column: span 2;
+      @include media-3col {
+        grid-column: span 2;
+      }
     }
   }
 
