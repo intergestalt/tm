@@ -13,7 +13,7 @@
   $: {
     type = $isMenuActive ? "low" 
       : $location.pathname === "/almanac" ? "high" 
-        : $scrollY > 10 ? "blurred" : "normal"
+        : $scrollY > 10 || $location.pathname !== "/" ? "blurred" : "normal"
   }
 
   function onClick() {
@@ -28,7 +28,7 @@
 
 <style>
   .logo_container {
-    right:0;
+    right:49px;
     position: fixed;
     width: 200px;
     height: 200px;
@@ -37,14 +37,14 @@
   }
 
   .logo_container.normal {
-    top: 200px;
+    top: 394px;
   }
   .logo_container.blurred {
-    top: 250px;
+    top: 460px;
   }
 
   .logo_container.high {
-    top: 0px;
+    top: 20px;
   }
 
   .logo_container.low {
