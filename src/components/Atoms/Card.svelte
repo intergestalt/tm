@@ -36,7 +36,6 @@
 
 <style lang="scss">
 
-
   $hole-radius-large: 0.5 * $hole-diameter-large;
   $hole-radius-small: 0.5 * $hole-diameter-small;
 
@@ -54,7 +53,7 @@
       min-height: #{ $hole-distance-small + $hole-diameter-small};
       border-radius: var(--borderRadiusStringSmall);
     }
-    box-shadow: 1px 1px 10px black;
+    @include box-shadow;
     position: relative;
     /*backdrop-filter: blur(4px);*/
   }
@@ -98,7 +97,7 @@
   .container:not(.nohole)::after {
     content: "";
     border-radius: 50%;
-    box-shadow: 0px 0px 10px inset black;
+    @include box-shadow-inset;
     position: absolute;
 
     right: $hole-distance-large;

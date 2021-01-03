@@ -169,6 +169,7 @@
   .dateselector {
     @include typo-grotesk-text-24;
     user-select: none;
+    margin-bottom: 20px;
   }
 
   .years, .months-wrapper {

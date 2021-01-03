@@ -29,6 +29,7 @@
 <style lang="scss">
   main {
     padding-top: 83px; 
+    padding-bottom: 20px;
     @include media-small {
       padding-top: 64px; 
     }
