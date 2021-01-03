@@ -4,7 +4,7 @@
   import CardHeadline from "/components/Widgets/CardHeadline";
   import PageHeader from '/components/Atoms/PageHeader';
 
-  import { styleVars } from '/helper'
+  import { styleVars, pannable } from '/helper'
 
   const months = [
     { abbr: "Jan" },
@@ -38,6 +38,11 @@
     bgPosX = 100 - yearPercentage + "%"
   })
 
+  function handlePanMove(obj) {
+    //console.log(obj.target, obj.detail.dx, obj.target.scrollLeft)
+    obj.target.scrollLeft -= obj.detail.dx
+  }
+
 </script>
 
 <section>
@@ -61,13 +66,17 @@
       </li>
     </ol>
 
-    <ol class="months">
-      { #each displayMonths as month }
-        <li class="month">
-          { month.abbr }
-        </li>
-      { /each }
-    </ol>
+    <div class="months-wrapper">
+      <ol class="months"      use:pannable
+        on:panmove={handlePanMove}
+      >
+        { #each displayMonths as month }
+          <li class="month">
+            { month.abbr }
+          </li>
+        { /each }
+      </ol>
+    </div>
 
   </nav>
 
@@ -80,22 +89,39 @@
   }
 
   .dateselector {
-    @include typo-grotesk-text-24
+    @include typo-grotesk-text-24;
+    user-select: none;
   }
 
-  .years, .months {
+  .years, .months-wrapper {
     margin-top: 10px;
     @include media-small {
       margin-top: 8px;
     }
   }
 
+  .months-wrapper { // to hide the scroll bar
+    margin-bottom: -20px;
+    overflow: hidden;
+    @include grid-margin(-1);
+
+    height: $pill-height-large;
+    @include media-small {
+      height: $pill-height-small;
+    }
+  }
+
   .months {
-    width: 100%;
     overflow: hidden;
     display: grid;
     grid-template-columns: repeat( 13, 1fr );
     grid-auto-flow: column;
+    @include grid-padding;
+    
+    overflow: hidden;
+    overflow-x: auto;
+    padding-bottom: 20px;
+
     column-gap: 10px;
     @include media-small {
       column-gap: 8px;

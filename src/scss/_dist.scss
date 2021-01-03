@@ -22,24 +22,20 @@ $pill-height-small: 34px;
   }
 }
 
-@mixin grid-margin {
-  @include media-2col {
-    margin-left: $grid-gap-large;
-    margin-right: $grid-gap-large;
-    @include media-small {
-      margin-left: $grid-gap-small;
-      margin-right: $grid-gap-small;
-    }
-  }
+@mixin grid-margin($mult: 1) {
+  margin-left: $mult * $grid-gap-large;
+  margin-right: $mult * $grid-gap-large;
+  @include media-small {
+    margin-left: $mult * $grid-gap-small;
+    margin-right: $mult * $grid-gap-small;
+}
 }
 
 @mixin grid-padding {
-  @include media-2col {
-    padding-left: $grid-gap-large;
-    padding-right: $grid-gap-large;
-    @include media-small {
-      padding-left: $grid-gap-small;
-      padding-right: $grid-gap-small;
-    }
+  padding-left: $grid-gap-large;
+  padding-right: $grid-gap-large;
+  @include media-small {
+    padding-left: $grid-gap-small;
+    padding-right: $grid-gap-small;
   }
 }
