@@ -27,9 +27,17 @@
       rotation: {x:0, y:0.01, z:0},
       scale: 1
     },*/
-    {
+    /*{
       path: "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Duck/glTF/Duck.gltf",
       name: "duck",
+      position: new Vector3(0, 0, 1),
+      vector: new Vector3(0.3, 1, 0),
+      rotation: {x:0, y:0.01, z:0},
+      scale: .2
+    },*/
+    {
+      path: "https://minio.intergestalt.dev/public/object_01.glb",
+      name: "object_01",
       position: new Vector3(0, 0, 1),
       vector: new Vector3(0.3, 1, 0),
       rotation: {x:0, y:0.01, z:0},
