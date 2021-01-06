@@ -11,6 +11,7 @@
   import CardVideo from '/components/Widgets/CardVideo.svelte'
   import CardHeadline from '/components/Widgets/CardHeadline.svelte'
   import CardNews from '/components/Widgets/CardNews'
+  import CardAlmanac from '/components/Widgets/CardAlmanac'
 
   import CardsGroup from '/components/Groups/CardsGroupHome'
 
@@ -37,7 +38,15 @@
           props: {
             entries: $page.data.News.filter( e => e.typeHandle === "text")
           }
-        }
+        },
+        // Almanac
+        {
+          column: "right",
+          component: CardAlmanac,
+          props: {
+            entries: $page.data.Almanac
+          }
+        },
       ]
     }
   }
