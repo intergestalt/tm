@@ -4,13 +4,15 @@
   export let blur = 0
   export let insideShape = true
   export let width = "100%"
-  export let bgColor = "mint"
+  export let bgColor = "beige"
+  export let rotate = 0 // rotate by fraction of the base angle. 1 means rotate just so much that it looks the same
 
   let coords = []
   const base_angle = 2*Math.PI/n
+  const angle_offset = rotate/n * 2 * Math.PI
 
   for (var i = 0; i <= n; i++) {
-    let angle = i*base_angle;
+    let angle = i*base_angle + angle_offset;
     let x = Math.cos(angle) / 2 + .5;
     let y = Math.sin(angle) / 2 + .5;
     coords.push({x,y})
@@ -89,7 +91,7 @@
     filter: blur(var(--polygon-blur));
   }
   .wrapper.shadow {
-    filter: drop-shadow(1px 1px 10px rgba(0, 0, 0, 1));
+    filter: drop-shadow($shadow);
   }
   .poly {
     position: absolute;
@@ -101,6 +103,9 @@
     box-sizing: border-box;
     &.color-mint {
       background-color: $color-mint;
+    }
+    &.color-beige {
+      background-color: $color-beige;
     }
   }
   .shape-left, .shape-right {

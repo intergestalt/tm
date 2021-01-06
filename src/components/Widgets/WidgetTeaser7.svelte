@@ -3,7 +3,7 @@
 </script>
 
 <div>
-  <Polygon n="7" >
+  <Polygon n="7" rotate="0.8">
     <slot />
   </Polygon>
 </div>
@@ -13,8 +13,8 @@
 
   div {
     @include typo-serif-text-28;
-    :global(*::first-letter) {
-      font-family: fantasy;
+    :global(*:first-child::first-letter) {
+      font-family: OldEnglishFive, fantasy;
     }
   }
 </style>

@@ -14,9 +14,11 @@
       <h3 class="title">
         {title}
       </h3>
-      <h3 class="subtitle">
-        {subtitle}
-      </h3>      
+      {#if subtitle}
+        <h4 class="subtitle">
+          {subtitle}
+        </h4>
+      {/if}
     </div>
     <span class="category">&nbsp;</span>
   </div>
