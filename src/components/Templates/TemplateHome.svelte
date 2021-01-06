@@ -3,6 +3,8 @@
 
   import HOME_PAGE from '/gql/HomePage'
 
+  import { mapTypeHandleToComponent } from '/componentMappings'
+
   import ContentBox from '/components/Atoms/Card.svelte'
   import Polygon from '/components/Atoms/Polygon.svelte'
   import CardExhibition from '/components/Widgets/CardExhibition.svelte'
@@ -13,8 +15,25 @@
 
   export let zIndex
 
+  let cards = []
+
   const page = query(HOME_PAGE);
 
+  $: {
+
+    if ($page.data) {
+      console.log($page.data)
+      cards = [
+        ...$page.data.Featured.map( entry => ({
+          column: "right",
+          ...mapTypeHandleToComponent(entry)
+          })
+        )
+      ]
+    }
+  }
+
+/*
   const cards = [
     {
       component: ContentBox,
@@ -60,7 +79,7 @@
       }
     },
   ]
-
+*/
 
 </script>
 
@@ -71,10 +90,8 @@
   {:else if $page.error}
     Error: {$page.error.message}
   {:else}
-    HomePage Query Result: {JSON.stringify(page)}
+    <CardsGroup {cards} />
   {/if}
-
-  <CardsGroup {cards} />
 </section>
 
 <style>
