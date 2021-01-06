@@ -10,6 +10,7 @@
   import CardExhibition from '/components/Widgets/CardExhibition.svelte'
   import CardVideo from '/components/Widgets/CardVideo.svelte'
   import CardHeadline from '/components/Widgets/CardHeadline.svelte'
+  import CardNews from '/components/Widgets/CardNews'
 
   import CardsGroup from '/components/Groups/CardsGroupHome'
 
@@ -24,11 +25,19 @@
     if ($page.data) {
       console.log($page.data)
       cards = [
+        // Featured
         ...$page.data.Featured.map( entry => ({
           column: "right",
           ...mapTypeHandleToComponent(entry)
           })
-        )
+        ),
+        // News
+        {
+          component: CardNews,
+          props: {
+            entries: $page.data.News.filter( e => e.typeHandle === "text")
+          }
+        }
       ]
     }
   }
