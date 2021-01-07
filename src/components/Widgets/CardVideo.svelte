@@ -1,11 +1,11 @@
 <script>
   import {styleVars} from '/helper'
-  import ContentBox from '/components/Atoms/Card.svelte'
+  import Card from '/components/Atoms/Card.svelte'
 
-  export let title, subtitle, image
+  export let title, subtitle, image, standardRadius = false
 </script>
 
-<ContentBox bgImage={image}>
+<Card bgImage={image} {standardRadius}>
   <div class="container">
     <h2 class="category">
       Video
@@ -22,7 +22,7 @@
     </div>
     <span class="category">&nbsp;</span>
   </div>
-</ContentBox>
+</Card>
 
 <style lang="scss">
 

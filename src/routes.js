@@ -1,5 +1,5 @@
-const namedRoutes = {
+export const namedRoutes = {
   home: "/",
   almanac: "/almanac/:id",
-  news: "/almanac/:id"
+  news: "/news",
 }

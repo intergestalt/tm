@@ -3,8 +3,6 @@
   import Card from '/components/Atoms/Card.svelte'
 
   export let entries
-
-  console.log(entries)
   
 </script>
 

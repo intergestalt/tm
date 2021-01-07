@@ -13,6 +13,8 @@
 
   div {
     @include typo-serif-text-28;
+    hyphens: auto;
+
     :global(*:first-child::first-letter) {
       font-family: OldEnglishFive, fantasy;
     }

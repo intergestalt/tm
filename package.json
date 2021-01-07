@@ -14,6 +14,7 @@
     "dotenv": "^8.2.0",
     "postcss": "^8.2.1",
     "postcss-load-config": "^3.0.0",
+    "react": "^17.0.1",
     "rollup": "^2.3.4",
     "rollup-plugin-hot": "^0.1.1",
     "rollup-plugin-livereload": "^2.0.0",
@@ -27,9 +28,11 @@
     "svelte-style-directive": "^1.1.0"
   },
   "dependencies": {
+    "@apollo/client": "^3.2.0",
     "angle-normals": "^1.0.0",
     "bunny": "^1.0.1",
     "gl-mat4": "^1.2.0",
+    "graphql": "^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0",
     "js-cookie": "^2.2.1",
     "lorem-ipsum": "^2.0.3",
     "regl": "^2.0.1",
@@ -37,9 +40,7 @@
     "rollup-plugin-copy": "^3.3.0",
     "sirv-cli": "^1.0.0",
     "svelte-apollo": "^0.4.0",
-    "@apollo/client": "^3.2.0",
-    "react": "^17.0.0",
-    "graphql": "^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0",
+    "svelte-markdown": "0.0.4",
     "svelte-navigator": "^3.1.3",
     "svelte-vimeo-player": "^0.1.3",
     "three": "^0.123.0"

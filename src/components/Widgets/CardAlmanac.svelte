@@ -5,8 +5,6 @@
   import audioIcon from '/icons/audio'
 
   export let entries
-
-  console.log(entries)
   
 </script>
 

@@ -32,13 +32,14 @@
     Almanac
   </h1>
 
-  <div class="polybox">
+  <div class="container">
     <WidgetTeaser7>
       { text }
     </WidgetTeaser7>
     <CardVideo 
       title="The Reclamation of Social Time"
       image="https://placeimg.com/640/480/people"
+      standardRadius
     />
     <WidgetTeaser10 header="Intervvww" subtitle="Ryan Bishop">
       { short }

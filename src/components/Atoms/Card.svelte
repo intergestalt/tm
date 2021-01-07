@@ -8,12 +8,19 @@
   export let bgColorKey = "white"
   export let borderRadiusPreset 
   export let nohole = false
+  export let standardRadius = false
 
   let borderRadiusStringLarge, borderRadiusStringSmall
 
   $: console.log(bgImage)
 
   onMount(function() {
+    if (standardRadius) {
+      borderRadiusPreset = {
+        small: [15,15,15,15],
+        large: [20,20,20,20]
+      }
+    }
     const {largeString, smallString} = generateBorderRadiusString(group, borderRadiusPreset)
     borderRadiusStringLarge = largeString
     borderRadiusStringSmall = smallString
