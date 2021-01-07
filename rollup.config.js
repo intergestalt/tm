@@ -9,6 +9,8 @@ import copy from 'rollup-plugin-copy'
 import sveltePreprocess, { replace } from 'svelte-preprocess';
 import dotenv from "dotenv"
 import rootImport from 'rollup-plugin-root-import';
+import gzipPlugin from 'rollup-plugin-gzip'
+import { brotliCompressSync } from 'zlib'
 // import alias from '@rollup/plugin-alias';
 // import { svelteStyleDirective } from 'svelte-style-directive'
 
@@ -208,6 +210,12 @@ export default {
 			// import.meta.hot in your code with module.hot, and will do
 			// nothing else.
 			compatModuleHot: !hot,
+		}),
+		production && gzipPlugin(),
+		production && gzipPlugin({
+			customCompression: content =>
+				brotliCompressSync(Buffer.from(content)),
+			fileName: '.br',
 		}),
 	],
 };
