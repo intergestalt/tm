@@ -2,17 +2,18 @@
   import {styleVars} from '/helper'
   import Card from '/components/Atoms/Card.svelte'
 
-  export let title, subtitle, image, standardRadius = false
+  export let title, subtitle, image, standardRadius = false, highlight = false
 </script>
 
-<Card bgImage={image} {standardRadius}>
-  <div class="container">
+<Card bgImage={image} {standardRadius} >
+  <div class="container" class:highlight={highlight}>
     <h2 class="category">
       Video
     </h2>
     <div class="middle">
       <h3 class="title">
         {title}
+        <slot />
       </h3>
       {#if subtitle}
         <h4 class="subtitle">
@@ -48,6 +49,9 @@
 
   .title {
     @include typo-grotesk-title-30;
+    .highlight & {
+      @include typo-grotesk-title-50;
+    }
   }
 
   .subtitle {

@@ -4,11 +4,17 @@
 
   import { namedRoutes } from '/routes'
   import { styleVars } from '/helper'
+
+  import Query from '/components/Atoms/Query'
   import TemplateAlmanac from '/components/Templates/TemplateAlmanac.svelte'
   import TemplateHome from '/components/Templates/TemplateHome.svelte'
   import TemplateProgramme from '/components/Templates/TemplateProgramme.svelte'
   import TemplateNews from '/components/Templates/TemplateNews'
   import TemplateNewsItem from '/components/Templates/TemplateNewsItem'
+
+  import HOME_PAGE from '/gql/HomePage'
+  import NEWS from '/gql/News'
+  import TEXT from '/gql/Text'
 
   export let zIndex;
 
@@ -17,17 +23,19 @@
 <main style={ styleVars({zIndex}) } use:links >
   <Route path="news/*" >
     <Route path="/">
-      <TemplateNews />
+      <Query gql={NEWS} component={TemplateNews} />
     </Route>
     <Route path=":slug" let:params>
-      <TemplateNewsItem slug={params.slug} />
+      <Query gql={TEXT} variables={{ slug: params.slug }} component={TemplateNewsItem} />
     </Route>
   </Route>
   <Route path="about"></Route>
 
   <Route path="/programme" component={TemplateProgramme} />
 
-  <Route path="/" component={TemplateHome} />
+  <Route path="/">
+    <Query gql={HOME_PAGE} component={TemplateHome} />
+  </Route>
   <Route path="/almanac">
     <div transition:fade>
       <TemplateAlmanac />

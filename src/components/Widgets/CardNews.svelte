@@ -1,8 +1,12 @@
 <script>
+  import { link, useResolve } from "svelte-navigator";
+  
   import {styleVars} from '/helper'
   import Card from '/components/Atoms/Card.svelte'
 
   export let entries
+
+  const resolve = useResolve();
   
 </script>
 
@@ -12,8 +16,9 @@
       News
     </h3>
     {#each entries as entry}
-      <a href="#" class="entry">
+      <a class="entry" href={ resolve("/news/" + entry.slug) } use:link>
         {entry.title}
+        <slot />
       </a>
     {/each}
   </div>

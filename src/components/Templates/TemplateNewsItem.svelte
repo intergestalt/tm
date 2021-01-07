@@ -4,41 +4,24 @@
 
   import Card from '/components/Atoms/Card'
   import MarkdownBlock from '/components/Atoms/MarkdownBlock'
-
-  import TEXT from '/gql/Text'
-
-  export let slug
   
-  const req = query(TEXT, {
-    variables: { slug }
-  });
+  export let data
 
   const resolve = useResolve();
 
-  let body = ""
+  let body = data.Text.body
+  .filter( e => e.__typename === "body_textBlock_BlockType")
+  .map( e => e.textBlock)
+  .join("\n")
 
-  $: {
-    if ($req.data) {
-      console.log($req.data)
-      body = $req.data.Text.body
-        .filter( e => e.__typename === "body_textBlock_BlockType")
-        .map( e => e.textBlock)
-        .join("\n")
-    }
-  }
 </script>
 
 <section>
 
-  {#if $req.loading}
-    Loading...
-  {:else if $req.error}
-    Error: {$req.error.message}
-  {:else}
-    <Card>
-      <MarkdownBlock source={body} />
-    </Card>
-  {/if}
+  <Card>
+    <MarkdownBlock source={body} />
+  </Card>
+
 </section>
 
 <style lang="scss">

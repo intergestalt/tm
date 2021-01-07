@@ -98,7 +98,7 @@
         console.warn("loading of 3d " + model.name + " failed")
       }
     }
-    console.log(activeObjects)
+    //console.log(activeObjects)
     
 
 /*

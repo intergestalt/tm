@@ -13,6 +13,7 @@
     <h3 class="headline">
       From the Almanac
     </h3>
+    {#if false}<slot />{/if}
     {#each entries as entry}
       <a href="#" class="entry">
         <span class="icon" data-type={entry.typeHandle} />

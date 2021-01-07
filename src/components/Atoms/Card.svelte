@@ -6,7 +6,7 @@
   export let bgImage = ""
   export let group = "default" // a key to coordniate the combinations ob border radius and columns
   export let bgColorKey = "white"
-  export let borderRadiusPreset 
+  export let borderRadiusPreset = undefined
   export let nohole = false
   export let standardRadius = false
 

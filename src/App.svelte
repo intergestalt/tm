@@ -22,7 +22,7 @@
 
 </script>
 
-<Router url="{url}">
+<Router url="{url}" primary={false}>
 	<Layers />
 </Router>
 

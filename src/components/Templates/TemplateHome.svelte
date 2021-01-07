@@ -1,8 +1,6 @@
 <script>
   import { query } from "svelte-apollo";
 
-  import HOME_PAGE from '/gql/HomePage'
-
   import { mapTypeHandleToComponent } from '/componentMappings'
 
   import ContentBox from '/components/Atoms/Card.svelte'
@@ -15,41 +13,36 @@
 
   import CardsGroup from '/components/Groups/CardsGroupHome'
 
-  export let zIndex
+  export let data
 
   let cards = []
 
-  const page = query(HOME_PAGE);
-
-  $: {
-
-    if ($page.data) {
-      console.log($page.data)
-      cards = [
-        // Featured
-        ...$page.data.Featured.map( entry => ({
-          column: "right",
-          ...mapTypeHandleToComponent(entry)
-          })
-        ),
-        // News
-        {
-          component: CardNews,
-          props: {
-            entries: $page.data.News.filter( e => e.typeHandle === "text")
-          }
-        },
-        // Almanac
-        {
-          column: "right",
-          component: CardAlmanac,
-          props: {
-            entries: $page.data.Almanac
-          }
-        },
-      ]
-    }
+  if (data) {
+    cards = [
+      // Featured
+      ...data.Featured.map( entry => ({
+        column: "right",
+        ...mapTypeHandleToComponent(entry)
+        })
+      ),
+      // News
+      {
+        component: CardNews,
+        props: {
+          entries: data.News.filter( e => e.typeHandle === "text")
+        }
+      },
+      // Almanac
+      {
+        column: "right",
+        component: CardAlmanac,
+        props: {
+          entries: data.Almanac
+        }
+      },
+    ]
   }
+
 
 /*
   const cards = [
@@ -101,21 +94,15 @@
 
 </script>
 
-<section style="--z-index: {zIndex};">
+<section>
 
-  {#if $page.loading}
-    Loading...
-  {:else if $page.error}
-    Error: {$page.error.message}
-  {:else}
-    <CardsGroup {cards} />
-  {/if}
+  <CardsGroup {cards} />
+
 </section>
 
 <style>
   section {
     margin-top: 50vh;
-    z-index: var(--z-index);
   }
 
 </style>
