@@ -34,7 +34,7 @@ function serve() {
 	return {
 		writeBundle() {
 			if (server) return;
-			server = require('child_process').spawn('npm', ['run', 'start', '--', '--dev'], {
+			server = require('child_process').spawn('npm', ['run', 'start:dev'], {
 				stdio: ['ignore', 'inherit', 'inherit'],
 				shell: true
 			});
@@ -211,8 +211,8 @@ export default {
 			// nothing else.
 			compatModuleHot: !hot,
 		}),
-		production && gzipPlugin(),
-		production && gzipPlugin({
+		gzipPlugin(),
+		gzipPlugin({
 			customCompression: content =>
 				brotliCompressSync(Buffer.from(content)),
 			fileName: '.br',
