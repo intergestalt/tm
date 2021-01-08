@@ -5,7 +5,12 @@
 
   let result = ""
 
+  // Text: Reveal your queer motto of today
+  // overlay
+  // text: Queer Motto API
+
   const requestUrl = 'https://toknowexactlyhowmanytimestocry.net/queermottoAPI/r1/refusal?rq=generate&org=refuse-tokenisms-tm-2021'
+  const refusalUrl = 'https://toknowexactlyhowmanytimestocry.net/queermottoAPI/r1/refusal?rq=gener'
 
   async function doRequest() {
     const res = await fetch(requestUrl, {
@@ -22,7 +27,7 @@
 <div class="container" class:valid={!!result}>
 
     {#if !result}
-      <b title={requestUrl} on:click={doRequest}>Request<br />Queer<br />Motto</b>
+      <b title={requestUrl} on:click={doRequest}>Reveal<br />your queer motto<br />of today</b>
     {/if}
 
     <div class="content">
@@ -54,10 +59,10 @@
     align-items: center;
     justify-content: center;
 
-    // filter: drop-shadow(  $shadow );
+    box-shadow: $round-inset-shadow;
 
     @include typo-grotesk-text-24;
-    &, * {font-family: monospace}
+    &, * {font-family: monospace; }
   }
 
   b {
