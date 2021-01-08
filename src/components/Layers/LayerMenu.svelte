@@ -9,12 +9,12 @@
 
 </script>
 
-<div class:active={$isMenuActive} class="toggler">
+<div class:active={$isMenuActive} class="toggler" style="--zIndex: {zIndex};">
   <div class="toggle-menu" on:click={onMenu} ></div>
   <div class="toggle-silence" on:click={onSilence}></div>
 </div>
 
-<nav id="main_nav" class:active={$isMenuActive} style="--z-index: {zIndex};">
+<nav id="main_nav" class:active={$isMenuActive} style="--zIndex: {zIndex};">
   <ol>
     <li>
       <Link to="theme" on:click={onMenu}>Theme</Link>
@@ -41,7 +41,7 @@
     position: fixed;
     left: 20px;
     top: 20px;
-    z-index: 10;
+    z-index: var(--zIndex);
     mix-blend-mode: difference;
     &.active {
       mix-blend-mode: normal;
@@ -87,7 +87,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: var(--z-index);
+    z-index: var(--zIndex);
   }
 
   ol {

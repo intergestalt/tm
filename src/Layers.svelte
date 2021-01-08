@@ -7,6 +7,7 @@
 	import Layer3D from '/components/Layers/Layer3D.svelte'
 	import LayerMenu from '/components/Layers/LayerMenu.svelte'
 	import LayerLoader from '/components/Layers/LayerLoader.svelte'
+	import LayerOverlay from '/components/Layers/LayerOverlay.svelte'
 
 	import { isCookieAccepted, scrollY, isMeditationOn } from '/stores.js';
 
@@ -43,4 +44,6 @@
 {:else}
 	<LayerLoader zIndex="5" />
 {/if}
+<LayerOverlay zIndex="6" />
+
 

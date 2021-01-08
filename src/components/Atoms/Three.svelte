@@ -16,7 +16,7 @@
 
   let isWebGLAvailable = true
   let canvas = null
-  const speed = 0.008
+  const speed = 0.001
 
   const models = [
     /*{

@@ -7,5 +7,6 @@ export const isCookieAccepted = writable(false);
 
 export const isMeditationOn = writable(false); 
 
+export const overlayContent = writable(null); 
 
 export const scrollY = writable(0);

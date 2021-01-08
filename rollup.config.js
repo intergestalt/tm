@@ -197,6 +197,7 @@ export default {
 
 		hmr({
 			public: 'public',
+			hot: true,
 			inMemory: true,
 
 			// Default host for the HMR server is localhost, change this option if

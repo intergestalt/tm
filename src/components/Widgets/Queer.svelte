@@ -1,13 +1,11 @@
 <script>
   import { onMount } from 'svelte'
+  
+  import { overlayContent } from '/stores.js';
 
   import Polygon from '/components/Atoms/Polygon.svelte'
 
   let result = ""
-
-  // Text: Reveal your queer motto of today
-  // overlay
-  // text: Queer Motto API
 
   const requestUrl = 'https://toknowexactlyhowmanytimestocry.net/queermottoAPI/r1/refusal?rq=generate&org=refuse-tokenisms-tm-2021'
   const refusalUrl = 'https://toknowexactlyhowmanytimestocry.net/queermottoAPI/r1/refusal?rq=gener'
@@ -20,31 +18,19 @@
     const json = await res.json()
     result = json.replace(/\\n/g, "\n")
     console.log(json)
+    $overlayContent = result
   }
 
 </script>
 
 <div class="container" class:valid={!!result}>
 
-    {#if !result}
-      <b title={requestUrl} on:click={doRequest}>Reveal<br />your queer motto<br />of today</b>
-    {/if}
-
-    <div class="content">
-
-      <div class="result" on:click={doRequest}>
-        { result }
-      </div>
-
-      {#if !!result}
-        <aside>
-          <br />
-          <a href="https://hackmd.io/n3coKNZ3TlyVXR3vHQQ7aQ?view#Queer-Motto-API" target="_blank">Browse API Specifications</a>
-        </aside>
-      {/if}
-
-  </div>
-
+  <b class="button" title={requestUrl} on:click={doRequest}>
+    Reveal your
+    queer motto
+    of today
+  </b>
+  
 </div>
 
 <style lang="scss">
@@ -65,18 +51,10 @@
     &, * {font-family: monospace; }
   }
 
-  b {
+  .button {
     cursor: pointer;
     text-decoration: underline;
-  }
-
-  .result {
-    white-space: pre-wrap;
-    color: $color-red;
-    text-align: center;
-  }
-
-  aside {
+    white-space: pre-line;
     text-align: center;
   }
 
