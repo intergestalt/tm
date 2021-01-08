@@ -1,6 +1,6 @@
 <script>
   import { fade } from 'svelte/transition';
-  import { links, Router, Link, Route } from "svelte-navigator";
+  import { useLocation, links, Router, Link, Route } from "svelte-navigator";
 
   import { namedRoutes } from '/routes'
   import { styleVars } from '/helper'
@@ -18,10 +18,13 @@
 
   export let zIndex;
 
+  const location = useLocation();
+  $: console.log($location)
+
 </script>
 
-<main style={ styleVars({zIndex}) } use:links >
-  <Route path="news/*" >
+<main style={ styleVars({zIndex}) } class:almanac={$location.pathname=="/almanac"} use:links >
+  <Route path="/news/*" >
     <Route path="/">
       <Query gql={NEWS} component={TemplateNews} />
     </Route>
@@ -52,5 +55,9 @@
       padding-top: 64px; 
     }
     z-index: var(--zIndex);
+    &.almanac {
+      padding-top:0;
+      padding-bottom: 0;
+    }
   }
 </style>

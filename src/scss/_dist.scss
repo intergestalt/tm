@@ -39,3 +39,17 @@ $pill-height-small: 34px;
     padding-right: $grid-gap-small;
   }
 }
+
+@mixin grid-template-rows-square($rows) {
+  grid-template-rows: calc( #{100/$rows}vw - #{ 2*$grid-gap-large } );
+  @include media-small {
+    grid-template-rows: calc( #{100/$rows}vw - #{ 2*$grid-gap-small } );
+  }
+}
+
+@mixin height-square($rows: 1) {
+  height: calc( #{100/$rows}vw - #{ 2*$grid-gap-large } );
+  @include media-small {
+    height: calc( #{100/$rows}vw - #{ 2*$grid-gap-small } );
+  }
+}

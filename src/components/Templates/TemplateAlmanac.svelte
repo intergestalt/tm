@@ -44,7 +44,9 @@
     <WidgetTeaser10 header="Intervvww" subtitle="Ryan Bishop">
       { short }
     </WidgetTeaser10>
-    <Queer />
+    <div class="item">
+      <Queer />
+    </div>
   </div>
 
 </section>
@@ -70,10 +72,28 @@
   }
 
   .container {
-    width: 100%;
+    box-sizing: border-box;
+    min-height: 100vh;
     display: grid;
+    @include grid-margin;
+
+    @include media-1col-only {
+      grid-template-columns: repeat( 1, 1fr );
+    }
+
+    @include media-2col {
+      grid-template-columns: repeat( 2, 1fr );
+      @include grid-template-rows-square(2);
+    }
+
     @include media-3col {
+      grid-template-columns: repeat( 3, 1fr );
+      @include grid-template-rows-square(3);
+    }
+
+    @include media-4col {
       grid-template-columns: repeat( 4, 1fr );
+      @include grid-template-rows-square(4);
     }
 
     column-gap: $grid-gap-large;
@@ -84,8 +104,12 @@
     }
   }
 
-  .card {
+  .item {
     grid-auto-flow: row dense;
+
+    @include media-1col-only {
+      @include height-square;
+    }
 
     &.large {
       @include media-3col {

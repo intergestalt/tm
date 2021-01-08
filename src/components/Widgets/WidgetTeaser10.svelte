@@ -31,7 +31,7 @@
     @include typo-grotesk-title-30;
     hyphens: auto;
     :global(*::first-letter) {
-      font-family: fantasy;
+      font-family: OldEnglishFive, fantasy;
     }
     text-align: center;
   }

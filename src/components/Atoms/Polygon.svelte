@@ -112,7 +112,7 @@
     height: 100%;
     width:50%;
     top:0;
-    background: rgba(0,0,0,0.03);
+    //background: rgba(0,0,0,0.03);
     shape-outside: var(--polygon-shape-path) margin-box;
     clip-path: var(--polygon-shape-path);
   }

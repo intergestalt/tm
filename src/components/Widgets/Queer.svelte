@@ -5,36 +5,65 @@
 
   let result = ""
 
+  const requestUrl = 'https://toknowexactlyhowmanytimestocry.net/queermottoAPI/r1/refusal?rq=generate&org=refuse-tokenisms-tm-2021'
+
   async function doRequest() {
-    const res = await fetch('https://toknowexactlyhowmanytimestocry.net/queermottoAPI/r1/refusal?rq=generate&org=refuse-tokenisms-tm-2021', {
+    const res = await fetch(requestUrl, {
       method: 'GET',
     })
     
     const json = await res.json()
     result = json.replace(/\\n/g, "\n")
-    //console.log(json)
+    console.log(json)
   }
 
 </script>
 
-<div>
-  <Polygon n="5" >
+<div class="container" class:valid={!!result}>
 
-    <button on:click={doRequest}>Request Queer Motto</button>
+    {#if !result}
+      <b title={requestUrl} on:click={doRequest}>Request<br />Queer<br />Motto</b>
+    {/if}
 
-    <div class="result">
-      { result }
-    </div>
+    <div class="content">
 
-    <aside>
-      <a href="https://hackmd.io/n3coKNZ3TlyVXR3vHQQ7aQ?view#Queer-Motto-API" target="_blank">Browse API Specifications</a>
-    </aside>
+      <div class="result" on:click={doRequest}>
+        { result }
+      </div>
 
-  </Polygon>
+      {#if !!result}
+        <aside>
+          <br />
+          <a href="https://hackmd.io/n3coKNZ3TlyVXR3vHQQ7aQ?view#Queer-Motto-API" target="_blank">Browse API Specifications</a>
+        </aside>
+      {/if}
+
+  </div>
+
 </div>
 
 <style lang="scss">
 
+  .container {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    background-color: $color-mint;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    // filter: drop-shadow(  $shadow );
+
+    @include typo-grotesk-text-24;
+    &, * {font-family: monospace}
+  }
+
+  b {
+    cursor: pointer;
+    text-decoration: underline;
+  }
 
   .result {
     white-space: pre-wrap;
@@ -46,10 +75,16 @@
     text-align: center;
   }
 
-  div {
-    @include typo-serif-text-28;
-    :global(*::first-letter) {
-      font-family: fantasy;
+  button {
+    @include typo-grotesk-title-captions-20;
+    position: absolute;
+    top:50%;left:50%;
+    transform: translateX(-50%) translateY(-50%);
+    //border-radius: 10px;
+
+    .valid & {
+      opacity: 0.7;
     }
   }
+
 </style>
