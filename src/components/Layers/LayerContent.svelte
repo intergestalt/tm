@@ -64,7 +64,7 @@
     &.almanac {
       background-color: $color-beige;
       .frame {
-        padding-top:0;
+        padding-top: 0;
         padding-bottom: 0;
       }
     }

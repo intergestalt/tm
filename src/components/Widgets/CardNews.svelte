@@ -3,11 +3,13 @@
   
   import {styleVars} from '/helper'
   import Card from '/components/Atoms/Card.svelte'
+  import IconList from '/components/Icons/IconList.svelte'
 
   export let entries
 
+  const maxEntries = 2
   const resolve = useResolve();
-  
+
 </script>
 
 <Card bgColorKey="white" >
@@ -15,12 +17,18 @@
     <h3 class="title">
       News
     </h3>
-    {#each entries as entry}
-      <a class="entry" href={ resolve("/news/" + entry.slug) } use:link>
-        {entry.title}
-        <slot />
-      </a>
+    {#each entries as entry, i}
+      {#if i < maxEntries }
+        <a class="entry" href={ resolve("/news/" + entry.slug) } use:link>
+          {entry.title}
+          <slot />
+        </a>
+        {/if}
     {/each}
+    <a class="more" href={ resolve("/news/") } use:link>
+      <span class="text">Show more</span>
+      <IconList class="icon"/>
+    </a>
   </div>
 </Card>
 
@@ -42,5 +50,14 @@
     @include typo-serif-text-28;
     display: block;
     white-space: pre-line;
+  }
+
+  .more {
+    color: $color-red;
+    display: flex;
+    justify-content: space-between;
+    .icon {
+      
+    }
   }
 </style>

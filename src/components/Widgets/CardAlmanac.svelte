@@ -2,8 +2,6 @@
   import {styleVars} from '/helper'
   import Card from '/components/Atoms/Card.svelte'
 
-  import audioIcon from '/icons/audio'
-
   export let entries
   
 </script>
