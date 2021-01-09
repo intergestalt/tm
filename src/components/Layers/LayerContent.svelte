@@ -25,40 +25,49 @@
 </script>
 
 <main style={ styleVars({zIndex}) } class:almanac={$location.pathname=="/almanac"} use:links >
-  <Route path="/news/*" >
+  <div class="frame">
+    <Route path="/news/*" >
+      <Route path="/">
+        <Query gql={NEWS} component={TemplateNews} />
+      </Route>
+      <Route path=":slug" let:params>
+        <Query gql={TEXT} variables={{ slug: params.slug }} component={TemplateNewsItem} />
+      </Route>
+    </Route>
+    <Route path="about"></Route>
+
+    <Route path="/programme" component={TemplateProgramme} />
+
     <Route path="/">
-      <Query gql={NEWS} component={TemplateNews} />
+      <Query gql={HOME_PAGE} component={TemplateHome} />
     </Route>
-    <Route path=":slug" let:params>
-      <Query gql={TEXT} variables={{ slug: params.slug }} component={TemplateNewsItem} />
+    <Route path="/almanac">
+      <div transition:fade>
+        <Query gql={ALMANAC} component={TemplateAlmanac} />
+      </div>
     </Route>
-  </Route>
-  <Route path="about"></Route>
-
-  <Route path="/programme" component={TemplateProgramme} />
-
-  <Route path="/">
-    <Query gql={HOME_PAGE} component={TemplateHome} />
-  </Route>
-  <Route path="/almanac">
-    <div transition:fade>
-      <Query gql={ALMANAC} component={TemplateAlmanac} />
-    </div>
-  </Route>
-  
+  </div>
 </main>
 
 <style lang="scss">
   main {
-    padding-top: 83px; 
-    padding-bottom: 20px;
-    @include media-small {
-      padding-top: 64px; 
-    }
     z-index: var(--zIndex);
+    .frame {
+      padding-top: 83px; 
+      padding-bottom: 20px;
+      max-width: $maxwidth;
+      margin: auto;
+      @include media-small {
+        padding-top: 64px; 
+      }
+    }
     &.almanac {
-      padding-top:0;
-      padding-bottom: 0;
+      background-color: $color-beige;
+      .frame {
+        padding-top:0;
+        padding-bottom: 0;
+      }
     }
   }
+
 </style>

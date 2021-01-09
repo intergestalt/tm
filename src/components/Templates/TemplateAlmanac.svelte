@@ -90,7 +90,7 @@
 <style lang="scss">
 
   section {
-    background-color: $color-beige;
+    
   }
 
   h1 {
