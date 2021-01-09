@@ -34,7 +34,7 @@
       large: true,
       props: {
         title: "The Reclamation of Social Time",
-        image: "https://placeimg.com/640/480/people",
+        image: "https://placeimg.com/640/480/tech",
         highlight: true,
         standardRadius: true,
       }
@@ -111,6 +111,7 @@
     box-sizing: border-box;
     min-height: 100vh;
     display: grid;
+    grid-auto-flow: row dense;
     @include grid-margin;
 
     @include media-1col-only {
@@ -141,7 +142,6 @@
   }
 
   .item {
-    grid-auto-flow: row dense;
 
     @include media-1col-only {
       @include height-square;

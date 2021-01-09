@@ -41,10 +41,8 @@ $pill-height-small: 34px;
 }
 
 @mixin grid-template-rows-square($rows) {
-  grid-template-rows: calc( #{100/$rows}vw - #{ 2*$grid-gap-large } );
   grid-auto-rows: calc( #{100/$rows}vw - #{ 2*$grid-gap-large } );
   @include media-small {
-    grid-template-rows: calc( #{100/$rows}vw - #{ 2*$grid-gap-small } );
     grid-auto-rows: calc( #{100/$rows}vw - #{ 2*$grid-gap-small } );
   }
 }
