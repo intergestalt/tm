@@ -15,7 +15,6 @@
     <div class="middle">
       <h3 class="title">
         {title}
-        {#if $$slots.default}<slot />{/if}
       </h3>
       {#if subtitle}
         <h4 class="subtitle">

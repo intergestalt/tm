@@ -5,6 +5,7 @@
 
   import WidgetTeaser7 from '/components/Widgets/WidgetTeaser7.svelte'
   import WidgetTeaser10 from '/components/Widgets/WidgetTeaser10.svelte'
+  import WidgetImage from '/components/Widgets/WidgetImage.svelte'
   import CardVideo from '/components/Widgets/CardVideo.svelte'
 
   import Queer from '/components/Widgets/Queer.svelte'
@@ -34,7 +35,14 @@
       props: {
         title: "The Reclamation of Social Time",
         image: "https://placeimg.com/640/480/people",
-        large: true
+        highlight: true,
+        standardRadius: true,
+      }
+    },
+    {
+      component: WidgetImage,
+      props: {
+        image: "build/stone.png"
       }
     },
     {
@@ -54,6 +62,7 @@
         title: "The Power of Self-Organization",
         subtitle: "Author Name",
         image: "https://placeimg.com/640/480/people",
+        standardRadius: true,
       }
     },
   ]
@@ -68,7 +77,7 @@
 
   <div class="container">
     {#each items as item}
-      <div class="item">
+      <div class="item" class:large={item.large}>
         <svelte:component this={item.component} {...item.props}>
           { item.content }
         </svelte:component>
@@ -139,8 +148,11 @@
     }
 
     &.large {
-      @include media-3col {
+      @include media-2col {
         grid-column: span 2;
+      }
+      @include media-1col-only {
+        @include height-square(1, 4/3);
       }
     }
   }

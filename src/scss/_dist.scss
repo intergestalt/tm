@@ -49,9 +49,9 @@ $pill-height-small: 34px;
   }
 }
 
-@mixin height-square($rows: 1) {
-  height: calc( #{100/$rows}vw - #{ 2*$grid-gap-large } );
+@mixin height-square($rows: 1, $ratio: 1) {
+  height: calc( #{($ratio*100)/$rows}vw - #{ 2*$grid-gap-large } );
   @include media-small {
-    height: calc( #{100/$rows}vw - #{ 2*$grid-gap-small } );
+    height: calc( #{($ratio*100)/$rows}vw - #{ 2*$grid-gap-small } );
   }
 }
