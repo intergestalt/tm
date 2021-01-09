@@ -15,7 +15,7 @@
 
 </script>
 
-<div class:active={$isMenuActive} class="toggler" style="--zIndex: {zIndex};">
+<div class:active={$isMenuActive} class="toggler" style="--zIndex: {zIndex+1};">
   <div class="toggle-menu" on:click={onMenu} ></div>
   <div class="toggle-silence" on:click={onSilence}></div>
 </div>
