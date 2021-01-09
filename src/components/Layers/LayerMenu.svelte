@@ -1,11 +1,17 @@
 <script>
-  import { Router, Link, Route } from "svelte-navigator";
+  import { Router, Link, Route, useLocation } from "svelte-navigator";
   import { isMenuActive, isMeditationOn } from '/stores.js';
+  import { styleVars } from '/helper'
 
   export let zIndex
 
   const onMenu = () => { $isMenuActive = !$isMenuActive }
   const onSilence = () => { $isMeditationOn = !$isMeditationOn }
+  const exit = () => { $isMenuActive = false }
+
+  const location = useLocation();
+
+  $: $location && exit() // exit menu whenever there is a route change
 
 </script>
 
@@ -14,22 +20,22 @@
   <div class="toggle-silence" on:click={onSilence}></div>
 </div>
 
-<nav id="main_nav" class:active={$isMenuActive} style="--zIndex: {zIndex};">
+<nav id="main_nav" class:active={$isMenuActive} style={styleVars({ zIndex })} on:click={exit}>
   <ol>
     <li>
-      <Link to="theme" on:click={onMenu}>Theme</Link>
+      <Link to="theme" >Theme</Link>
     </li>
     <li>
-      <Link to="programme" on:click={onMenu}>Programme</Link>
+      <Link to="programme" >Programme</Link>
     </li>
     <li>
-      <Link to="artists" on:click={onMenu}>Artists</Link>
+      <Link to="artists" >Artists</Link>
     </li>
     <li>
-      <Link to="/" on:click={onMenu}>Visit</Link>
+      <Link to="/" >Visit</Link>
     </li>
     <li>
-      <Link to="about" on:click={onMenu}>About</Link>
+      <Link to="about" >About</Link>
     <li>
   </ol>
 </nav>
@@ -73,6 +79,7 @@
 
   nav:not(.active) {
     display: none;
+    pointer-events: none;
   }
 
   nav {
@@ -81,7 +88,6 @@
     top: 0;
     width: 100%;
     height: 100%;
-    pointer-events: none;
     background-color: #F2F2F2f0;
     user-select: none;
     display: flex;
