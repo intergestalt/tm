@@ -1,6 +1,7 @@
 //import svelte from 'rollup-plugin-svelte';
 import svelte from 'rollup-plugin-svelte-hot';
 import resolve from '@rollup/plugin-node-resolve';
+import graphql from '@rollup/plugin-graphql';
 import commonjs from '@rollup/plugin-commonjs';
 import livereload from 'rollup-plugin-livereload';
 import hmr from 'rollup-plugin-hot'
@@ -66,6 +67,9 @@ export default {
 			// If we don't find the file verbatim, try adding these extensions
 			extensions: ['.js', '.svelte'],
 		}),
+
+		graphql(),
+
 		// alias({
 		// 	entries: [
 		// 		{ find: /^\/components\/([a-zA-Z]*)$/, replacement: '/components/$1.alias' },
@@ -78,7 +82,7 @@ export default {
 						/process\.env\.(\w+)/g,
 						(x, prop) => JSON.stringify(process.env[prop]),
 					]]),
-					sveltePreprocess({
+				sveltePreprocess({
 					sourceMap: !production,
 					scss: {
 						// We can use a path relative to the root because

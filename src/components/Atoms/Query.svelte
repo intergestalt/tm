@@ -1,5 +1,5 @@
 <script>
-  import { query } from "svelte-apollo";
+  import { query as query } from "svelte-apollo";
 
   export let gql, variables = null, component
 

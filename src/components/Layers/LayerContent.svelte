@@ -12,9 +12,10 @@
   import TemplateNews from '/components/Templates/TemplateNews'
   import TemplateNewsItem from '/components/Templates/TemplateNewsItem'
 
-  import HOME_PAGE from '/gql/HomePage'
-  import NEWS from '/gql/News'
-  import TEXT from '/gql/Text'
+  import HOME_PAGE from '/gql/HomePage.gql'
+  import NEWS from '/gql/News.gql'
+  import TEXT from '/gql/Text.gql'
+  import ALMANAC from '/gql/Almanac.gql'
 
   export let zIndex;
 
@@ -41,7 +42,7 @@
   </Route>
   <Route path="/almanac">
     <div transition:fade>
-      <TemplateAlmanac />
+      <Query gql={ALMANAC} component={TemplateAlmanac} />
     </div>
   </Route>
   
