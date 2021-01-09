@@ -6,7 +6,6 @@ import commonjs from '@rollup/plugin-commonjs';
 import livereload from 'rollup-plugin-livereload';
 import hmr from 'rollup-plugin-hot'
 import { terser } from 'rollup-plugin-terser';
-import copy from 'rollup-plugin-copy'
 import sveltePreprocess, { replace } from 'svelte-preprocess';
 import dotenv from "dotenv"
 import rootImport from 'rollup-plugin-root-import';
@@ -167,12 +166,6 @@ export default {
 				},
 			}),
 
-		}),
-
-		copy({
-			targets: [
-				{ src: 'static/*', dest: 'public/build/' },
-			]
 		}),
 
 		// If you have external dependencies installed from
