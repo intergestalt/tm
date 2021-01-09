@@ -23,6 +23,40 @@
     }
   }).generateSentences(1)
 
+  const items = [
+    {
+      component: WidgetTeaser7,
+      content: text
+    },
+    {
+      component: CardVideo,
+      large: true,
+      props: {
+        title: "The Reclamation of Social Time",
+        image: "https://placeimg.com/640/480/people",
+        large: true
+      }
+    },
+    {
+      component: WidgetTeaser10,
+      content: short,
+      props: {
+        header: "Intervvww",
+        subtitle: "Ryan Bishop",
+      }
+    },
+    {
+      component: Queer,
+    },
+    {
+      component: CardVideo,
+      props: {
+        title: "The Power of Self-Organization",
+        subtitle: "Author Name",
+        image: "https://placeimg.com/640/480/people",
+      }
+    },
+  ]
 
 </script>
 
@@ -33,20 +67,13 @@
   </h1>
 
   <div class="container">
-    <WidgetTeaser7>
-      { text }
-    </WidgetTeaser7>
-    <CardVideo 
-      title="The Reclamation of Social Time"
-      image="https://placeimg.com/640/480/people"
-      standardRadius
-    />
-    <WidgetTeaser10 header="Intervvww" subtitle="Ryan Bishop">
-      { short }
-    </WidgetTeaser10>
-    <div class="item">
-      <Queer />
-    </div>
+    {#each items as item}
+      <div class="item">
+        <svelte:component this={item.component} {...item.props}>
+          { item.content }
+        </svelte:component>
+      </div>
+    {/each}
   </div>
 
 </section>

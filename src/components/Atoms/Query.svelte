@@ -7,7 +7,7 @@
 
   $: {
     if ($req.data) {
-      console.log($req.data)
+      console.log("Query", gql.definitions[0].name.value, $req.data)
     }
   }
 

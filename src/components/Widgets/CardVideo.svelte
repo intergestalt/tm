@@ -3,6 +3,8 @@
   import Card from '/components/Atoms/Card.svelte'
 
   export let title, subtitle, image, standardRadius = false, highlight = false
+
+  $: console.log($$slots.default)
 </script>
 
 <Card bgImage={image} {standardRadius} >
@@ -13,7 +15,7 @@
     <div class="middle">
       <h3 class="title">
         {title}
-        <slot />
+        {#if $$slots.default}<slot />{/if}
       </h3>
       {#if subtitle}
         <h4 class="subtitle">

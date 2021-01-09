@@ -11,7 +11,7 @@
 
   $: {
     refused = String($overlayContent).indexOf("REFUSAL") !== -1
-    console.log($overlayContent, refused)
+    //console.log($overlayContent, refused)
   }
 
 </script>
