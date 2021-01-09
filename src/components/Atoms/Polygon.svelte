@@ -30,21 +30,29 @@
   const topMostPoint = coords.reduce((prev, current) => (prev.y < current.y) ? prev : current)
   const bottomMostPoint = coords.reduce((prev, current) => (prev.y > current.y) ? prev : current)
 
-  const coordsRight = [
-    {x: 1  , y: 0},
-    topMostPoint,
-    ...coords.filter( c => c.x >= .5).sort( (a,b) => a.y - b.y),
-    bottomMostPoint,
-    {x: 1  , y: 1},
-  ].map( c => ({...c, x: c.x * 2 - 1}))
-
   const coordsLeft = [
     {x: 0  , y: 0},
+    {x: 0.5 , y: 0 },
+    {x: 0.5 , y: topMostPoint.y }, // y should be adjusted depending on the distance between x=0.5 and x=topMostPoint.x
     topMostPoint,
     ...coords.filter( c => c.x <= .5).sort( (a,b) => a.y - b.y),
     bottomMostPoint,
-    {x: 0  , y: 1},
+    {x: 0.5 , y: bottomMostPoint.y },
+    {x: 0.5 , y: 1},
+    {x: 0 , y: 1},
   ].map( c => ({...c, x: c.x * 2}))
+
+  const coordsRight = [
+    {x: 1  , y: 0},
+    {x: 0.5 , y: 0 },
+    {x: 0.5 , y: topMostPoint.y }, // see above
+    topMostPoint,
+    ...coords.filter( c => c.x >= .5).sort( (a,b) => a.y - b.y),
+    bottomMostPoint,
+    {x: 0.5 , y: bottomMostPoint.y },
+    {x: 0.5 , y: 1},
+    {x: 1  , y: 1},
+  ].map( c => ({...c, x: c.x * 2 - 1}))
 
 </script>
 <div class="superwrapper" style="width: {width}">
@@ -99,7 +107,7 @@
     width: 100%;
     height: 100%;
     clip-path: var(--polygon-clip-path);
-    padding: 6%;
+    padding: 0;
     box-sizing: border-box;
     &.color-mint {
       background-color: $color-mint;
@@ -112,8 +120,9 @@
     height: 100%;
     width:50%;
     top:0;
-    //background: rgba(0,0,0,0.03);
+    background: rgba(0,0,0,0.03);
     shape-outside: var(--polygon-shape-path) margin-box;
+    @include grid-dist("shape-margin");
     clip-path: var(--polygon-shape-path);
   }
   .shape-left {

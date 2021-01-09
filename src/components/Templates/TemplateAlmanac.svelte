@@ -90,10 +90,12 @@
 <style lang="scss">
 
   section {
-    
+    box-sizing: border-box;
+    min-height: 100vh;
   }
 
   h1 {
+    @include grid-padding;
     font-size: 22vw;
     line-height: 22vw;
     @include media-2col {
@@ -108,8 +110,6 @@
   }
 
   .container {
-    box-sizing: border-box;
-    min-height: 100vh;
     display: grid;
     grid-auto-flow: row dense;
     @include grid-margin;
