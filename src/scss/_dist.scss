@@ -11,33 +11,29 @@ $grid-gap-large: 20px;
 $pill-height-large: 40px;
 $pill-height-small: 34px;
 
+@mixin grid-dist($attr, $mult: 1) {
+  #{$attr}: $mult * $grid-gap-large;
+  @include media-small {
+    #{$attr}: $mult * $grid-gap-small;
+  }
+}
+
 @mixin grid {
   @include media-2col {
     display: grid;
     grid-template-columns: repeat( 12, 1fr );
-    column-gap: $grid-gap-large;
-    @include media-small {
-      column-gap: $grid-gap-small;
-    }
+    @include grid-dist(column-gap);
   }
 }
 
 @mixin grid-margin($mult: 1) {
-  margin-left: $mult * $grid-gap-large;
-  margin-right: $mult * $grid-gap-large;
-  @include media-small {
-    margin-left: $mult * $grid-gap-small;
-    margin-right: $mult * $grid-gap-small;
-}
+  @include grid-dist(margin-left, $mult);
+  @include grid-dist(margin-right, $mult);
 }
 
-@mixin grid-padding {
-  padding-left: $grid-gap-large;
-  padding-right: $grid-gap-large;
-  @include media-small {
-    padding-left: $grid-gap-small;
-    padding-right: $grid-gap-small;
-  }
+@mixin grid-padding($mult: 1) {
+  @include grid-dist(padding-left, $mult);
+  @include grid-dist(padding-right, $mult);
 }
 
 @mixin grid-template-rows-square($rows) {
