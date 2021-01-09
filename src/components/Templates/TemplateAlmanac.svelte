@@ -1,6 +1,4 @@
 <script>
-  import { LoremIpsum } from "lorem-ipsum";
-  
   import Polygon from '/components/Atoms/Polygon.svelte'
 
   import WidgetTeaser7 from '/components/Widgets/WidgetTeaser7.svelte'
@@ -10,19 +8,9 @@
 
   import Queer from '/components/Widgets/Queer.svelte'
 
-  const text = "The Almanac " + new LoremIpsum({
-    sentencesPerParagraph: {
-      max: 8,
-      min: 4
-    }
-  }).generateSentences(5)
+  const text = "The Almanac Nulla in ut tempor velit ad dolor. Laboris nostrud excepteur consectetur minim non nulla in eiusmod excepteur."
 
-  const short = new LoremIpsum({
-    sentencesPerParagraph: {
-      max: 8,
-      min: 4
-    }
-  }).generateSentences(1)
+  const short = "Dolore non nostrud quis proident pariatur aute velit magna nulla ut ad id elit"
 
   const items = [
     {
@@ -42,7 +30,7 @@
     {
       component: WidgetImage,
       props: {
-        image: "build/stone.png"
+        image: "/assets/images/stone.png"
       }
     },
     {
