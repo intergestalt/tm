@@ -83,7 +83,7 @@
       background-position: center;
 
       &[data-type="audio"] {
-        background-image: url("assets/icons/audio.svg");
+        background-image: url("/assets/icons/audio.svg");
       }
     }
   }

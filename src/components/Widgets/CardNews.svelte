@@ -53,6 +53,7 @@
   }
 
   .more {
+    @include typo-grotesk-title-captions-20;
     color: $color-red;
     display: flex;
     justify-content: space-between;
