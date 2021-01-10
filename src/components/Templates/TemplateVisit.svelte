@@ -2,32 +2,68 @@
   import { query } from "svelte-apollo";
   import { link, useResolve } from "svelte-navigator";
 
-  import Card from '/components/Atoms/Card'
-  import MarkdownBlock from '/components/Atoms/MarkdownBlock'
-  
+  import PageHeader from '/components/Atoms/PageHeader'
+  import MarkdownRenderer from '/components/Groups/MarkdownRenderer'
+  import SideGroup from '/components/Groups/SideGroup'
+
   export let data
 
   const resolve = useResolve();
 
-  let body = data.Text && data.Text.body
-  .filter( e => e.__typename === "body_textBlock_BlockType")
-  .map( e => e.textBlock)
-  .join("\n")
+  let body=`
+
+# Headline
+
+text
+
+# headline 2
+
+text 2
+  
+  `
+
+
+  // let body = data.Text && data.Text.body
+  // .filter( e => e.__typename === "body_textBlock_BlockType")
+  // .map( e => e.textBlock)
+  // .join("\n")
 
 </script>
 
-<section>
+<div class="container">
 
-  <Card>
+  <section class="main">
+    <PageHeader>
+      Visit
+    </PageHeader>
     {#if body}
-      <MarkdownBlock source={body} />
+      <MarkdownRenderer source={body} />
     {/if}
-  </Card>
+    <code>
+      {body}
+    </code>
+  </section>
 
-</section>
+  <aside class="side">
+    <SideGroup />
+  </aside>
+</div>
 
 <style lang="scss">
-  section {
+  .container {
+    @include grid;
+    @include grid-padding;
+  }
+  .main {
+    grid-column: 1 / span 9;
+  }
+
+  .side {
+    grid-column: 10 / span 3;
+  }
+
+  code {
+    white-space: pre;
   }
 
 </style>

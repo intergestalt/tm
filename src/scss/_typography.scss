@@ -84,6 +84,25 @@
   }
 }
 
+@mixin typo-serif-text-sidewidget {
+  @include serif-stack;
+
+  font-size: 21px;
+  line-height: 24px;
+
+  @include media-small {
+    font-size: 24px;
+    line-height: 29px;
+  }
+
+  @include media-larger {
+    font-size: 22px;
+    line-height: 28px;
+  }
+}
+
+
+
 /**** grotesk ****/
 
 @mixin typo-grotesk-title-150 {
@@ -184,4 +203,3 @@
     line-height: 32px;
   }
 }
-
