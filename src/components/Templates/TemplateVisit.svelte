@@ -32,37 +32,51 @@ text 2
 
 <div class="container">
 
-  <section class="main">
+  <div class="header">
     <PageHeader>
       Visit
     </PageHeader>
+  </div>
+
+  <section class="main">
     {#if body}
       <MarkdownRenderer source={body} />
     {/if}
-    <code>
-      {body}
-    </code>
   </section>
 
   <aside class="side">
     <SideGroup />
   </aside>
+
+  <code>
+    {body}
+  </code>
+
 </div>
 
 <style lang="scss">
   .container {
-    @include grid;
     @include grid-padding;
+    @include media-2col {
+      @include grid;
+    }
+  }
+
+  .header {
+    grid-column: 1 / span 9;
   }
   .main {
     grid-column: 1 / span 9;
+    grid-row: 2;
   }
 
   .side {
     grid-column: 10 / span 3;
+    grid-row: 2;
   }
 
   code {
+    grid-row: 3;
     white-space: pre;
   }
 
