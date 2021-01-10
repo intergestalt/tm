@@ -15,13 +15,13 @@
 
 </script>
 
-<div class:active={$isMenuActive} class="toggler" style="--zIndex: {zIndex+1};">
+<div class:active={$isMenuActive} class="toggler" style={styleVars({ zIndex: parseInt(zIndex)+1 })}>
   <div class="toggle-menu" on:click={onMenu} ></div>
   <div class="toggle-silence" on:click={onSilence}></div>
 </div>
 
-<h1 class="transmediale">
-  <a href="/" use:link style="--zIndex: {zIndex+1};">transmediale</a>
+<h1 class="transmediale" class:active={$isMenuActive} style={styleVars({ zIndex: parseInt(zIndex)+2 })}>
+  <a href="/" use:link>transmediale</a>
 </h1>
 
 <nav id="main_nav" class:active={$isMenuActive} style={styleVars({ zIndex })} on:click={exit}>
@@ -63,23 +63,28 @@
   }
 
   .transmediale {
-    left: 300px;
+    left: calc( 130px + 160/800 * 100vw); // 160px when 100vw==800px , 240px when 100vw==1200px;
     top: 20px;
     line-height: 60px;
 
     @include media-small {
-      left: 240px;
+      left: 255px;
       line-height: 40px;
     }
 
-    @include media-larger {
-      left: 356px;
+    @include media-menu-maxout {
+      left: 130px + 240px;
     }
 
     &, a {
       display:block;
       color: $color-white;
       @include typo-grotesk-title-transmediale;
+    }
+
+
+    &.active, &.active a {
+      color: $color-mint;
     }
   }
 
@@ -90,11 +95,9 @@
 
     height: 60px;
     border-radius: 30px;
-    //filter: blur(15px);
-    filter: blur(10px);
+    filter: blur(10px); // figma: 15px
     @include media-small {
-      //filter: blur(12px);
-      filter: blur(8px);
+      filter: blur(8px); // figma: 12px
       height: 40px;
       border-radius: 20px;
     }
@@ -105,13 +108,9 @@
   }
 
   .toggle-menu {
-    width: 180px;
-    @include media-small {
-      width: 160px;
-    }
-    @include media-larger {
-      width: 236px;
-    }
+    width: calc(160/800 * 100vw); // 160px when 100vw==800px , 240px when 100vw==1200px
+    min-width: 160px;
+    max-width: 240px;
   }
 
 

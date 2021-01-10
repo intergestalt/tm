@@ -11,6 +11,7 @@
   import TemplateProgramme from '/components/Templates/TemplateProgramme.svelte'
   import TemplateNews from '/components/Templates/TemplateNews'
   import TemplateNewsItem from '/components/Templates/TemplateNewsItem'
+  import TemplateVisit from '/components/Templates/TemplateVisit'
 
   import HOME_PAGE from '/gql/HomePage.gql'
   import NEWS from '/gql/News.gql'

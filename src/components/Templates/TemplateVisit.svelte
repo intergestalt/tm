@@ -9,7 +9,7 @@
 
   const resolve = useResolve();
 
-  let body = data.Text.body
+  let body = data.Text && data.Text.body
   .filter( e => e.__typename === "body_textBlock_BlockType")
   .map( e => e.textBlock)
   .join("\n")
@@ -19,7 +19,9 @@
 <section>
 
   <Card>
-    <MarkdownBlock source={body} />
+    {#if body}
+      <MarkdownBlock source={body} />
+    {/if}
   </Card>
 
 </section>
