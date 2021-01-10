@@ -130,6 +130,19 @@
   }
 }
 
+@mixin typo-grotesk-title-transmediale {
+  @include grotesk-stack;
+  font-size: 26px;
+
+  @include media-small {
+    font-size: 23px;
+  }
+
+  @include media-larger {
+    font-size: 30px;
+  }
+}
+
 @mixin typo-grotesk-text-24 {
   @include grotesk-stack;
   font-size: 24px;

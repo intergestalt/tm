@@ -26,6 +26,7 @@
 
 <main style={ styleVars({zIndex}) } class:almanac={$location.pathname=="/almanac"} use:links >
   <div class="frame">
+
     <Route path="/news/*" >
       <Route path="/">
         <Query gql={NEWS} component={TemplateNews} />
@@ -34,7 +35,12 @@
         <Query gql={TEXT} variables={{ slug: params.slug }} component={TemplateNewsItem} />
       </Route>
     </Route>
+
     <Route path="about"></Route>
+
+    <Route path="visit">
+      <Query gql={TEXT} variables={{ slug: "visit" }} component={TemplateVisit} title="Visit"/>
+    </Route>
 
     <Route path="/programme" component={TemplateProgramme} />
 

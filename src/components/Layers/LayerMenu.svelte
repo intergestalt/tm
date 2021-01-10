@@ -1,5 +1,5 @@
 <script>
-  import { Router, Link, Route, useLocation } from "svelte-navigator";
+  import { Router, Link, Route, useLocation, link } from "svelte-navigator";
   import { isMenuActive, isMeditationOn } from '/stores.js';
   import { styleVars } from '/helper'
 
@@ -20,6 +20,10 @@
   <div class="toggle-silence" on:click={onSilence}></div>
 </div>
 
+<h1 class="transmediale">
+  <a href="/" use:link style="--zIndex: {zIndex+1};">transmediale</a>
+</h1>
+
 <nav id="main_nav" class:active={$isMenuActive} style={styleVars({ zIndex })} on:click={exit}>
   <ol>
     <li>
@@ -32,7 +36,7 @@
       <Link to="artists" >Artists</Link>
     </li>
     <li>
-      <Link to="/" >Visit</Link>
+      <Link to="visit" >Visit</Link>
     </li>
     <li>
       <Link to="about" >About</Link>
@@ -42,39 +46,82 @@
 
 <style lang="scss">
 
+  .toggler, .transmediale {
+    position: fixed;
+    z-index: var(--zIndex);
+  }
 
   .toggler {
-    position: fixed;
     left: 20px;
     top: 20px;
-    z-index: var(--zIndex);
     mix-blend-mode: difference;
+    
     &.active {
+      position: absolute;
       mix-blend-mode: normal;
     }
   }
 
-  [class^="toggle-"] {
-    height: 50px;
-    border-radius: 25px;
-    display: inline-block;
-    background-color: $color-mint;
-    filter: blur(10px);
-    user-select: none;
+  .transmediale {
+    left: 300px;
+    top: 20px;
+    line-height: 60px;
+
+    @include media-small {
+      left: 240px;
+      line-height: 40px;
+    }
+
+    @include media-larger {
+      left: 356px;
+    }
+
+    &, a {
+      display:block;
+      color: $color-white;
+      @include typo-grotesk-title-transmediale;
+    }
   }
 
-  [class^="toggle-"]:hover {
-    cursor: pointer;
+  .toggle-menu, .toggle-silence {
+    display: inline-block;
+    background-color: $color-mint;
+    user-select: none;
+
+    height: 60px;
+    border-radius: 30px;
+    //filter: blur(15px);
+    filter: blur(10px);
+    @include media-small {
+      //filter: blur(12px);
+      filter: blur(8px);
+      height: 40px;
+      border-radius: 20px;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   .toggle-menu {
-    width: 200px;
+    width: 180px;
+    @include media-small {
+      width: 160px;
+    }
+    @include media-larger {
+      width: 236px;
+    }
   }
 
 
   .toggle-silence {
-    margin-left: 50px;
-    width: 50px;
+    width: 60px;
+    margin-left: 20px;
+    @include media-small {
+      width: 40px;
+      margin-left: 10px;
+    }
   }
 
   nav:not(.active) {
