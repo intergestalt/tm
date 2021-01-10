@@ -21,7 +21,7 @@
 </div>
 
 <h1 class="transmediale" class:active={$isMenuActive} style={styleVars({ zIndex: parseInt(zIndex)+2 })}>
-  <a href="/" use:link>transmediale</a>
+  <Link to="/">transmediale</Link>
 </h1>
 
 <nav id="main_nav" class:active={$isMenuActive} style={styleVars({ zIndex })} on:click={exit}>

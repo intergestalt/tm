@@ -1,5 +1,5 @@
 <script>
-  import { link, useResolve } from "svelte-navigator";
+  import { Link, link, useResolve } from "svelte-navigator";
   
   import {styleVars} from '/helper'
   import Card from '/components/Atoms/Card.svelte'
@@ -19,16 +19,20 @@
     </h3>
     {#each entries as entry, i}
       {#if i < maxEntries }
-        <a class="entry" href={ resolve("/news/" + entry.slug) } use:link>
-          {entry.title}
-          <slot />
-        </a>
+        <span class="entry">
+          <Link to={ resolve("/news/" + entry.slug) } >
+            {entry.title}
+            <slot />
+          </Link>
+        </span>
         {/if}
     {/each}
-    <a class="more" href={ resolve("/news/") } use:link>
-      <span class="text">Show more</span>
-      <IconList class="icon"/>
-    </a>
+    <Link to={ resolve("/news/") } >
+      <span class="more">
+        <span class="text">Show more</span>
+        <IconList class="icon"/>
+      </span>
+    </Link>
   </div>
 </Card>
 
