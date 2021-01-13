@@ -8,14 +8,14 @@
 
   import Queer from '/components/Widgets/Queer.svelte'
 
-  const text = "The Almanac Nulla in ut tempor velit ad dolor. Laboris nostrud excepteur consectetur minim non nulla in eiusmod excepteur."
+  const text = "The Almanac Nulla in ut tempor velit ad dolor. Laboris nostrud excepteur consectetur minim non nulla in eiusmod excepteur. Nulla in ut tempor velit ad dolor. Laboris nostrud excepteur consectetur minim non nulla in eiusmod excepteur. Laboris nostrud excepteur consectetur minim non nulla in eiusmod excepteur. The Almanac Nulla in ut tempor velit ad dolor. Laboris nostrud excepteur consectetur minim non nulla in eiusmod excepteur. Nulla in ut tempor velit ad dolor. Laboris nostrud excepteur consectetur minim non nulla in eiusmod excepteur. Laboris nostrud excepteur consectetur minim non nulla in eiusmod excepteur."
 
   const short = "Dolore non nostrud quis proident pariatur aute velit magna nulla ut ad id elit"
 
   const items = [
     {
       component: WidgetTeaser7,
-      content: text
+      props: {text}
     },
     {
       component: CardVideo,

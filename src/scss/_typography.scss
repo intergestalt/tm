@@ -9,7 +9,10 @@
 @mixin grotesk-stack {
   font-family: GenevaRegular, "Geneva", sans-serif;
   letter-spacing: 0em;
-} 
+}
+@mixin old-stack {
+  font-family: OldEnglishFive, fantasy;
+}
 
 /**** actual mixins ****/
 
@@ -201,5 +204,22 @@
   @include media-larger {
     font-size: 24px;
     line-height: 32px;
+  }
+}
+
+
+/***** Old English *****/
+
+@mixin typo-old-caps-28 {
+  @include old-stack;
+  font-size: 28px;
+  line-height: 32px;
+  font-variant: small-caps;
+
+  @include media-small {
+    font-size: 21px;
+    line-height: 24px;
+    font-variant: small-caps;
+    font-feature-settings: 'tnum' on, 'onum' on;
   }
 }
