@@ -92,21 +92,21 @@
       date: "24.01.–13.03.2021",
       title: "Outdoor Cinema",
       subtitle: "another subtitle auch mal ein bischen länger",
-      image: "https://placeimg.com/640/480/arch/sepia",
+      image: "assets/images/alpha.png",
       type: "small",
     },    
     {
       date: "24.01.–13.03.2021",
       title: "Food Market",
       subtitle: "another subtitle",
-      image: "https://placeimg.com/640/480/arch/sepia",
+      image: "assets/images/alpha.png",
       type: "small",
     },    
     {
     date: "24.01.–13.03.2021",
     title: "2022 Event",
     subtitle: "another subtitle",
-    image: "https://placeimg.com/640/480/arch/sepia",
+    image: "assets/images/alpha.png",
     type: "large",
     }
   ].map(card => ({

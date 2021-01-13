@@ -17,6 +17,7 @@
   import NEWS from '/gql/News.gql'
   import TEXT from '/gql/Text.gql'
   import ALMANAC from '/gql/Almanac.gql'
+  import PROGRAMME from '/gql/Programme.gql'
 
   export let zIndex;
 
@@ -43,7 +44,9 @@
       <Query gql={TEXT} variables={{ slug: "visit" }} component={TemplateVisit} title="Visit"/>
     </Route>
 
-    <Route path="/programme" component={TemplateProgramme} />
+    <Route path="/programme">
+      <Query gql={PROGRAMME} component={TemplateProgramme} />
+    </Route> 
 
     <Route path="/">
       <Query gql={HOME_PAGE} component={TemplateHome} />

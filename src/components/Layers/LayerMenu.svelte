@@ -11,18 +11,30 @@
 
   const location = useLocation();
 
-  $: $location && exit() // exit menu whenever there is a route change
+  let showSilenceButton = false
+  let showTransmediale = false
+
+  $: {
+    $location && exit() // exit menu whenever there is a route change
+
+    showSilenceButton = $location.pathname.indexOf("/almanac") === -1
+    showTransmediale = $location.pathname.indexOf("/almanac") === -1
+  }
 
 </script>
 
 <div class:active={$isMenuActive} class="toggler" style={styleVars({ zIndex: parseInt(zIndex)+1 })}>
   <div class="toggle-menu" on:click={onMenu} ></div>
-  <div class="toggle-silence" on:click={onSilence}></div>
+  {#if showSilenceButton}
+    <div class="toggle-silence" on:click={onSilence}></div>
+  {/if}
 </div>
 
-<h1 class="transmediale" class:active={$isMenuActive} style={styleVars({ zIndex: parseInt(zIndex)+2 })}>
-  <Link to="/">transmediale</Link>
-</h1>
+{#if showTransmediale}
+  <h1 class="transmediale" class:active={$isMenuActive} style={styleVars({ zIndex: parseInt(zIndex)+2 })}>
+    <Link to="/">transmediale</Link>
+  </h1>
+{/if}
 
 <nav id="main_nav" class:active={$isMenuActive} style={styleVars({ zIndex })} on:click={exit}>
   <ol>
