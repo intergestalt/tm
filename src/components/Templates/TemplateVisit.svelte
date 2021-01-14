@@ -12,7 +12,6 @@
 
   let body= data.Text.body[0].textBlock
 
-
   // let body = data.Text && data.Text.body
   // .filter( e => e.__typename === "body_textBlock_BlockType")
   // .map( e => e.textBlock)

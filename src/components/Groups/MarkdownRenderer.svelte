@@ -1,5 +1,4 @@
 <script>
-  import SvelteMarkdown from 'svelte-markdown'
 
   // import regex rules from marked. should be same version used in svelte-markdown
   // there is probably a smarter way to import it from svelte-markown, of which it is a dependency
@@ -7,6 +6,7 @@
 
   import Card from '/components/Atoms/Card'
   import CardHeadline from '/components/Widgets/CardHeadline'
+  import MarkdownBlock from '/components/Atoms/MarkdownBlock'
 
   export let source
 
@@ -39,22 +39,24 @@
 
 <div class="markdown">
   {#each parts as part}
-    {#if heading(part).true }
-      <CardHeadline> 
-        {heading(part).content}
-      </CardHeadline>
-    {:else}
-      <Card>
-        <SvelteMarkdown source={part} renderers={renderers}/>
-      </Card>
-    {/if}
+    <div class="item">
+      {#if heading(part).true }
+        <CardHeadline> 
+          {heading(part).content}
+        </CardHeadline>
+      {:else}
+        <Card>
+          <MarkdownBlock source={part} />
+        </Card>
+      {/if}
+    </div>
   {/each}
 </div>
 
-<style lang="scss" global>
-  .markdown {
-    em {
-      color: $color-red;
-    }
+<style lang="scss">
+
+  .item {
+    margin-bottom: 20px;
   }
+
 </style>

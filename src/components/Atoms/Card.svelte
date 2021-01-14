@@ -30,8 +30,8 @@
 
 <div 
   class="container bg-color-{bgColorKey}" 
-  class:bgImage={bgImage} 
-  class:nohole={nohole}
+  class:bgImage={bgImage}
+  class:nohole
   style={styleVars({
     imageUrl: `url("${bgImage}")`,
     borderRadiusStringLarge,
@@ -65,6 +65,7 @@
     @include box-shadow;
     position: relative;
     /*backdrop-filter: blur(4px);*/
+
   }
 
   // background in varying colors, including a transparent hole
@@ -91,6 +92,7 @@
     .container.nohole.bg-color-#{$name} {
       background: $color;
     }
+
   }
 
   // optional background image (no hole in this case)
