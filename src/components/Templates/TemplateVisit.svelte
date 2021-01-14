@@ -10,17 +10,7 @@
 
   const resolve = useResolve();
 
-  let body=`
-
-# Headline
-
-text
-
-# headline 2
-
-text 2
-  
-  `
+  let body= data.Text.body[0].textBlock
 
 
   // let body = data.Text && data.Text.body
@@ -47,10 +37,6 @@ text 2
   <aside class="side">
     <SideGroup />
   </aside>
-
-  <code>
-    {body}
-  </code>
 
 </div>
 
