@@ -41,6 +41,9 @@ $pill-height-small: 34px;
   @include media-small {
     grid-auto-rows: calc( #{100/$rows}vw - #{ 2*$grid-gap-small } );
   }
+  @include media-xl {
+    grid-auto-rows: calc( #{$maxwidth} / #{$rows} );
+  }
 }
 
 @mixin height-square($rows: 1, $ratio: 1) {
