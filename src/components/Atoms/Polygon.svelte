@@ -6,6 +6,9 @@
   export let width = "100%"
   export let bgColor = "beige"
   export let rotate = 0 // rotate by fraction of the base angle. 1 means rotate just so much that it looks the same
+  export let hasPadding = true
+
+  let innerHeight // use in parent with let:innerHeight
 
   let coords = []
   const base_angle = 2*Math.PI/n
@@ -54,6 +57,8 @@
     {x: 1  , y: 1},
   ].map( c => ({...c, x: c.x * 2 - 1}))
 
+  innerHeight = 100*100*(topMostPoint.y + (1-bottomMostPoint.y)) // height percentage that fits inside, use with let: in parent
+
 </script>
 <div class="superwrapper" style="width: {width}">
   <div 
@@ -68,14 +73,14 @@
       >
 
       {#if insideShape}
-        <div class="shape-left" style="--polygon-shape-path: {coordsToCssPolygon(coordsLeft)}">
+        <div class="shape-left" class:hasPadding style="--polygon-shape-path: {coordsToCssPolygon(coordsLeft)}">
         </div>
 
-        <div class="shape-right" style="--polygon-shape-path: {coordsToCssPolygon(coordsRight)}">
+        <div class="shape-right" class:hasPadding style="--polygon-shape-path: {coordsToCssPolygon(coordsRight)}">
         </div>
       {/if}
-
-      <slot></slot>
+      
+      <slot innerHeight={innerHeight}></slot>
     </div>
   </div>
 </div>
@@ -123,7 +128,9 @@
     top:0;
     background: rgba(0,0,0,0.03);
     shape-outside: var(--polygon-shape-path) margin-box;
-    @include grid-dist("shape-margin");
+    &.hasPadding {
+      @include grid-dist("shape-margin");
+    } 
     clip-path: var(--polygon-shape-path);
   }
   .shape-left {

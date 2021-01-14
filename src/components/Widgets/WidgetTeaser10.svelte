@@ -1,8 +1,7 @@
 <script>
   import Polygon from '/components/Atoms/Polygon.svelte'
 
-  export const header = "Interview"
-  export const subtitle = "someone"
+  export let header, subtitle = null
 
 </script>
 
@@ -30,14 +29,12 @@
   div {
     @include typo-grotesk-title-30;
     hyphens: auto;
-    :global(*::first-letter) {
-      font-family: OldEnglishFive, fantasy;
-    }
+
     text-align: center;
   }
 
-  .center {
-    display: flex;
+  .middle {
+    display: flex-inline;
     flex-direction: row;
   }
 

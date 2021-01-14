@@ -5,6 +5,7 @@
   import WidgetTeaser10 from '/components/Widgets/WidgetTeaser10.svelte'
   import WidgetImage from '/components/Widgets/WidgetImage.svelte'
   import CardVideo from '/components/Widgets/CardVideo.svelte'
+  import WidgetPodcast from '/components/Widgets/WidgetPodcast.svelte'
 
   import Queer from '/components/Widgets/Queer.svelte'
 
@@ -52,6 +53,9 @@
         image: "https://placeimg.com/640/480/people",
         standardRadius: true,
       }
+    },
+    {
+      component: WidgetPodcast,
     },
   ]
 

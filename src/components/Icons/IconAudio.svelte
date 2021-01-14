@@ -6,6 +6,6 @@
 
 <style lang="scss">
   path {
-    color: $color-mint;
+    fill: $color-mint;
   }
 </style>
