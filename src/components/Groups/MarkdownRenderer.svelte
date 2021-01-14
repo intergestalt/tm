@@ -26,7 +26,7 @@
     // console.log(block.heading, string.match(block.heading))
     const match = string.match(block.heading)
     return {
-      true: match !== null & match[0] === match.input,
+      true: match !== null && match[0] === match.input,
       content: match !== null && match[2]
     }
   }

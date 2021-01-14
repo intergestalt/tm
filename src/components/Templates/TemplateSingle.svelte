@@ -6,7 +6,7 @@
   import MarkdownRenderer from '/components/Groups/MarkdownRenderer'
   import SideGroup from '/components/Groups/SideGroup'
 
-  export let data
+  export let data, title
 
   const resolve = useResolve();
 
@@ -23,7 +23,7 @@
 
   <div class="header">
     <PageHeader>
-      Visit
+      {title}
     </PageHeader>
   </div>
 

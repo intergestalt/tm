@@ -11,7 +11,7 @@
   import TemplateProgramme from '/components/Templates/TemplateProgramme.svelte'
   import TemplateNews from '/components/Templates/TemplateNews'
   import TemplateNewsItem from '/components/Templates/TemplateNewsItem'
-  import TemplateVisit from '/components/Templates/TemplateVisit'
+  import TemplateSingle from '/components/Templates/TemplateSingle'
 
   import HOME_PAGE from '/gql/HomePage.gql'
   import NEWS from '/gql/News.gql'
@@ -31,29 +31,52 @@
 
     <Route path="/news/*" >
       <Route path="/">
-        <Query gql={NEWS} component={TemplateNews} />
+        <Query gql={NEWS} let:data >
+          <TemplateNews {data} />
+        </Query>
       </Route>
       <Route path=":slug" let:params>
-        <Query gql={TEXT} variables={{ slug: params.slug }} component={TemplateNewsItem} />
+        <Query gql={TEXT} variables={{ slug: params.slug }} let:data>
+          <TemplateNewsItem {data} />
+        </Query>
       </Route>
     </Route>
 
-    <Route path="about"></Route>
+    <Route path="theme">
+      <Query gql={TEXT} variables={{ slug: "theme" }} let:data >
+        <TemplateSingle title="Theme" {data} />
+      </Query>
+    </Route>
+
+    <Route path="about">
+      <Query gql={TEXT} variables={{ slug: "about" }} let:data >
+        <TemplateSingle title="About" {data} />
+      </Query>
+    </Route>
 
     <Route path="visit">
-      <Query gql={TEXT} variables={{ slug: "visit" }} component={TemplateVisit} title="Visit"/>
+      <Query gql={TEXT} variables={{ slug: "visit" }} let:data >
+        <TemplateSingle title="Visit" {data} />
+      </Query>
     </Route>
 
     <Route path="/programme">
-      <Query gql={PROGRAMME} component={TemplateProgramme} />
+      <Query gql={PROGRAMME} let:data>
+        <TemplateProgramme {data} />
+      </Query>
     </Route> 
 
-    <Route path="/">
-      <Query gql={HOME_PAGE} component={TemplateHome} />
+    <Route path="/" >
+      <Query gql={HOME_PAGE} let:data>
+        <TemplateHome {data} />
+      </Query>
     </Route>
+
     <Route path="/almanac">
       <div transition:fade>
-        <Query gql={ALMANAC} component={TemplateAlmanac} />
+        <Query gql={ALMANAC} let:data>
+          <TemplateAlmanac {data} />
+        </Query>
       </div>
     </Route>
   </div>
