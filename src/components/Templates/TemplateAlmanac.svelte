@@ -5,6 +5,7 @@
   import WidgetTeaser10 from '/components/Widgets/WidgetTeaser10.svelte'
   import WidgetImage from '/components/Widgets/WidgetImage.svelte'
   import CardVideo from '/components/Widgets/CardVideo.svelte'
+  import CardAlmanacContents from '/components/Widgets/CardAlmanacContents.svelte'
   import WidgetPodcast from '/components/Widgets/WidgetPodcast.svelte'
 
   import Queer from '/components/Widgets/Queer.svelte'
@@ -27,6 +28,9 @@
         highlight: true,
         standardRadius: true,
       }
+    },
+    {
+      component: CardAlmanacContents,
     },
     {
       component: WidgetImage,
