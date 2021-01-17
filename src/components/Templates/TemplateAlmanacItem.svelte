@@ -21,6 +21,9 @@
     <IconClose />
   </div>
   <div class="content">
+    <h1>
+      About the Almanac
+    </h1>
     <MarkdownBlock source={body} />
   </div>
 </section>
@@ -72,6 +75,16 @@
         margin-bottom: 35px;
       }
     }
+  }
+
+  h1 {
+    @include typo-serif-small-caps-28;
+    color: $color-red;
+    margin-bottom: 32px;
+  }
+
+  .content {
+    @include typo-serif-text-28;
   }
 
 </style>

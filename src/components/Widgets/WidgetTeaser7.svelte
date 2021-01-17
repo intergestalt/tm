@@ -1,13 +1,21 @@
 <script>
+  import { Link } from 'svelte-navigator'
+
   import Polygon from '/components/Atoms/Polygon.svelte'
 
-  export let text
+  export let text, link
 </script>
 
 <div class="container">
   <Polygon n="7" rotate="0.8">
     <div class="content">
-      { text }
+      {#if link}
+        <Link to={link}>
+          { text }
+        </Link>
+      {:else}
+        { text }
+      {/if}
     </div>
   </Polygon>
 </div>
@@ -22,6 +30,7 @@
     text-align: justify;
     text-overflow: ellipsis;
     padding-top: 2em;
+    padding-bottom: 2em;
     height: 100%;
     box-sizing: border-box;
 
@@ -36,6 +45,13 @@
     }*/
     &::first-letter {
       @include typo-old-caps-28;
+    }
+
+    .more {
+      position: absolute;
+      top: 14em;
+      left: 50%;
+      transform: translateX(-50%);
     }
   }
 </style>
