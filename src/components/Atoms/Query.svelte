@@ -1,7 +1,7 @@
 <script>
   import { query as query } from "svelte-apollo";
 
-  export let gql, variables = null, component
+  export let gql, variables = null
 
   const req = query(gql, { variables });
   

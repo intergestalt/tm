@@ -60,6 +60,16 @@ html, body, main {
   min-height: 100%;
 }
 
+html, body {
+  height: 100%;
+  overflow-y: hidden;
+}
+
+main {
+  overflow-y: scroll;
+  height: 100%;
+}
+
 body {
   box-sizing: border-box;
   font-family: Geneva, GenevaRegular, sans-serif;

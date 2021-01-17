@@ -1,12 +1,14 @@
 <script>
-  import { fade } from 'svelte/transition';
+  import { fly } from 'svelte/transition';
   import { useLocation, links, Router, Link, Route } from "svelte-navigator";
+  import { sineIn } from 'svelte/easing';
 
   import { namedRoutes } from '/routes'
   import { styleVars } from '/helper'
 
   import Query from '/components/Atoms/Query'
   import TemplateAlmanac from '/components/Templates/TemplateAlmanac.svelte'
+  import TemplateAlmanacItem from '/components/Templates/TemplateAlmanacItem.svelte'
   import TemplateHome from '/components/Templates/TemplateHome.svelte'
   import TemplateProgramme from '/components/Templates/TemplateProgramme.svelte'
   import TemplateNews from '/components/Templates/TemplateNews'
@@ -24,10 +26,29 @@
   const location = useLocation();
   //$: console.log($location)
 
+  function slideup(node, { duration }) {
+    return {
+      duration,
+      css: (t,u) => {
+        const eased = sineIn(u);
+
+        return `
+          transform: translateY(${eased * 100}vh);
+          `
+      }
+    };
+  }
+
 </script>
 
-<main style={ styleVars({zIndex}) } class:almanac={$location.pathname=="/almanac"} use:links >
+<main style={ styleVars({zIndex}) } class:almanac={$location.pathname.indexOf("/almanac")>-1} use:links >
   <div class="frame">
+
+    <Route path="/" >
+      <Query gql={HOME_PAGE} let:data>
+        <TemplateHome {data} />
+      </Query>
+    </Route>
 
     <Route path="/news/*" >
       <Route path="/">
@@ -66,18 +87,20 @@
       </Query>
     </Route> 
 
-    <Route path="/" >
-      <Query gql={HOME_PAGE} let:data>
-        <TemplateHome {data} />
-      </Query>
-    </Route>
+    <Route path="/almanac/*slug" let:params>
 
-    <Route path="/almanac">
-      <div transition:fade>
-        <Query gql={ALMANAC} let:data>
-          <TemplateAlmanac {data} />
+      <Query gql={ALMANAC} let:data>
+        <TemplateAlmanac {data} listview={params.slug==="list"}/>
+      </Query>
+
+      {#if params.slug && params.slug !== "list"}
+        <Query gql={TEXT} variables={{ slug: params.slug }} let:data>
+          <div class="almanac-overlay" transition:slideup="{{ duration: 400 }}">
+            <TemplateAlmanacItem {data} />
+          </div>
         </Query>
-      </div>
+      {/if}
+
     </Route>
   </div>
 </main>
@@ -100,6 +123,16 @@
         padding-top: 0;
         padding-bottom: 0;
       }
+    }
+
+    .almanac-overlay {
+      box-shadow: $shadow;
+      position: fixed;
+      top:0;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      
     }
   }
 

@@ -13,7 +13,7 @@
     </h3>
     {#if false}<slot />{/if}
     {#each entries as entry}
-      <a href="#" class="entry">
+      <a href={"/almanac/" + entry.slug } class="entry">
         <span class="icon" data-type={entry.typeHandle} />
         <span class="content">
           <span class="title">{entry.title}</span>

@@ -32,7 +32,7 @@
 
 </script>
 
-<Card bgColorKey="mint" standardRadius>
+<Card bgColorKey="mint" standardRadius nohole >
   <TriContent>
     <span slot="top">
       Contents

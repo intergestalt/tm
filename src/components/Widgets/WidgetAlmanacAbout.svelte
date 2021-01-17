@@ -19,7 +19,6 @@
   .content {
     @include typo-serif-text-22;
     hyphens: auto;
-    text-align: justify;
     text-overflow: ellipsis;
     padding-top: 2em;
     height: 100%;

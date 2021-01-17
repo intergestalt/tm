@@ -1,5 +1,5 @@
 query Event {
-  Event: entry(section: "event", edition:"2021") {
+  Events: entries(section: "event", edition:"2021") {
     ... on event_event_Entry {
       title
       id
