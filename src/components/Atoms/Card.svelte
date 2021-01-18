@@ -9,6 +9,7 @@
   export let borderRadiusPreset = undefined
   export let nohole = false
   export let standardRadius = false
+  export let flow = false // true -> height: 100%
 
   let borderRadiusStringLarge, borderRadiusStringSmall
 
@@ -32,6 +33,7 @@
   class="container bg-color-{bgColorKey}" 
   class:bgImage={bgImage}
   class:nohole
+  class:flow
   style={styleVars({
     imageUrl: `url("${bgImage}")`,
     borderRadiusStringLarge,
@@ -48,7 +50,9 @@
 
   .container {
     width: 100%;
-    height: 100%;
+    &:not(.flow) {
+      height: 100%;
+    }
     display: flex;
     flex-direction: column;
     justify-content: center;

@@ -14,12 +14,16 @@
   import TemplateNews from '/components/Templates/TemplateNews'
   import TemplateNewsItem from '/components/Templates/TemplateNewsItem'
   import TemplateSingle from '/components/Templates/TemplateSingle'
+  import TemplateArtists from '/components/Templates/TemplateArtists'
+  import TemplateArtist from '/components/Templates/TemplateArtist'
 
   import HOME_PAGE from '/gql/HomePage.gql'
   import NEWS from '/gql/News.gql'
   import TEXT from '/gql/Text.gql'
   import ALMANAC from '/gql/Almanac.gql'
   import PROGRAMME from '/gql/Programme.gql'
+  import ARTISTS from '/gql/Artists.gql'
+  import ARTIST from '/gql/Artist.gql'
 
   export let zIndex;
 
@@ -63,11 +67,27 @@
       </Route>
     </Route>
 
+    <Route path="artists/*">
+
+      <Route path="/">
+        <Query gql={ARTISTS} let:data >
+          <TemplateArtists title="Artists" {data} />
+        </Query>
+      </Route>
+
+      <Route path=":slug" let:params>
+        <Query gql={ARTIST} variables={{ slug: params.slug }} let:data >
+          <TemplateArtist {data} />
+        </Query>
+      </Route>
+
+    </Route>
+
     <Route path="theme">
       <Query gql={TEXT} variables={{ slug: "theme" }} let:data >
         <TemplateSingle title="Theme" {data} />
       </Query>
-    </Route>
+    </Route>    
 
     <Route path="about">
       <Query gql={TEXT} variables={{ slug: "about" }} let:data >

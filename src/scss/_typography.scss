@@ -177,6 +177,12 @@
   }
 }
 
+@mixin typo-grotesk-text-18 { // pill
+  @include grotesk-stack;
+  font-size: 18px;
+  line-height: 24px;
+}
+
 @mixin typo-grotesk-title-captions-20 {
   @include grotesk-stack;
   font-size: 20px;

@@ -1,0 +1,12 @@
+query Artists {
+  artists: entries (section: "people", persontype: "artist", edition:"2021") {
+    ... on people_people_Entry {
+      id
+      slug
+      title
+      surname
+      persontype
+      title
+      }
+  }
+}
