@@ -4,6 +4,7 @@
 
   import IconClose from '/components/Icons/IconClose'
   import MarkdownBlock from '/components/Atoms/MarkdownBlock'
+  import Video from '/components/Atoms/Video'
   
   export let data
 
@@ -12,6 +13,8 @@
   const item = data?.gallery
 
   const type = item.typeHandle === "audio" ? item.audioType : item.typeHandle
+
+  const vimeoUrl = item?.videoSource?.[0]?.vimeoUrl
 
 
   let body = data?.Text?.body
@@ -29,6 +32,11 @@
     <h2 class="category">
       { type }
     </h2>
+    <div class="media">
+      {#if vimeoUrl}
+        <Video {vimeoUrl} />
+      {/if}
+    </div>
     <MarkdownBlock source={body} />
   </div>
 </section>
