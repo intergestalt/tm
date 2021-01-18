@@ -9,11 +9,6 @@
 
   const resolve = useResolve();
 
-  const item = data?.gallery
-
-  const type = item.typeHandle === "audio" ? item.audioType : item.typeHandle
-
-
   let body = data?.Text?.body
   .filter( e => e.__typename === "body_textBlock_BlockType")
   .map( e => e.textBlock)
@@ -26,9 +21,9 @@
     <IconClose />
   </div>
   <div class="content">
-    <h2 class="category">
-      { type }
-    </h2>
+    <h1>
+      About the Almanac
+    </h1>
     <MarkdownBlock source={body} />
   </div>
 </section>
@@ -82,7 +77,7 @@
     }
   }
 
-  .category {
+  h1 {
     @include typo-serif-small-caps-28;
     color: $color-red;
     margin-bottom: 32px;

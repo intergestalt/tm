@@ -16,6 +16,7 @@
   import TemplateSingle from '/components/Templates/TemplateSingle'
   import TemplateArtists from '/components/Templates/TemplateArtists'
   import TemplateArtist from '/components/Templates/TemplateArtist'
+  import TemplateArtwork from '/components/Templates/TemplateArtwork'
 
   import HOME_PAGE from '/gql/HomePage.gql'
   import NEWS from '/gql/News.gql'
@@ -24,6 +25,8 @@
   import PROGRAMME from '/gql/Programme.gql'
   import ARTISTS from '/gql/Artists.gql'
   import ARTIST from '/gql/Artist.gql'
+  import ARTWORK from '/gql/Artwork.gql'
+  import MEDIA from '/gql/Media.gql'
 
   export let zIndex;
 
@@ -83,6 +86,12 @@
 
     </Route>
 
+    <Route path="/artworks/:slug" let:params>
+      <Query gql={ARTWORK} variables={{ slug: params.slug }} let:data >
+        <TemplateArtwork {data} />
+      </Query>
+    </Route>
+
     <Route path="theme">
       <Query gql={TEXT} variables={{ slug: "theme" }} let:data >
         <TemplateSingle title="Theme" {data} />
@@ -114,7 +123,7 @@
       </Query>
 
       {#if params.slug && params.slug !== "list"}
-        <Query gql={TEXT} variables={{ slug: params.slug }} let:data>
+        <Query gql={MEDIA} variables={{ slug: params.slug }} let:data>
           <div class="almanac-overlay" transition:slideup="{{ duration: 400 }}">
             <TemplateAlmanacItem {data} />
           </div>

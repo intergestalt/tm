@@ -1,7 +1,9 @@
 <script>
   import Card from '/components/Atoms/Card'
+  import Link from '/components/Atoms/Link'
 
   export let data
+
 
   console.log(data)
 </script>
@@ -13,17 +15,19 @@
   {#each data.relatedArtworks as artwork}
     <Card flow>
       <div class="artwork card">
-        <span class="title">
-          { artwork.title }
-        </span>
-        {#if true}
-          <span class="year">
-            year
+        <Link slug={ artwork.slug } section="artwork">
+          <span class="title">
+            { artwork.title }
+            {#if true}
+              <span class="year">
+                { artwork.artworkYear }
+              </span>
+            {/if}
           </span>
-        {/if}
-        <span class="name">
-          Artist Name
-        </span>
+          <span class="name">
+            Artist Name
+          </span>
+        </Link>
       </div>
     </Card>
   {/each}
@@ -38,12 +42,18 @@
   }
   .card {
     @include typo-serif-text-28;
+
+    a {
+      display: block;
+    }
     .title {
       font-style: italic;
-    }
-    .year {
-      &:before {
-        content: ", ";
+      display: inline-flex;
+      .year {
+        font-style: normal;
+        &:before {
+          content: ", "
+        }
       }
     }
     .name {

@@ -12,6 +12,7 @@ query Artist( $slug: [String] ) {
           id
           title
           slug
+          artworkYear
         }
       }
       relatedPeople {
