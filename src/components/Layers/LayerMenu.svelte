@@ -18,13 +18,13 @@
     $location && exit() // exit menu whenever there is a route change
 
     showSilenceButton = $location.pathname.indexOf("/almanac") === -1
-    showTransmediale = $location.pathname.indexOf("/almanac") === -1
+    showTransmediale = $location.pathname.indexOf("/almanac") === -1 && !$isMeditationOn
   }
 
 </script>
 
 <div class:active={$isMenuActive} class="toggler" style={styleVars({ zIndex: parseInt(zIndex)+1 })}>
-  <div class="toggle-menu" on:click={onMenu} ></div>
+  <div class="toggle-menu" on:click={onMenu} class:hide={$isMeditationOn}></div>
   {#if showSilenceButton}
     <div class="toggle-silence" on:click={onSilence}></div>
   {/if}
@@ -116,6 +116,10 @@
 
     &:hover {
       cursor: pointer;
+    }
+
+    &.hide {
+      visibility: hidden;
     }
   }
 

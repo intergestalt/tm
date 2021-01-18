@@ -109,6 +109,7 @@
   main {
     z-index: var(--zIndex);
     .frame {
+      box-sizing: border-box;
       padding-top: 83px; 
       padding-bottom: 20px;
       max-width: $maxwidth;
