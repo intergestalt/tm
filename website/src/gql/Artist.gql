@@ -1,0 +1,43 @@
+query Artist( $slug: [String] ) {
+  artist: entry(section: "people", persontype: "artist", slug: $slug) {
+    ... on people_people_Entry {
+      id
+      slug
+      title
+      surname
+      persontype
+      title
+      relatedArtworks {
+        ... on artwork_artwork_Entry {
+          id
+          title
+          slug
+          artworkYear
+        }
+      }
+      relatedPeople {
+        ... on relatedPeople_group_BlockType {
+          id
+          relationshipType
+          members {
+            ... on people_people_Entry {
+              id
+              surname
+              slug
+              givenNames
+              title
+            }
+          }
+        }
+      }
+      relatedText {
+        ... on text_text_Entry {
+          id
+          title
+          teaser
+          slug
+        }
+      }
+    }
+  }
+}

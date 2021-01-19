@@ -1,0 +1,4 @@
+WAIT=2
+TIMEOUT=2
+ATTEMPTS=10
+/   bundle.js

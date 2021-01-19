@@ -1,0 +1,54 @@
+$hole-diameter-large: 30px;
+$hole-diameter-small: 22px;
+$hole-distance-large: 30px;
+$hole-distance-small: 20px;
+
+$maxwidth: 1600px; // max width of layout
+
+$grid-gap-small: 10px;
+$grid-gap-large: 20px;
+
+$pill-height-large: 40px;
+$pill-height-small: 34px;
+
+@mixin grid-dist($attr, $mult: 1) {
+  #{$attr}: $mult * $grid-gap-large;
+  @include media-small {
+    #{$attr}: $mult * $grid-gap-small;
+  }
+}
+
+@mixin grid {
+  @include media-2col {
+    display: grid;
+    grid-template-columns: repeat( 12, 1fr );
+    @include grid-dist(column-gap);
+  }
+}
+
+@mixin grid-margin($mult: 1) {
+  @include grid-dist(margin-left, $mult);
+  @include grid-dist(margin-right, $mult);
+}
+
+@mixin grid-padding($mult: 1) {
+  @include grid-dist(padding-left, $mult);
+  @include grid-dist(padding-right, $mult);
+}
+
+@mixin grid-template-rows-square($rows) {
+  grid-auto-rows: calc( #{100/$rows}vw - #{ 2*$grid-gap-large } );
+  @include media-small {
+    grid-auto-rows: calc( #{100/$rows}vw - #{ 2*$grid-gap-small } );
+  }
+  @include media-xl {
+    grid-auto-rows: calc( #{$maxwidth} / #{$rows} );
+  }
+}
+
+@mixin height-square($rows: 1, $ratio: 1) {
+  height: calc( #{($ratio*100)/$rows}vw - #{ 2*$grid-gap-large } );
+  @include media-small {
+    height: calc( #{($ratio*100)/$rows}vw - #{ 2*$grid-gap-small } );
+  }
+}

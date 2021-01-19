@@ -1,0 +1,231 @@
+@import './breakpoints.scss';
+
+/**** local mixins ****/
+
+@mixin serif-stack {
+  font-family: "EB Garamond", serif;
+  letter-spacing: 0em;
+} 
+@mixin grotesk-stack {
+  font-family: GenevaRegular, "Geneva", sans-serif;
+  letter-spacing: 0em;
+}
+@mixin old-stack {
+  font-family: OldEnglishFive, fantasy;
+}
+
+/**** actual mixins ****/
+
+/**** serif ****/
+
+@mixin typo-serif-title-44 {
+  @include serif-stack;
+  font-size: 44px;
+  line-height: 46px;
+
+  @include media-small {
+    font-size: 33px;
+    line-height: 35px;
+  }
+}
+
+@mixin typo-serif-title-32 {
+  @include serif-stack;
+  font-size: 32px;
+  line-height: 36px;
+
+  @include media-small {
+    font-size: 33px;
+    line-height: 35px;
+  }
+}
+
+@mixin typo-serif-text-28 {
+  @include serif-stack;
+  font-size: 28px;
+  line-height: 32px;
+
+  @include media-small {
+    font-size: 24px;
+    line-height: 29px;
+  }
+}
+
+@mixin typo-serif-text-22 {
+  @include serif-stack;
+  font-size: 22px;
+  line-height: 28px;
+
+  @include media-small {
+    font-size: 21px;
+    line-height: 24px;
+  }
+}
+
+@mixin typo-serif-small-caps-28 {
+  @include serif-stack;
+  font-size: 28px;
+  line-height: 32px;
+  font-variant: small-caps;
+
+  @include media-small {
+    font-size: 21px;
+    line-height: 24px;
+    font-variant: small-caps;
+    font-feature-settings: 'tnum' on, 'onum' on;
+  }
+}
+
+@mixin typo-serif-caption-18 {
+  @include serif-stack;
+  font-size: 18px;
+  line-height: 22px;
+
+  @include media-small {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+
+@mixin typo-serif-text-sidewidget {
+  @include serif-stack;
+
+  font-size: 21px;
+  line-height: 24px;
+
+  @include media-1col-only {
+    font-size: 24px;
+    line-height: 29px;
+  }
+
+  @include media-larger {
+    font-size: 28px;
+    line-height: 32px;
+  }
+}
+
+
+
+/**** grotesk ****/
+
+@mixin typo-grotesk-title-150 {
+  @include grotesk-stack;
+  font-size: 150px;
+  line-height: 150px;
+
+  @include media-small {
+    font-size: 50px;
+    line-height: 50px;
+  }
+}
+
+@mixin typo-grotesk-title-100 {
+  @include grotesk-stack;
+  font-size: 100px;
+  line-height: 100px;
+
+  @include media-small {
+    font-size: 50px;
+    line-height: 50px;
+  }
+}
+
+@mixin typo-grotesk-title-50 {
+  @include grotesk-stack;
+  font-size: 50px;
+  line-height: 60px;
+
+  @include media-small {
+    font-size: 38px;
+    line-height: 45px;
+  }
+}
+
+@mixin typo-grotesk-title-30 {
+  @include grotesk-stack;
+  font-size: 30px;
+  line-height: 38px;
+
+  @include media-small {
+    font-size: 22px;
+    line-height: 28px;
+  }
+}
+
+@mixin typo-grotesk-title-transmediale {
+  @include grotesk-stack;
+  font-size: 26px;
+
+  @include media-small {
+    font-size: 23px;
+  }
+
+  @include media-larger {
+    font-size: 30px;
+  }
+}
+
+@mixin typo-grotesk-text-24 {
+  @include grotesk-stack;
+  font-size: 24px;
+  line-height: 32px;
+  font-feature-settings: 'liga' off;
+
+  @include media-small {
+    font-size: 18px;
+    line-height: 24px;
+  }
+}
+
+@mixin typo-grotesk-text-18 { // pill
+  @include grotesk-stack;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+@mixin typo-grotesk-title-captions-20 {
+  @include grotesk-stack;
+  font-size: 20px;
+  line-height: 26px;
+  /*font-variant: small-caps;*/
+
+  @include media-small {
+    font-size: 15px;
+    line-height: 19px;
+    font-feature-settings: 'liga' off;
+  }
+}
+
+@mixin typo-grotesk-text-24-multistep {
+  @include grotesk-stack;
+
+  font-size: 20px;
+  line-height: 26px;
+
+  @include media-small {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  @include media-larger {
+    font-size: 24px;
+    line-height: 32px;
+  }
+}
+
+
+/***** Old English *****/
+
+@mixin typo-old-caps-28 {
+  @include old-stack;
+  font-size: 28px;
+  line-height: 32px;
+  font-variant: small-caps;
+
+  @include media-small {
+    font-size: 21px;
+    line-height: 24px;
+    font-variant: small-caps;
+    font-feature-settings: 'tnum' on, 'onum' on;
+  }
+}

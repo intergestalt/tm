@@ -1,0 +1,36 @@
+query Almanac {
+  entries(section: "almanac") {
+    ... on almanac_almanac_Entry {
+      id
+      relatedWidgets {
+        ... on widget_staticWidget_Entry {
+          id
+          widgetText
+          typeHandle
+          slug
+          backgroundImage {
+            url
+          }
+        }
+        ... on widget_mediaWidget_Entry {
+          id
+          title
+          slug
+          widgetText
+          linkedMedia {
+            ... on media_video_Entry {
+              id
+              slug
+              title
+            }
+            ... on media_audio_Entry {
+              id
+              title
+              slug
+            }
+          }
+        }
+      }
+    }
+  }
+}

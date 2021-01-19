@@ -1,0 +1,51 @@
+query Gallery( $slug: [String] ) {
+  gallery: entry(section: "media", slug: $slug) {
+    title
+    audioType
+    typeHandle
+    ... on media_video_Entry {
+      id
+      videoSource {
+        ... on videoSource_vimeo_BlockType {
+          id
+          vimeoUrl
+        }
+      }
+    }
+    ... on media_image_Entry {
+      id
+      imageType
+      mediaImage {
+        url
+      }
+    }
+... on media_audio_Entry {
+      id
+      audioSource {
+        ... on audioSource_audioUpload_BlockType {
+          id
+          slug
+          uid
+          typeId
+          typeHandle
+          title
+          status
+          ownerId
+          upload {
+            url
+            filename
+            id
+            title
+            uri
+          }
+        }
+        ... on audioSource_soundcloud_BlockType {
+          id
+          soundcloudUrl
+          title
+          typeHandle
+        }
+      }
+    }
+  }
+}

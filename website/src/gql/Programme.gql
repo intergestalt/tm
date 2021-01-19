@@ -1,0 +1,35 @@
+query Event {
+  Events: entries(section: "event", edition:"2021") {
+    ... on event_event_Entry {
+      title
+      id
+      slug
+      eventDates {
+        ... on eventDates_timeRange_BlockType {
+          id
+          endDateAndTime
+          startDateAndTime
+        }
+      }
+      buyTicketUrl
+      buyTicketTitle
+      eventformat
+      teaser
+      title
+      dateCreated
+      dateUpdated
+      relatedArtworks {
+        title
+        slug
+      }
+      relatedEvents {
+        title
+        slug
+      }
+      relatedText {
+        title
+        slug
+      }
+    }
+  }
+}

@@ -1,0 +1,69 @@
+// general breakpoints – large is default
+$breakpoint-small-max: 799px;
+$breakpoint-large-min: 800px; // font size changes and some paddings and hole diameter and border radius
+$breakpoint-larger-min: 1100px; // subtle changes somewhere
+$breakpoint-xl-min: $maxwidth; // center pages with max width, almanac: 4th column
+
+// column breakpoints – 1 column is default
+$breakpoint-1col-max: 599px;
+$breakpoint-2col-min: 600px; // home: 2nd column
+$breakpoint-2col-larger-min: 1100px; // padding changes
+$breakpoint-3col-min: 1100px; // almanac: 3rd column
+
+// special breakpoints
+$breakpoint-menu-maxout-min: 1200px; // when the growing of the menu button maxes out
+
+
+/* general mixins */
+
+@mixin media-screen-width($bp, $direction: "min") {
+  @media screen and (#{direction}-width: $bp) {
+    @content
+  }
+}
+
+/* public mixins */
+
+@mixin media-large-only {
+  @media screen and (min-width: $breakpoint-large-min) { @content }
+}
+
+@mixin media-small {
+  @media screen and (max-width: $breakpoint-small-max) { @content }
+}
+
+@mixin media-larger {
+  @media screen and (min-width: $breakpoint-larger-min) { @content }
+}
+
+// column breakpoints
+
+@mixin media-1col-only {
+  @media screen and (max-width: $breakpoint-1col-max) { @content }
+}
+
+@mixin media-2col {
+  @media screen and (min-width: $breakpoint-2col-min) { @content }
+}
+
+@mixin media-2col-larger {
+  @media screen and (min-width: $breakpoint-2col-larger-min) { @content }
+}
+
+@mixin media-3col {
+  @media screen and (min-width: $breakpoint-3col-min) { @content }
+}
+
+@mixin media-4col {
+  @media screen and (min-width: $breakpoint-xl-min) { @content }
+}
+
+@mixin media-xl {
+  @media screen and (min-width: $breakpoint-xl-min) { @content }
+}
+
+// special breakpoints
+
+@mixin media-menu-maxout {
+  @media screen and (min-width: $breakpoint-menu-maxout-min) { @content }
+}
