@@ -26,9 +26,8 @@ Assuming `dokku cli` is installed and server is `transmediale.intergestalt.cloud
 ```
 DOKKU_HOST=transmediale.intergestalt.cloud dokku --remote staging apps:create
 dokku --remote staging proxy:ports-set http:80:5000
-dokku --remote staging docker-options:add build --build-arg GRAPHQL_URL=https://data.transmediale.de/api --build-arg GRAPHQL_BEARER_TOKEN=your_token --file website/Dockerfile
-git push staging master
-git subtree push --prefix website staging master
+dokku --remote staging docker-options:add build --build-arg GRAPHQL_URL=https://data.transmediale.de/api --build-arg GRAPHQL_BEARER_TOKEN=your_token
+git push staging `git subtree split --prefix website master`:master
 dokku --remote staging letsencrypt
 dokku --remote staging ps:scale web=2
 ```
