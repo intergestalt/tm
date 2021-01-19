@@ -12,7 +12,7 @@
 
   const item = data?.gallery
 
-  const type = item.typeHandle === "audio" ? item.audioType : item.typeHandle
+  const type = item?.typeHandle === "audio" ? item?.audioType : item?.typeHandle
 
   const vimeoUrl = item?.videoSource?.[0]?.vimeoUrl
 

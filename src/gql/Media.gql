@@ -19,12 +19,31 @@ query Gallery( $slug: [String] ) {
         url
       }
     }
-    ... on media_audio_Entry {
+... on media_audio_Entry {
       id
       audioSource {
+        ... on audioSource_audioUpload_BlockType {
+          id
+          slug
+          uid
+          typeId
+          typeHandle
+          title
+          status
+          ownerId
+          upload {
+            url
+            filename
+            id
+            title
+            uri
+          }
+        }
         ... on audioSource_soundcloud_BlockType {
           id
           soundcloudUrl
+          title
+          typeHandle
         }
       }
     }

@@ -1,5 +1,5 @@
 query HomePage {
-  Almanac: entries(siteId:"1", section: "media", tags: ["and", 468, 469] ) {
+  Almanac: entries(siteId:"1", section: ["media", "text"], tags: ["and", 468, 469] ) {
     title
     id
     slug

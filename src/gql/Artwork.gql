@@ -23,7 +23,7 @@ query Artwork( $slug: [String] ) {
       tags {
         id
       }
-      images {
+      artworkImages {
         url
       }
       body {
